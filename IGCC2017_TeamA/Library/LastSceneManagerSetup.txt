@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scene/tempScene.unity
+- path: Assets/Scene/ZhaoTestScene.unity
   isLoaded: 1
   isActive: 1
