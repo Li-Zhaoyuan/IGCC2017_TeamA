@@ -12,6 +12,7 @@ using UnityEngine;
 public class MonsterBase<T, TEnum> : MonoBehaviour
 	where T : class where TEnum : System.IConvertible
 {
+	public GameObject m_tmpTarget;
 
 	protected MonsterStats m_stats;
 

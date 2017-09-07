@@ -26,7 +26,7 @@ public class ChaseMonsterChaseState : State<ChaseMonster>
 	{
 		Debug.Log(obj.name + " Chase Enter");
 
-		m_target = GameObject.Find("TestMonster");
+		m_target = obj.m_tmpTarget;
 
 		obj.m_anime.SetBool("isWalked",true);
 	}
@@ -40,6 +40,7 @@ public class ChaseMonsterChaseState : State<ChaseMonster>
 		if (m_target == null)
 		{
 			obj.ChangeState(ChaseMonsterState.IDLE);
+			return;
 		}
 
 		// 画像の向きをターゲットがいる方向に合わせる
