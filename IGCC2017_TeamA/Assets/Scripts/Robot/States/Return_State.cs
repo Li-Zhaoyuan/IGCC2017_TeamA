@@ -2,17 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dead_State : State {
+public class Return_State : Robot_BaseState
+{
 
     // Use this for initialization
     public override void Start()
     {
-
+        base.Start();
     }
 
     // Update is called once per frame
     public override void Update()
     {
-        //TODO: die and cannot do anything
+        //TODO: return to base
+    }
+    public override void Execute()
+    {
+
     }
 }

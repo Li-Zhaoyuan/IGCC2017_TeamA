@@ -16,7 +16,8 @@ public class Robot_Status : MonoBehaviour {
     public float defence_point;
     // Use this for initialization
     void Start () {
-		
+		//TODO: Random stats
+
 	}
 	
 	// Update is called once per frame
@@ -143,6 +144,11 @@ public class Robot_Status : MonoBehaviour {
 
     //decrementer
     public void MinusHealthPoint(float value)
+    {
+        health_point -= value;
+    }
+
+    public void TakeDamage(float value)
     {
         health_point -= value;
     }
