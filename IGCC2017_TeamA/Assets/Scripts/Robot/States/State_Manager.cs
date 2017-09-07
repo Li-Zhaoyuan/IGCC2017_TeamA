@@ -45,19 +45,28 @@ public class State_Manager : MonoBehaviour {
     public float robot_sprite_across_length;
     public Sprite robot_sprite;
 
+
+    public TempScripts[] waypoints;
+    public Vector3 mainWaypoint;
+
     // Use this for initialization
     void Start () {
         //SetCurrentState(roam_state);
         parent_object = transform.parent.gameObject;
         states_enum = ROBOT_STATES.MOVETO;
         SetCurrentState(states[(int)states_enum]);
-        disignated_position = new Vector3(5, 5, 1);
+        disignated_position = new Vector3(Random.Range(-4,5), Random.Range(-4, 5), 1);
 
         //get the sprite size
         robot_sprite = parent_object.GetComponent<SpriteRenderer>().sprite;
         robot_sprite_size = robot_sprite.rect.size;
         robot_local_sprite_size = robot_sprite_size / robot_sprite.pixelsPerUnit;
         robot_sprite_across_length = Mathf.Sqrt(robot_local_sprite_size.x * robot_local_sprite_size.x + robot_local_sprite_size.y * robot_local_sprite_size.y);
+
+
+        waypoints = FindObjectsOfType<TempScripts>();
+        mainWaypoint = Vector3.zero;
+        mainWaypoint = waypoints[Random.Range(0, waypoints.Length)].transform.position;
     }
 	
 	// Update is called once per frame
@@ -128,7 +137,7 @@ public class State_Manager : MonoBehaviour {
 
     public void ChangeStateFromMoveToRoam()
     {
-        if (UsefulFunctions.GetDistanceOfTwoPoints(parent_object.transform.position, disignated_position) < robot_local_sprite_size.x * 2)
+        if (UsefulFunctions.GetDistanceOfTwoPoints(parent_object.transform.position, mainWaypoint) < robot_local_sprite_size.x * 0.5f)
         {
             states_enum = ROBOT_STATES.ROAM;
             SetCurrentState(states[(int)states_enum]);

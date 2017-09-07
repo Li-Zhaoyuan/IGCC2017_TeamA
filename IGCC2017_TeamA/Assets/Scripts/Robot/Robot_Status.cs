@@ -2,6 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PERSONALITY
+{
+    BRAVE,
+    CURIOUS,
+    SENSITIVE,
+    LAZY,
+    IMPATIENT,
+    CAREFUL,
+    TOTAL
+}
+
 public class Robot_Status : MonoBehaviour {
 
     // all the status is now PUBLIC for debugging
@@ -9,14 +20,32 @@ public class Robot_Status : MonoBehaviour {
     public float health_point;
     [Range(0, 100)]
     public float energy_point;
+
+    //base stats
+    [Range(0, 100)]
+    public float base_health_point;
+    [Range(0, 100)]
+    public float base_energy_point;
+
+    public float base_attack_point;
+    public float base_speed_point;
+    public float base_magic_point;
+    public float base_luck_point;
+    public float base_defence_point;
+
     public float attack_point;
     public float speed_point;
     public float magic_point;
     public float luck_point;
     public float defence_point;
+
+
+
+    public PERSONALITY personality;
+    public PERSONALITY mood;
     // Use this for initialization
     void Start () {
-		//TODO: Random stats
+		
 
 	}
 	
@@ -26,13 +55,24 @@ public class Robot_Status : MonoBehaviour {
 	}
 
     //Setters
-    public void SetAllRobotStatus(float att,float spd,float mag, float luk, float def )
+    public void SetAllRobotStatus(float att,float spd,float mag, float luk, float def , float hp,float enrg,PERSONALITY p)
     {
         attack_point = att;
         speed_point = spd;
         magic_point = mag;
         luck_point = luk;
         defence_point = def;
+        health_point = hp;
+        energy_point = enrg;
+
+        base_attack_point = att;
+        base_speed_point = spd;
+        base_magic_point = mag;
+        base_luck_point = luk;
+        base_defence_point = def;
+        base_health_point = hp;
+        base_energy_point = enrg;
+        personality = p;
     }
 
     public void SetHealthPoint(float value)
@@ -68,6 +108,46 @@ public class Robot_Status : MonoBehaviour {
     public void SetDefencePoint(float value)
     {
         defence_point = value;
+    }
+
+    public void SetBaseHealthPoint(float value)
+    {
+        base_health_point = value;
+    }
+
+    public void SetBaseEnergyPoint(float value)
+    {
+        base_energy_point = value;
+    }
+
+    public void SetBaseAttackPoint(float value)
+    {
+        base_attack_point = value;
+    }
+
+    public void SetBaseSpeedPoint(float value)
+    {
+        base_speed_point = value;
+    }
+
+    public void SetBaseMagicPoint(float value)
+    {
+        base_magic_point = value;
+    }
+
+    public void SetBaseLuckPoint(float value)
+    {
+        base_luck_point = value;
+    }
+
+    public void SetBaseDefencePoint(float value)
+    {
+        base_defence_point = value;
+    }
+
+    public void SetPersonality(PERSONALITY p)
+    {
+        personality = p;
     }
 
     //Getters
@@ -106,6 +186,46 @@ public class Robot_Status : MonoBehaviour {
         return defence_point;
     }
 
+    public float GetBaseHealthPoint()
+    {
+        return base_health_point;
+    }
+
+    public float GetBaseEnergyPoint()
+    {
+        return base_energy_point;
+    }
+
+    public float SetBaseAttackPoint()
+    {
+        return base_attack_point;
+    }
+
+    public float GetBaseSpeedPoint()
+    {
+        return base_speed_point;
+    }
+
+    public float GetBaseMagicPoint()
+    {
+        return base_magic_point;
+    }
+
+    public float GetBaseLuckPoint()
+    {
+        return base_luck_point;
+    }
+
+    public float GetBaseDefencePoint()
+    {
+        return base_defence_point;
+    }
+
+    public PERSONALITY GetPersonality()
+    {
+        return personality;
+    }
+
     //incrementer
     public void AddHealthPoint(float value)
     {
@@ -140,6 +260,41 @@ public class Robot_Status : MonoBehaviour {
     public void AddDefencePoint(float value)
     {
         defence_point += value;
+    }
+
+    public void AddBaseHealthPoint(float value)
+    {
+        base_health_point += value;
+    }
+
+    public void AddBaseEnergyPoint(float value)
+    {
+        base_energy_point += value;
+    }
+
+    public void AddBaseAttackPoint(float value)
+    {
+        base_attack_point += value;
+    }
+
+    public void AddBaseSpeedPoint(float value)
+    {
+        base_speed_point += value;
+    }
+
+    public void AddBaseMagicPoint(float value)
+    {
+        base_magic_point += value;
+    }
+
+    public void AddBaseLuckPoint(float value)
+    {
+        base_luck_point += value;
+    }
+
+    public void AddBaseDefencePoint(float value)
+    {
+        base_defence_point += value;
     }
 
     //decrementer
@@ -181,5 +336,40 @@ public class Robot_Status : MonoBehaviour {
     public void MinusDefencePoint(float value)
     {
         defence_point -= value;
+    }
+
+    public void MinusBaseHealthPoint(float value)
+    {
+        base_health_point -= value;
+    }
+
+    public void MinusBaseEnergyPoint(float value)
+    {
+        base_energy_point -= value;
+    }
+
+    public void MinusBaseAttackPoint(float value)
+    {
+        base_attack_point -= value;
+    }
+
+    public void MinusBaseSpeedPoint(float value)
+    {
+        base_speed_point -= value;
+    }
+
+    public void MinusBaseMagicPoint(float value)
+    {
+        base_magic_point -= value;
+    }
+
+    public void MinusBaseLuckPoint(float value)
+    {
+        base_luck_point -= value;
+    }
+
+    public void MinusBaseDefencePoint(float value)
+    {
+        base_defence_point -= value;
     }
 }

@@ -720,11 +720,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health_point: 100
   energy_point: 100
+  base_health_point: 100
+  base_energy_point: 100
+  base_attack_point: 0
+  base_speed_point: 0
+  base_magic_point: 0
+  base_luck_point: 0
+  base_defence_point: 0
   attack_point: 0
   speed_point: 0
   magic_point: 0
   luck_point: 0
   defence_point: 0
+  personality: 0
+  mood: 0
 --- !u!114 &114465500657110896
 MonoBehaviour:
   m_ObjectHideFlags: 1
