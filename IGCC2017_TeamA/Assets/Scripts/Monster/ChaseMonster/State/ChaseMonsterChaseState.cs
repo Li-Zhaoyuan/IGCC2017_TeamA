@@ -53,7 +53,7 @@ public class ChaseMonsterChaseState : State<ChaseMonster>
 
 		//ターゲットに近づいていたら攻撃状態に移行する
 		//When approaching the target, it shifts to the attack state
-		if (direction.magnitude < 1.0f)
+		if (direction.magnitude < 1)
 		{
 			obj.ChangeState(ChaseMonsterState.ATTACK);
 			return;

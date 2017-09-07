@@ -29,8 +29,9 @@ public class ChaseMonsterAttackState : State<ChaseMonster>
 		m_target = obj.m_tmpTarget;
 		obj.m_anime.SetTrigger("attack");
 
+		//ロボットにダメージを与える
+		//Damaging robots
 		m_robotStats = m_target.GetComponent<Robot_Status>();
-
 		if (m_robotStats != null)
 		{
 			m_robotStats.TakeDamage(obj.GetStats().ATK);
@@ -58,6 +59,8 @@ public class ChaseMonsterAttackState : State<ChaseMonster>
 		{
 			obj.m_anime.SetTrigger("attack");
 
+			//ロボットにダメージを与える
+			//Damaging robots
 			if (m_robotStats != null)
 			{
 				m_robotStats.TakeDamage(obj.GetStats().ATK);
