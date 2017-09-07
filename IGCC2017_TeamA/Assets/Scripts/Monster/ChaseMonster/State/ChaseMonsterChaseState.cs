@@ -26,7 +26,7 @@ public class ChaseMonsterChaseState : State<ChaseMonster>
 	{
 		Debug.Log(obj.name + " Chase Enter");
 
-		m_target = GameObject.Find("TestMonster");
+		m_target = obj.m_tmpTarget;
 
 		obj.m_anime.SetBool("isWalked",true);
 	}

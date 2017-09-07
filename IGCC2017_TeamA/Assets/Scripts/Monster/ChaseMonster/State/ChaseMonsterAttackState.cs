@@ -24,7 +24,7 @@ public class ChaseMonsterAttackState : State<ChaseMonster>
 	{
 		Debug.Log(obj.name + " Attack Enter");
 
-		m_target = GameObject.Find("TestMonster");
+		m_target = obj.m_tmpTarget;
 		obj.m_anime.SetTrigger("attack");
 	}
 

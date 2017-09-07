@@ -28,7 +28,7 @@ public class ChaseMonsterIdleState : State<ChaseMonster>
 	{
 		if (m_target == null)
 		{
-			m_target= GameObject.Find("TestMonster");
+			m_target= obj.m_tmpTarget;
 		}
 		else
 		{
