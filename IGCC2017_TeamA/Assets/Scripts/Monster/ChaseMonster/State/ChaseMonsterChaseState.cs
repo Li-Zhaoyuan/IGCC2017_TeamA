@@ -40,6 +40,7 @@ public class ChaseMonsterChaseState : State<ChaseMonster>
 		if (m_target == null)
 		{
 			obj.ChangeState(ChaseMonsterState.IDLE);
+			return;
 		}
 
 		// 画像の向きをターゲットがいる方向に合わせる
