@@ -17,6 +17,8 @@ public class ChaseMonsterAttackState : State<ChaseMonster>
 	//Attack target
 	private GameObject m_target = null;
 
+	private Robot_Status m_robotStats;
+
 	/// <summary>
 	/// 開始処理
 	/// </summary>
@@ -26,6 +28,13 @@ public class ChaseMonsterAttackState : State<ChaseMonster>
 
 		m_target = obj.m_tmpTarget;
 		obj.m_anime.SetTrigger("attack");
+
+		m_robotStats = m_target.GetComponent<Robot_Status>();
+
+		if (m_robotStats != null)
+		{
+			m_robotStats.TakeDamage(obj.GetStats().ATK);
+		}
 	}
 
 	/// <summary>
@@ -47,8 +56,12 @@ public class ChaseMonsterAttackState : State<ChaseMonster>
 		//Attack once again when the attack ends
 		if (obj.m_anime.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
 		{
-			Debug.Log(obj.name + " Attack");
 			obj.m_anime.SetTrigger("attack");
+
+			if (m_robotStats != null)
+			{
+				m_robotStats.TakeDamage(obj.GetStats().ATK);
+			}
 		}
 
 		//ターゲットの存在する方向
