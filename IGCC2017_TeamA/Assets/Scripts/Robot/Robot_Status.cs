@@ -301,16 +301,29 @@ public class Robot_Status : MonoBehaviour {
     public void MinusHealthPoint(float value)
     {
         health_point -= value;
+        //will replace with clamp later
+        if(health_point < 0)
+        {
+            health_point = 0;
+        }
     }
 
     public void TakeDamage(float value)
     {
         health_point -= value;
+        if (health_point < 0)
+        {
+            health_point = 0;
+        }
     }
 
     public void MinusEnergyPoint(float value)
     {
         energy_point -= value;
+        if (energy_point < 0)
+        {
+            energy_point = 0;
+        }
     }
 
     public void MinusAttackPoint(float value)
