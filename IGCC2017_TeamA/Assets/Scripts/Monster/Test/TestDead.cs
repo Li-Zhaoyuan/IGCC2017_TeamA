@@ -6,9 +6,6 @@ public class TestDead : State<TestMonster>
 {
 	public TestDead(TestMonster obj) : base(obj) { }
 
-	//このステートをオブジェクト
-	private GameObject m_gameObject = null;
-
 	private float m_cnt;
 	private float m_time;
 
@@ -30,7 +27,7 @@ public class TestDead : State<TestMonster>
 		Debug.Log("Dead Execute");
 		m_cnt = Time.time - m_time;
 
-		if (m_cnt > 5.0f)
+		if (m_cnt > 2.0f)
 		{
 			obj.ChangeState(TestMonsterState.CHASE);
 		}

@@ -12,12 +12,27 @@ using UnityEngine;
 public class MonsterBase<T, TEnum> : MonoBehaviour
 	where T : class where TEnum : System.IConvertible
 {
-	protected List<State<T>> stateList = new List<State<T>>();
 
+	protected MonsterStats m_stats;
+
+	[System.NonSerialized]
+	public Animator m_anime;
+
+	[System.NonSerialized]
+	public SpriteRenderer m_spriteRenderer;
+
+	protected List<State<T>> stateList = new List<State<T>>();
 
 	// ステートの管理用クラス
 	// State management class
 	protected StateMachine<T> stateMachine;
+
+	public virtual void Start()
+	{
+		m_stats = GetComponent<MonsterStats>();
+		m_anime = GetComponentInChildren<Animator>();
+		m_spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+	}
 
 	public virtual void Update()
 	{
@@ -49,5 +64,34 @@ public class MonsterBase<T, TEnum> : MonoBehaviour
 		}
 
 		return stateMachine.CurrentState == stateList[state.ToInt32(null)];
+	}
+
+	public MonsterStats GetStats()
+	{
+		return m_stats;
+	}
+
+	public void TakeDamage(float damage)
+	{
+		m_stats.HP -= damage;
+	}
+
+
+	/// <summary>
+	/// 画像の向きをターゲットがいる方向に合わせる
+	/// Fit the orientation of the image to the direction in which the target is located
+	/// </summary>
+	/// <param name="targetPosX">ターゲットのX座標</param>
+	/// <param name="targetPosX">X coordinate of the target</param>
+	public void SpriteFlipX(float targetPosX)
+	{
+		if (targetPosX < transform.position.x)
+		{
+			m_spriteRenderer.flipX = true;
+		}
+		else
+		{
+			m_spriteRenderer.flipX = false;
+		}
 	}
 }

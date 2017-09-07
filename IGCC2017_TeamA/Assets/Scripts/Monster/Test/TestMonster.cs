@@ -10,7 +10,9 @@ public enum TestMonsterState
 }
 public class TestMonster :MonsterBase<TestMonster, TestMonsterState>
 {
-	void Start () {
+	public override void Start () {
+		base.Start();
+
 		stateList.Add(new TestState(this));
 		stateList.Add(new TestDead(this));
 
@@ -22,7 +24,5 @@ public class TestMonster :MonsterBase<TestMonster, TestMonsterState>
 	{
 		if (stateMachine != null)
 			stateMachine.Update();
-
 	}
-
 }

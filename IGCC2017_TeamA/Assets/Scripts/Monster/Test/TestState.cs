@@ -27,7 +27,7 @@ public class TestState : State<TestMonster>
 		obj.transform.position += (new Vector3(0, obj.GetComponent<MonsterStats>().SPD,0.0f));
 		m_cnt = Time.time - m_time;
 
-		if (m_cnt > 5.0f)
+		if (m_cnt > 2.0f)
 		{
 			obj.ChangeState(TestMonsterState.DEAD);
 		}
