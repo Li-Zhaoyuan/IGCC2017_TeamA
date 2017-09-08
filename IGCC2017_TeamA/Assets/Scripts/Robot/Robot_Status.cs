@@ -43,9 +43,11 @@ public class Robot_Status : MonoBehaviour {
 
     public PERSONALITY personality;
     public PERSONALITY mood;
+
+    public State_Manager state_manager;
     // Use this for initialization
     void Start () {
-		
+        state_manager = GetComponentInChildren<State_Manager>();
 
 	}
 	
@@ -151,6 +153,11 @@ public class Robot_Status : MonoBehaviour {
     }
 
     //Getters
+    public State_Manager GetStateManager()
+    {
+        return state_manager;
+    }
+
     public float GetHealthPoint()
     {
         return health_point;
@@ -161,7 +168,7 @@ public class Robot_Status : MonoBehaviour {
         return energy_point;
     }
 
-    public float SetAttackPoint()
+    public float GetAttackPoint()
     {                            
         return attack_point ;
     }
@@ -196,7 +203,7 @@ public class Robot_Status : MonoBehaviour {
         return base_energy_point;
     }
 
-    public float SetBaseAttackPoint()
+    public float GetBaseAttackPoint()
     {
         return base_attack_point;
     }

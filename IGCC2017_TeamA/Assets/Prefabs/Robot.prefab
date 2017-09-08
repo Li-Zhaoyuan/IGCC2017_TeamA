@@ -214,9 +214,10 @@ GameObject:
   - component: {fileID: 212437771999314656}
   - component: {fileID: 114459320263905480}
   - component: {fileID: 50233199251664452}
+  - component: {fileID: 61845769933633804}
   m_Layer: 0
   m_Name: Robot
-  m_TagString: Untagged
+  m_TagString: Robot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -365,7 +366,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1144297767555130}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.05, z: 0}
+  m_LocalPosition: {x: 0, y: -0.075, z: 0}
   m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_Children:
   - {fileID: 4441460279882116}
@@ -393,7 +394,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1790194783989238}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.63, z: 0}
+  m_LocalPosition: {x: 0, y: 0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4459710592115176}
@@ -450,7 +451,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1063833724123318}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.05, z: 0}
+  m_LocalPosition: {x: 0, y: 0.075, z: 0}
   m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_Children:
   - {fileID: 4587472272186366}
@@ -631,6 +632,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 2
+--- !u!61 &61845769933633804
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1634162440526944}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!114 &114160494723612276
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -642,6 +668,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32eb3f4ed97a4594d9aa8e928e35b35a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectile: {fileID: 1627779928775928, guid: e9ed70bae6c9b8242bb9a49e1a411597, type: 2}
+  attack_interval: 1
+  attack_speed: 5
+  attack_damage: 5
+  alive_time: 5
 --- !u!114 &114204683727690412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -685,6 +716,11 @@ MonoBehaviour:
   robot_local_sprite_size: {x: 0, y: 0}
   robot_sprite_across_length: 0
   robot_sprite: {fileID: 0}
+  waypoints: []
+  mainWaypoint: {x: 0, y: 0, z: 0}
+  decision_timer: 0
+  enemy_target: {fileID: 0}
+  ally_target: {fileID: 0}
 --- !u!114 &114294601197172724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -707,6 +743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c6cb57cb08dfd44e8798fd4fe610e69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  base_healing_value: 5
 --- !u!114 &114459320263905480
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -734,6 +771,7 @@ MonoBehaviour:
   defence_point: 0
   personality: 0
   mood: 0
+  state_manager: {fileID: 0}
 --- !u!114 &114465500657110896
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -778,6 +816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc183774877ad8d4798e262c6e1d97f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rate_of_recharge: 5
 --- !u!114 &114651019436236786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -824,6 +863,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfce814a820011941a6bab99e8716068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  needed_time_torevive: 1
+  energy_recoverrate: 5
 --- !u!114 &114950402445411700
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -952,7 +993,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 99161c51479e695469f54a18577aacde, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6985294, g: 0.6985294, b: 0.6985294, a: 0.322}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

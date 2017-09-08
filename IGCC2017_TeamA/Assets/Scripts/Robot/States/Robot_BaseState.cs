@@ -16,6 +16,8 @@ public class Robot_BaseState : MonoBehaviour {
     protected Vector2 robot_direction;
     protected Vector2 robot_velocity;
 
+    protected bool isDone;
+
 
     // Use this for initialization
     public virtual void Start()
@@ -51,6 +53,11 @@ public class Robot_BaseState : MonoBehaviour {
     //    disignated_area = coord;
     //}
 
+    public bool GetIsDone()
+    {
+        return isDone;
+    }
+
     public void SetMainRobot(GameObject go)
     {
         main_robot = go;
@@ -59,6 +66,11 @@ public class Robot_BaseState : MonoBehaviour {
     public void SetRobotStatus(Robot_Status status)
     {
         robot_status = status;
+    }
+
+    public void ToggleIsDone()
+    {
+        isDone = !isDone;
     }
 
 }
