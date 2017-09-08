@@ -74,7 +74,11 @@ public class MonsterBase<T, TEnum> : MonoBehaviour
 
 	public void TakeDamage(float damage)
 	{
-		m_stats.HP -= damage;
+		float d = (damage - m_stats.DEF);
+		if (d > 0.0f)
+		{
+			m_stats.HP -= damage;
+		}
 	}
 
 
