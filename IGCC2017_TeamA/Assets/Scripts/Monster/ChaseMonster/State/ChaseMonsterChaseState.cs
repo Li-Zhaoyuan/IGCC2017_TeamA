@@ -24,9 +24,7 @@ public class ChaseMonsterChaseState : State<ChaseMonster>
 	/// </summary>
 	public override void Enter()
 	{
-		Debug.Log(obj.name + " Chase Enter");
-
-		m_target = obj.m_tmpTarget;
+		//m_target = obj.GetStats().m_robotList.GetTarget(obj.transform.position);
 
 		obj.m_anime.SetBool("isWalked",true);
 	}
@@ -37,6 +35,8 @@ public class ChaseMonsterChaseState : State<ChaseMonster>
 	/// </summary>
 	public override void Execute()
 	{
+		m_target = obj.GetStats().m_robotList.GetTarget(obj.transform.position);
+
 		if (m_target == null)
 		{
 			obj.ChangeState(ChaseMonsterState.IDLE);
@@ -53,7 +53,7 @@ public class ChaseMonsterChaseState : State<ChaseMonster>
 
 		//ターゲットに近づいていたら攻撃状態に移行する
 		//When approaching the target, it shifts to the attack state
-		if (direction.magnitude < 1.0f)
+		if (direction.magnitude < 1)
 		{
 			obj.ChangeState(ChaseMonsterState.ATTACK);
 			return;
@@ -72,7 +72,6 @@ public class ChaseMonsterChaseState : State<ChaseMonster>
 	/// </summary>
 	public override void Exit()
 	{
-		Debug.Log(obj.name + " Chase Exit");
 		obj.m_anime.SetBool("isWalked", false);
 	}
 }

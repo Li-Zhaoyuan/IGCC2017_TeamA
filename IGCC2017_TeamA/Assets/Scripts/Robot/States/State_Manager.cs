@@ -73,8 +73,7 @@ public class State_Manager : MonoBehaviour {
 
         waypoints = FindObjectsOfType<TempScripts>();
         mainWaypoint = Vector3.zero;
-        if(waypoints.Length > 0)
-            mainWaypoint = waypoints[Random.Range(0, waypoints.Length)].transform.position;
+        mainWaypoint = waypoints[Random.Range(0, waypoints.Length)].transform.position;
     }
 	
 	// Update is called once per frame

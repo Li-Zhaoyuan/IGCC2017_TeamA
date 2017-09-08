@@ -26,6 +26,13 @@ public class MonsterStats : MonoBehaviour
 		}
 	}
 
+	//最大体力 MaxHitPoint
+	private float m_maxHp;
+	public float MAX_HP
+	{
+		get { return m_maxHp; }
+	}
+
 	//攻撃力　Attack
 	[SerializeField]
 	private float m_atk;
@@ -75,6 +82,22 @@ public class MonsterStats : MonoBehaviour
 		{
 			if (value > 0) { m_mag = value; }
 			else { m_mag = 0; }
+		}
+	}
+
+	//このモンスターのいるエリア
+	//Areas where this monster is located
+	public GameObject m_chargeArea;
+
+	[System.NonSerialized]
+	public RobotList m_robotList;
+
+	public void Start()
+	{
+		m_maxHp = m_hp;
+		if (m_chargeArea != null)
+		{
+			m_robotList = m_chargeArea.GetComponent<RobotList>();
 		}
 	}
 }
