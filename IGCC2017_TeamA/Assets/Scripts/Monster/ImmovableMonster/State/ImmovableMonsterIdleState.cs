@@ -1,17 +1,11 @@
-﻿//************************************************/
-//* @file  :ChaseMonsterIdleState.cs
-//* @brief :ロボットを追跡するモンスター待機状態
-//* @brief :State to idle the robot
-//* @date  :2017/09/07
-//* @author:S.Katou
-//************************************************/
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChaseMonsterIdleState : State<ChaseMonster>
+public class ImmovableMonsterIdleState : State<ImmovableMonster>
 {
-	public ChaseMonsterIdleState(ChaseMonster obj) : base(obj) { }
+
+	public ImmovableMonsterIdleState(ImmovableMonster obj) : base(obj) { }
 
 	//追跡するターゲット
 	//Target to chase
@@ -32,11 +26,20 @@ public class ChaseMonsterIdleState : State<ChaseMonster>
 	{
 		if (m_target == null)
 		{
-			m_target = obj.GetStats().m_robotList.GetTarget(obj.transform.position);
+			var target = obj.GetStats().m_robotList.GetTarget(obj.transform.position);
+			if (target != null)
+			{
+				Vector3 direction = target.transform.position - obj.transform.position;
+
+				if (direction.magnitude < 1.0f)
+				{
+					m_target = obj.GetStats().m_robotList.GetTarget(obj.transform.position);
+				}
+			}
 		}
 		else
 		{
-			obj.ChangeState(CHASE_MONSTER_STATE.CHASE);
+			obj.ChangeState(IMMOVABLE_MONSTER_STATE.ATTACK);
 		}
 	}
 
@@ -48,4 +51,5 @@ public class ChaseMonsterIdleState : State<ChaseMonster>
 	{
 		obj.m_anime.SetBool("isIdle", false);
 	}
+
 }

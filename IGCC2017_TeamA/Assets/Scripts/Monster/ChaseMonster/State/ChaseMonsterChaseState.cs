@@ -39,7 +39,7 @@ public class ChaseMonsterChaseState : State<ChaseMonster>
 
 		if (m_target == null)
 		{
-			obj.ChangeState(ChaseMonsterState.IDLE);
+			obj.ChangeState(CHASE_MONSTER_STATE.IDLE);
 			return;
 		}
 
@@ -55,7 +55,7 @@ public class ChaseMonsterChaseState : State<ChaseMonster>
 		//When approaching the target, it shifts to the attack state
 		if (direction.magnitude < 1)
 		{
-			obj.ChangeState(ChaseMonsterState.ATTACK);
+			obj.ChangeState(CHASE_MONSTER_STATE.ATTACK);
 			return;
 		}
 

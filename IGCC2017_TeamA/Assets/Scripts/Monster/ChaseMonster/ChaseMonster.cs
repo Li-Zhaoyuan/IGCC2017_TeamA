@@ -9,7 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ChaseMonsterState
+public enum CHASE_MONSTER_STATE
 {
 	IDLE,
 	CHASE,  //追跡
@@ -17,7 +17,7 @@ public enum ChaseMonsterState
 	DEAD,   //死亡
 }
 
-public class ChaseMonster : MonsterBase<ChaseMonster, ChaseMonsterState>
+public class ChaseMonster : MonsterBase<ChaseMonster, CHASE_MONSTER_STATE>
 {
 	public override void Start () {
 		base.Start();
@@ -28,7 +28,7 @@ public class ChaseMonster : MonsterBase<ChaseMonster, ChaseMonsterState>
 		stateList.Add(new ChaseMonsterDeadState(this));
 
 		stateMachine = new StateMachine<ChaseMonster>();
-		ChangeState(ChaseMonsterState.CHASE);
+		ChangeState(CHASE_MONSTER_STATE.CHASE);
 	}
 
 	public override void Update()
@@ -38,9 +38,9 @@ public class ChaseMonster : MonsterBase<ChaseMonster, ChaseMonsterState>
 			stateMachine.Update();
 		}
 
-		if (m_stats.HP <= 0 && !(IsCurrentState(ChaseMonsterState.DEAD)))
+		if (m_stats.HP <= 0 && !(IsCurrentState(CHASE_MONSTER_STATE.DEAD)))
 		{
-			ChangeState(ChaseMonsterState.DEAD);
+			ChangeState(CHASE_MONSTER_STATE.DEAD);
 		}
 	}
 }

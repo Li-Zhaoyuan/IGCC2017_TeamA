@@ -1,17 +1,17 @@
 ﻿//************************************************/
-//* @file  :ChaseMonsterAttackState.cs
-//* @brief :ロボットを追跡するモンスターの攻撃状態
+//* @file  :ImmovableMonsterAttackState.cs
+//* @brief :動かないモンスターの攻撃状態
 //* @brief :Attack status of monster
-//* @date  :2017/09/07
+//* @date  :2017/09/08
 //* @author:S.Katou
 //************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChaseMonsterAttackState : State<ChaseMonster>
+public class ImmovableMonsterAttackState : State<ImmovableMonster>
 {
-	public ChaseMonsterAttackState(ChaseMonster obj) : base(obj) { }
+	public ImmovableMonsterAttackState(ImmovableMonster obj) : base(obj) { }
 
 	//攻撃対象
 	//Attack target
@@ -23,8 +23,10 @@ public class ChaseMonsterAttackState : State<ChaseMonster>
 	//Limit damage processing to one at time during animation
 	private bool isTakedDamage = false;
 
+
 	/// <summary>
 	/// 開始処理
+	/// Start processing
 	/// </summary>
 	public override void Enter()
 	{
@@ -46,12 +48,13 @@ public class ChaseMonsterAttackState : State<ChaseMonster>
 
 	/// <summary>
 	/// 実行処理
+	/// Execution processing
 	/// </summary>
 	public override void Execute()
 	{
 		if (m_target == null)
 		{
-			obj.ChangeState(CHASE_MONSTER_STATE.CHASE);
+			obj.ChangeState(IMMOVABLE_MONSTER_STATE.IDLE);
 			return;
 		}
 
@@ -84,7 +87,7 @@ public class ChaseMonsterAttackState : State<ChaseMonster>
 		//If you are away from target, shift to chase state
 		if (direction.magnitude >= 1.0f)
 		{
-			obj.ChangeState(CHASE_MONSTER_STATE.CHASE);
+			obj.ChangeState(IMMOVABLE_MONSTER_STATE.IDLE);
 			return;
 		}
 	}
@@ -92,6 +95,7 @@ public class ChaseMonsterAttackState : State<ChaseMonster>
 
 	/// <summary>
 	/// 終了処理
+	/// End processing
 	/// </summary>
 	public override void Exit()
 	{
