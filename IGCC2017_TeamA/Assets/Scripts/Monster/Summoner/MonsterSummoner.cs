@@ -25,6 +25,10 @@ public class MonsterSummoner : MonoBehaviour {
 	//Areas where this monster is located
 	public GameObject m_chargeArea;
 
+	//エリア範囲取得用
+	//For area range acquisition
+	private Collider2D m_col = null;
+
 	private float m_cnt = 0.0f;
 	private float m_startTime;
 	private float m_interval = 1.0f;
@@ -34,6 +38,8 @@ public class MonsterSummoner : MonoBehaviour {
 		m_startTime = Time.time;
 
 		m_interval = Random.Range(m_minInterval, m_maxInterval);
+
+		m_col = m_chargeArea.GetComponent<Collider2D>();
 	}
 
 		void Update()
@@ -53,7 +59,7 @@ public class MonsterSummoner : MonoBehaviour {
 	{
 		GameObject unit;
 		unit = Instantiate(m_unit) as GameObject;
-		unit.transform.position = gameObject.transform.position;
+		unit.transform.position = RandomPos(gameObject.transform.position);
 
 		var stats = unit.GetComponent<MonsterStats>();
 
@@ -61,5 +67,23 @@ public class MonsterSummoner : MonoBehaviour {
 		stats.m_robotList = m_chargeArea.GetComponent<RobotList>();
 
 		return unit;
+	}
+
+	private Vector3 RandomPos(Vector3 gameObjectPos)
+	{
+		Vector3 pos;
+		Vector3 adjustment = new Vector3(0.0f,0.0f,0.0f);
+
+		if (m_col != null)
+		{
+			var area = m_col.bounds.size;
+			float x = area.x / 2.0f;
+			float y = area.y / 2.0f;
+			adjustment.x = Random.Range(-x, x);
+			adjustment.y = Random.Range(-y, y);
+		}
+		pos = gameObjectPos + adjustment;
+
+		return pos;
 	}
 }
