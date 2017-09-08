@@ -19,6 +19,10 @@ public class ChaseMonsterAttackState : State<ChaseMonster>
 
 	private Robot_Status m_robotStats;
 
+	//ダメージを与える処理をアニメーション中に一回に制限する
+	//Limit damage processing to one at time during animation
+	private bool isTakedDamage = false;
+
 	/// <summary>
 	/// 開始処理
 	/// </summary>
@@ -31,9 +35,10 @@ public class ChaseMonsterAttackState : State<ChaseMonster>
 
 		m_robotStats = m_target.GetComponent<Robot_Status>();
 
-		if (m_robotStats != null)
+		if (m_robotStats != null && !(isTakedDamage))
 		{
 			m_robotStats.TakeDamage(obj.GetStats().ATK);
+			isTakedDamage = true;
 		}
 	}
 
@@ -58,10 +63,15 @@ public class ChaseMonsterAttackState : State<ChaseMonster>
 		{
 			obj.m_anime.SetTrigger("attack");
 
-			if (m_robotStats != null)
+			if (m_robotStats != null && !(isTakedDamage))
 			{
 				m_robotStats.TakeDamage(obj.GetStats().ATK);
+				isTakedDamage = true;
 			}
+		}
+		else
+		{
+			isTakedDamage = false;
 		}
 
 		//ターゲットの存在する方向
@@ -84,5 +94,6 @@ public class ChaseMonsterAttackState : State<ChaseMonster>
 	public override void Exit()
 	{
 		Debug.Log(obj.name + " Attack Exit");
+		isTakedDamage = false;
 	}
 }
