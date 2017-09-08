@@ -33,7 +33,7 @@ public class MonsterSummoner : MonoBehaviour {
 	private float m_startTime;
 	private float m_interval = 1.0f;
 
-	public void Start()
+	void Start()
 	{
 		m_startTime = Time.time;
 
@@ -42,7 +42,7 @@ public class MonsterSummoner : MonoBehaviour {
 		m_col = m_chargeArea.GetComponent<Collider2D>();
 	}
 
-		void Update()
+	void Update()
 	{
 		m_cnt = Time.time - m_startTime;
 
@@ -55,7 +55,7 @@ public class MonsterSummoner : MonoBehaviour {
 		}
 	}
 
-	private GameObject Summon()
+	private void Summon()
 	{
 		GameObject unit;
 		unit = Instantiate(m_unit) as GameObject;
@@ -65,10 +65,17 @@ public class MonsterSummoner : MonoBehaviour {
 
 		stats.m_chargeArea = m_chargeArea;
 		stats.m_robotList = m_chargeArea.GetComponent<RobotList>();
-
-		return unit;
 	}
 
+
+	/// <summary>
+	/// 召喚位置をエリア内でランダムに決定する
+	/// Randomly determine the summoning position within the area
+	/// </summary>
+	/// <param name="gameObjectPos">エリアの中心位置</param>
+	/// <param name="gameObjectPos">Center position of area</param>
+	/// <returns>召喚位置</returns>
+	/// <returns>Summon position</returns>
 	private Vector3 RandomPos(Vector3 gameObjectPos)
 	{
 		Vector3 pos;
