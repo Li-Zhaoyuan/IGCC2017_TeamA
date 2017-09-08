@@ -12,16 +12,18 @@ using UnityEngine;
 public class MonsterBase<T, TEnum> : MonoBehaviour
 	where T : class where TEnum : System.IConvertible
 {
-	public GameObject m_tmpTarget;
-
 	protected MonsterStats m_stats;
 
 	[System.NonSerialized]
 	public Animator m_anime;
 
+	//左右反転用
+	//For horizontal flip
 	[System.NonSerialized]
 	public SpriteRenderer m_spriteRenderer;
 
+	//状態一覧
+	//stateList
 	protected List<State<T>> stateList = new List<State<T>>();
 
 	// ステートの管理用クラス
@@ -67,10 +69,12 @@ public class MonsterBase<T, TEnum> : MonoBehaviour
 		return stateMachine.CurrentState == stateList[state.ToInt32(null)];
 	}
 
+
 	public MonsterStats GetStats()
 	{
 		return m_stats;
 	}
+
 
 	public void TakeDamage(float damage)
 	{

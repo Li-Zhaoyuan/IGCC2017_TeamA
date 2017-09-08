@@ -1,8 +1,8 @@
 ﻿//************************************************/
 //* @file  :HpBar.cs
-//* @brief :ロボットを追跡するモンスターの追跡状態
-//* @brief :State to chase the robot
-//* @date  :2017/09/07
+//* @brief :HPバーの調整
+//* @brief :HP bar adjustment
+//* @date  :2017/09/08
 //* @author:S.Katou
 //************************************************/
 using System.Collections;

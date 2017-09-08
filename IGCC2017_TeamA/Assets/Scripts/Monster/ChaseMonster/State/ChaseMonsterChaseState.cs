@@ -24,9 +24,7 @@ public class ChaseMonsterChaseState : State<ChaseMonster>
 	/// </summary>
 	public override void Enter()
 	{
-		Debug.Log(obj.name + " Chase Enter");
-
-		m_target = obj.m_tmpTarget;
+		//m_target = obj.GetStats().m_robotList.GetTarget(obj.transform.position);
 
 		obj.m_anime.SetBool("isWalked",true);
 	}
@@ -37,6 +35,8 @@ public class ChaseMonsterChaseState : State<ChaseMonster>
 	/// </summary>
 	public override void Execute()
 	{
+		m_target = obj.GetStats().m_robotList.GetTarget(obj.transform.position);
+
 		if (m_target == null)
 		{
 			obj.ChangeState(ChaseMonsterState.IDLE);
@@ -72,7 +72,6 @@ public class ChaseMonsterChaseState : State<ChaseMonster>
 	/// </summary>
 	public override void Exit()
 	{
-		Debug.Log(obj.name + " Chase Exit");
 		obj.m_anime.SetBool("isWalked", false);
 	}
 }

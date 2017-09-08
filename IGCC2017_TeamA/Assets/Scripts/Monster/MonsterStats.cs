@@ -85,8 +85,19 @@ public class MonsterStats : MonoBehaviour
 		}
 	}
 
+	//このモンスターのいるエリア
+	//Areas where this monster is located
+	public GameObject m_chargeArea;
+
+	[System.NonSerialized]
+	public RobotList m_robotList;
+
 	public void Start()
 	{
 		m_maxHp = m_hp;
+		if (m_chargeArea != null)
+		{
+			m_robotList = m_chargeArea.GetComponent<RobotList>();
+		}
 	}
 }

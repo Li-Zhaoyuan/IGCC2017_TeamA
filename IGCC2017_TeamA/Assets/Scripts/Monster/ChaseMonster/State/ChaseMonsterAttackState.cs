@@ -28,12 +28,14 @@ public class ChaseMonsterAttackState : State<ChaseMonster>
 	/// </summary>
 	public override void Enter()
 	{
-		Debug.Log(obj.name + " Attack Enter");
+		m_target = obj.GetStats().m_robotList.GetTarget(obj.transform.position);
 
-		m_target = obj.m_tmpTarget;
 		obj.m_anime.SetTrigger("attack");
 
-		m_robotStats = m_target.GetComponent<Robot_Status>();
+		if (m_target != null)
+		{
+			m_robotStats = m_target.GetComponent<Robot_Status>();
+		}
 
 		if (m_robotStats != null && !(isTakedDamage))
 		{
@@ -93,7 +95,6 @@ public class ChaseMonsterAttackState : State<ChaseMonster>
 	/// </summary>
 	public override void Exit()
 	{
-		Debug.Log(obj.name + " Attack Exit");
 		isTakedDamage = false;
 	}
 }
