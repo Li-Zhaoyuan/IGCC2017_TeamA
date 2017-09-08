@@ -2,7 +2,7 @@
 //* @file  :MonsterBase.cs
 //* @brief :モンスターに共通する処理
 //* @brief :Process common to monsters
-//* @date  :2017/09/08
+//* @date  :2017/09/06
 //* @author:S.Katou
 //************************************************/
 using System.Collections;
