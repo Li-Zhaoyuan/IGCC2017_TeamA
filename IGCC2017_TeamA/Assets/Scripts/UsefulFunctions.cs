@@ -236,4 +236,108 @@ public class UsefulFunctions  {
         }
         return false;
     }
+
+    //find item
+    public static GameObject GetNearbyItemWithBoxCollider(Vector3 position, Vector2 size)
+    {
+        RaycastHit2D[] collision = Physics2D.BoxCastAll(position, size, 0, Vector2.zero, 0);
+
+        foreach (RaycastHit2D temp in collision)
+        {
+            if (temp.collider != null)
+            {
+                if (temp.collider.gameObject.tag == "Item")
+                {
+                    return temp.collider.gameObject;
+                }
+            }
+        }
+        return null;
+    }
+    public static GameObject[] GetNearbyItemWithBoxColliderArray(Vector3 position, Vector2 size)
+    {
+        RaycastHit2D[] collision = Physics2D.BoxCastAll(position, size, 0, Vector2.zero, 0);
+        List<GameObject> temp_list = new List<GameObject>();
+        foreach (RaycastHit2D temp in collision)
+        {
+            if (temp.collider != null)
+            {
+                if (temp.collider.gameObject.tag == "Item")
+                {
+                    temp_list.Add(temp.collider.gameObject);
+
+                }
+            }
+        }
+        return temp_list.ToArray();
+    }
+
+    public static GameObject GetNearbyItemWithCircleCollider(Vector3 position, float radius)
+    {
+        RaycastHit2D[] collision = Physics2D.CircleCastAll(position, radius, Vector2.zero, 0);
+
+        foreach (RaycastHit2D temp in collision)
+        {
+            if (temp.collider != null)
+            {
+                if (temp.collider.gameObject.tag == "Item")
+                {
+                    return temp.collider.gameObject;
+                }
+            }
+        }
+        return null;
+    }
+    public static GameObject[] GetNearbyItemWithCircleColliderArray(Vector3 position, float radius)
+    {
+        RaycastHit2D[] collision = Physics2D.CircleCastAll(position, radius, Vector2.zero, 0);
+        List<GameObject> temp_list = new List<GameObject>();
+        foreach (RaycastHit2D temp in collision)
+        {
+            if (temp.collider != null)
+            {
+                if (temp.collider.gameObject.tag == "Item")
+                {
+                    temp_list.Add(temp.collider.gameObject);
+                }
+            }
+        }
+        return temp_list.ToArray();
+    }
+
+    public static bool CheckForNearbyItemWithBoxCollider(Vector3 position, Vector2 size)
+    {
+        //RaycastHit2D[] collision = Physics2D.CircleCastAll(transform.position, local_sprite_size.x / 2, Vector2.zero, 0);
+        RaycastHit2D[] collision = Physics2D.BoxCastAll(position, size, 0, Vector2.zero, 0);
+
+        foreach (RaycastHit2D temp in collision)
+        {
+            if (temp.collider != null)
+            {
+                if (temp.collider.gameObject.tag == "Item")
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static bool CheckForNearbyitemWithCircleCollider(Vector3 position, float radius)
+    {
+        //RaycastHit2D[] collision = Physics2D.CircleCastAll(transform.position, local_sprite_size.x / 2, Vector2.zero, 0);
+        RaycastHit2D[] collision = Physics2D.CircleCastAll(position, radius, Vector2.zero, 0);
+
+        foreach (RaycastHit2D temp in collision)
+        {
+            if (temp.collider != null)
+            {
+                if (temp.collider.gameObject.tag == "Item")
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }

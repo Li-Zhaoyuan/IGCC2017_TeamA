@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Robot
   - Robot_Bullet
+  - Item
   layers:
   - Default
   - TransparentFX

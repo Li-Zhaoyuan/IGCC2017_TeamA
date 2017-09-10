@@ -721,6 +721,7 @@ MonoBehaviour:
   decision_timer: 0
   enemy_target: {fileID: 0}
   ally_target: {fileID: 0}
+  item_target: {fileID: 0}
 --- !u!114 &114294601197172724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -772,6 +773,7 @@ MonoBehaviour:
   personality: 0
   mood: 0
   state_manager: {fileID: 0}
+  inventory: {fileID: 0}
 --- !u!114 &114465500657110896
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -794,6 +796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6565ab0ae34db6b4bbc1397dc8d9995e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gather_time: 5
 --- !u!114 &114537841989514154
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -828,6 +831,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 389c62745104d6a4d9998a6bf2d0d73d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  items: []
+  max_inventory_size: 100
+  resources_collected: 0
 --- !u!114 &114760892329778260
 MonoBehaviour:
   m_ObjectHideFlags: 1

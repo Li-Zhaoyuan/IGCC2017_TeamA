@@ -29,6 +29,7 @@ public class Return_State : Robot_BaseState
         if(robot_status.GetEnergyPoint() >= robot_status.GetBaseEnergyPoint())
         {
             isDone = true;
+            return;
         }
     }
     public override void Execute()

@@ -14,21 +14,26 @@ public class RobotGenerator : MonoBehaviour {
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.Space))
         {
-            int rnd_robot = Random.Range(0, 6);
-            if (rnd_robot == 0)
-                MakeBraveRobot();
-            else if (rnd_robot == 1)
-                MakeCuriousRobot();
-            else if (rnd_robot == 2)
-                MakeSensitiveRobot();
-            else if (rnd_robot == 3)
-                MakeLazyRobot();
-            else if (rnd_robot == 4)
-                MakeImpatientRobot();
-            else if (rnd_robot == 5)
-                MakeCarefulRobot();
+            MakeRandomRobot();
         }
 	}
+
+    public void MakeRandomRobot()
+    {
+        int rnd_robot = Random.Range(0, 6);
+        if (rnd_robot == 0)
+            MakeBraveRobot();
+        else if (rnd_robot == 1)
+            MakeCuriousRobot();
+        else if (rnd_robot == 2)
+            MakeSensitiveRobot();
+        else if (rnd_robot == 3)
+            MakeLazyRobot();
+        else if (rnd_robot == 4)
+            MakeImpatientRobot();
+        else if (rnd_robot == 5)
+            MakeCarefulRobot();
+    }
 
     void MakeBraveRobot()
     {

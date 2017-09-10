@@ -15,7 +15,7 @@ public class ParticleBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         time += Time.deltaTime;
-        if (time >= systemForParticles.duration + 0.5f)
+        if (time >= systemForParticles.main.duration + 0.5f)
         {
             Destroy(gameObject);
         }

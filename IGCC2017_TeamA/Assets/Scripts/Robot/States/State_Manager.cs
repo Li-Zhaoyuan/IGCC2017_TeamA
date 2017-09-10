@@ -55,12 +55,13 @@ public class State_Manager : MonoBehaviour {
     //attack state
     public GameObject enemy_target = null;
     public GameObject ally_target = null;
+    public GameObject item_target = null;
 
     // Use this for initialization
     void Start () {
         //SetCurrentState(roam_state);
         parent_object = transform.parent.gameObject;
-        states_enum = ROBOT_STATES.MOVETO;
+        states_enum = ROBOT_STATES.ROAM;
         SetCurrentState(states[(int)states_enum]);
         disignated_position = new Vector3(Random.Range(-4,5), Random.Range(-4, 5), 1);
 
@@ -93,14 +94,17 @@ public class State_Manager : MonoBehaviour {
         {
             case ROBOT_STATES.ROAM:
                 {
-                    ChangeStateToReturn();
-                    ChangeStateToAttack();
-                    ChangeStateToRescue();
-                    ChangeStateToHeal();
+                    if (ChangeStateToReturn()) break;
+                    if (ChangeStateToEscape()) break;
+                    if (ChangeStateToAttack()) break;
+                    if (ChangeStateToRescue()) break;
+                    if (ChangeStateToHeal() ) break;
+                    if (ChangeStateToGather()) break;
                     break;
                 }
             case ROBOT_STATES.ATTACK:
                 {
+                    if (ChangeStateToEscape()) break;
                     ChangeStateToRoamIfDone();
                     break;
                 }
@@ -121,7 +125,7 @@ public class State_Manager : MonoBehaviour {
                 }
             case ROBOT_STATES.RETURN:
                 {
-                    
+                    ChangeStateToRoamIfDone();
                     break;
                 }
             case ROBOT_STATES.ESCAPE:
@@ -211,7 +215,7 @@ public class State_Manager : MonoBehaviour {
     public bool ChangeStateToAttack()
     {
         enemy_target = UsefulFunctions.GetNearbyEnemyWithBoxCollider(parent_object.transform.position, robot_local_sprite_size * 2);
-        if(enemy_target != null)
+        if(enemy_target != null && Random.Range(1,101) < parent_object.GetComponent<Robot_Status>().GetChanceToAttack())
         {
             SetCurrentState(ROBOT_STATES.ATTACK);
             return true;
@@ -225,17 +229,24 @@ public class State_Manager : MonoBehaviour {
         foreach(GameObject go in UsefulFunctions.GetNearbyRobotWithBoxColliderArray(parent_object.transform.position, robot_local_sprite_size * 4))
         {
             temptarget = go.GetComponent<Robot_Status>().GetStateManager();
-            if(temptarget.GetRobotCurrentState() == ROBOT_STATES.DEAD || temptarget.GetRobotCurrentState() == ROBOT_STATES.OUTOFENERGY)
-            {
-                ally_target = go;
-                break;
-            }
-            else
+            if (temptarget == null)
             {
                 ally_target = null;
             }
+            else
+            {
+                if (temptarget.GetRobotCurrentState() == ROBOT_STATES.DEAD || temptarget.GetRobotCurrentState() == ROBOT_STATES.OUTOFENERGY)
+                {
+                    ally_target = go;
+                    break;
+                }
+                else
+                {
+                    ally_target = null;
+                }
+            }
         }
-        if(ally_target != null)
+        if(ally_target != null && Random.Range(1, 101) < parent_object.GetComponent<Robot_Status>().GetChanceToRescue())
         {
             SetCurrentState(ROBOT_STATES.RESCUE);
             return true;
@@ -262,7 +273,7 @@ public class State_Manager : MonoBehaviour {
                 }
             }
         }
-        if (ally_target != null)
+        if (ally_target != null && Random.Range(1, 101) < parent_object.GetComponent<Robot_Status>().GetChanceToHeal())
         {
             SetCurrentState(ROBOT_STATES.HEAL);
             return true;
@@ -270,7 +281,26 @@ public class State_Manager : MonoBehaviour {
         return false;
     }
 
-    
+    public bool ChangeStateToEscape()
+    {
+        enemy_target = UsefulFunctions.GetNearbyEnemyWithBoxCollider(parent_object.transform.position, robot_local_sprite_size * 2);
+        if (enemy_target != null && UsefulFunctions.GetPercentageInFloat(parent_object.GetComponent<Robot_Status>().GetHealthPoint(), parent_object.GetComponent<Robot_Status>().GetBaseHealthPoint()) < 0.2f)
+        {
+            SetCurrentState(ROBOT_STATES.ESCAPE);
+            return true;
+        }
+        return false;
+    }
+    public bool ChangeStateToGather()
+    {
+        item_target = UsefulFunctions.GetNearbyItemWithBoxCollider(parent_object.transform.position, robot_local_sprite_size * 2);
+        if (item_target != null && Random.Range(1, 101) < parent_object.GetComponent<Robot_Status>().GetChanceToGather())
+        {
+            SetCurrentState(ROBOT_STATES.GATHER);
+            return true;
+        }
+        return false;
+    }
     //setter
     public void SetCurrentState(ROBOT_STATES state)
     {
@@ -294,6 +324,12 @@ public class State_Manager : MonoBehaviour {
         current_state = state;
         current_state.gameObject.SetActive(true);
     }
+
+    public void SetMoveToLocation(Vector3 pos)
+    {
+        disignated_position = pos;
+        SetCurrentState(ROBOT_STATES.MOVETO);
+    }
     //Getter
     public GameObject GetParentObject()
     {
@@ -313,7 +349,10 @@ public class State_Manager : MonoBehaviour {
     {
         return ally_target;
     }
-
+    public GameObject GetItemTaget()
+    {
+        return item_target;
+    }
     public ROBOT_STATES GetRobotCurrentState()
     {
         return states_enum;
