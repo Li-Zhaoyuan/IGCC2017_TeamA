@@ -63,10 +63,14 @@ public class MonsterSummoner : MonoBehaviour {
 		unit = Instantiate(m_unit[num]) as GameObject;
 		unit.transform.position = RandomPos(gameObject.transform.position);
 
+		//召喚するユニットがモンスターならばエリアの情報を設定する
+		//If the unit to be summoned is a monster, set area information
 		var stats = unit.GetComponent<MonsterStats>();
-
-		stats.m_chargeArea = m_chargeArea;
-		stats.m_robotList = m_chargeArea.GetComponent<RobotList>();
+		if (stats != null)
+		{
+			stats.m_chargeArea = m_chargeArea;
+			stats.m_robotList = m_chargeArea.GetComponent<RobotList>();
+		}
 	}
 
 

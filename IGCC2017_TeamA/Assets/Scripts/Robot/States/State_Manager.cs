@@ -74,9 +74,9 @@ public class State_Manager : MonoBehaviour {
 
         waypoints = FindObjectsOfType<TempScripts>();
         mainWaypoint = Vector3.zero;
-        mainWaypoint = waypoints[Random.Range(0, waypoints.Length)].transform.position;
+
     }
-	
+
 	// Update is called once per frame
 	void Update () {
         current_state.gameObject.SetActive(true);// just to make sure the main state is active
@@ -135,9 +135,9 @@ public class State_Manager : MonoBehaviour {
                 }
             case ROBOT_STATES.MOVETO:
                 {
-                    
+
                     ChangeStateFromMoveToRoam();
-                    
+
                     break;
                 }
             case ROBOT_STATES.RESCUE:

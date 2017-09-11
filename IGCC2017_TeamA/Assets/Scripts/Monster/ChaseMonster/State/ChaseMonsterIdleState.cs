@@ -22,7 +22,7 @@ public class ChaseMonsterIdleState : State<ChaseMonster>
 	/// </summary>
 	public override void Enter()
 	{
-		m_target = GameObject.Find("TestMonster");
+		m_target = null;
 		obj.m_anime.SetBool("isIdle", true);
 	}
 
