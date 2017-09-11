@@ -311,7 +311,7 @@ public class Robot_Status : MonoBehaviour {
 
     public float GetAttackPoint()
     {                            
-        return attack_point ;
+        return attack_point;
     }
 
     public float GetSpeedPoint()
