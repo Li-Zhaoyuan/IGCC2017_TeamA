@@ -49,7 +49,7 @@ public class ChaseMonsterAttackState : State<ChaseMonster>
 	/// </summary>
 	public override void Execute()
 	{
-		if (m_target == null)
+		if (ShouldChangeChaseState())
 		{
 			obj.ChangeState(CHASE_MONSTER_STATE.CHASE);
 			return;
@@ -75,18 +75,6 @@ public class ChaseMonsterAttackState : State<ChaseMonster>
 		{
 			isTakedDamage = false;
 		}
-
-		//ターゲットの存在する方向
-		//Direction in which the target exists
-		Vector3 direction = m_target.transform.position - obj.transform.position;
-
-		//ターゲットに離れていたら追跡状態に移行する
-		//If you are away from target, shift to chase state
-		if (direction.magnitude >= 1.0f)
-		{
-			obj.ChangeState(CHASE_MONSTER_STATE.CHASE);
-			return;
-		}
 	}
 
 
@@ -96,5 +84,36 @@ public class ChaseMonsterAttackState : State<ChaseMonster>
 	public override void Exit()
 	{
 		isTakedDamage = false;
+	}
+
+	/// <summary>
+	/// 徘徊状態に戻るべきかどうか
+	/// Whether to return to the Roam state or not
+	/// </summary>
+	private bool ShouldChangeChaseState()
+	{
+		if (m_target == null)
+		{
+			return true;
+		}
+
+		//ターゲットの存在する方向
+		//Direction in which the target exists
+		Vector3 direction = m_target.transform.position - obj.transform.position;
+
+		//ターゲットから離れていたら徘徊状態に移行する
+		//If you are away from the target, go to wandering state
+		if (direction.magnitude >= 1.0f)
+		{
+			return true;
+		}
+
+
+		if (m_robotStats.health_point <= 0.0f)
+		{
+			return true;
+		}
+
+		return false;
 	}
 }

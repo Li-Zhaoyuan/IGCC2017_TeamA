@@ -52,7 +52,7 @@ public class ImmovableMonsterAttackState : State<ImmovableMonster>
 	/// </summary>
 	public override void Execute()
 	{
-		if (m_target == null)
+		if (ShouldChangeIdleState())
 		{
 			obj.ChangeState(IMMOVABLE_MONSTER_STATE.IDLE);
 			return;
@@ -78,18 +78,6 @@ public class ImmovableMonsterAttackState : State<ImmovableMonster>
 		{
 			isTakedDamage = false;
 		}
-
-		//ターゲットの存在する方向
-		//Direction in which the target exists
-		Vector3 direction = m_target.transform.position - obj.transform.position;
-
-		//ターゲットに離れていたら追跡状態に移行する
-		//If you are away from target, shift to chase state
-		if (direction.magnitude >= 1.0f)
-		{
-			obj.ChangeState(IMMOVABLE_MONSTER_STATE.IDLE);
-			return;
-		}
 	}
 
 
@@ -100,5 +88,37 @@ public class ImmovableMonsterAttackState : State<ImmovableMonster>
 	public override void Exit()
 	{
 		isTakedDamage = false;
+	}
+
+
+
+	/// <summary>
+	/// 待機状態に戻るべきかどうか
+	/// Whether to return to the Idle state or not
+	/// </summary>
+	private bool ShouldChangeIdleState()
+	{
+		if (m_target == null)
+		{
+			return true;
+		}
+
+		//ターゲットの存在する方向
+		//Direction in which the target exists
+		Vector3 direction = m_target.transform.position - obj.transform.position;
+
+		//ターゲットに離れていたら追跡状態に移行する
+		//If you are away from target, shift to chase state
+		if (direction.magnitude >= 1.0f)
+		{
+			return true;
+		}
+
+		if (m_robotStats.health_point <= 0.0f)
+		{
+			return true;
+		}
+
+		return false;
 	}
 }
