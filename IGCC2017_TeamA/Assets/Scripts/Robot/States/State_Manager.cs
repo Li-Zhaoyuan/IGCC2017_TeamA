@@ -46,11 +46,12 @@ public class State_Manager : MonoBehaviour {
     public Sprite robot_sprite;
 
 
-    public TempScripts[] waypoints;
-    public Vector3 mainWaypoint;
+    //public TempScripts[] waypoints;
+    //public Vector3 mainWaypoint;
 
     // the time interval for the robots to make a decision
-    public float decision_timer  = 0f;
+    private float decision_timer  = 0f;
+    public float decision_interval;
 
     //attack state
     public GameObject enemy_target = null;
@@ -72,9 +73,9 @@ public class State_Manager : MonoBehaviour {
         robot_sprite_across_length = Mathf.Sqrt(robot_local_sprite_size.x * robot_local_sprite_size.x + robot_local_sprite_size.y * robot_local_sprite_size.y);
 
 
-        waypoints = FindObjectsOfType<TempScripts>();
-        mainWaypoint = Vector3.zero;
-        mainWaypoint = waypoints[Random.Range(0, waypoints.Length)].transform.position;
+        //waypoints = FindObjectsOfType<TempScripts>();
+        //mainWaypoint = Vector3.zero;
+        //mainWaypoint = waypoints[Random.Range(0, waypoints.Length)].transform.position;
     }
 	
 	// Update is called once per frame
@@ -94,12 +95,17 @@ public class State_Manager : MonoBehaviour {
         {
             case ROBOT_STATES.ROAM:
                 {
-                    if (ChangeStateToReturn()) break;
-                    if (ChangeStateToEscape()) break;
-                    if (ChangeStateToAttack()) break;
-                    if (ChangeStateToRescue()) break;
-                    if (ChangeStateToHeal() ) break;
-                    if (ChangeStateToGather()) break;
+                    decision_timer += Time.deltaTime;
+                    if (decision_timer > decision_interval)
+                    {
+                        decision_timer = 0f;
+                        if (ChangeStateToReturn()) break;
+                        if (ChangeStateToEscape()) break;
+                        if (ChangeStateToAttack()) break;
+                        if (ChangeStateToRescue()) break;
+                        if (ChangeStateToHeal()) break;
+                        if (ChangeStateToGather()) break;
+                    }
                     break;
                 }
             case ROBOT_STATES.ATTACK:
@@ -163,7 +169,7 @@ public class State_Manager : MonoBehaviour {
 
     public bool ChangeStateFromMoveToRoam()
     {
-        if (UsefulFunctions.GetDistanceOfTwoPoints(parent_object.transform.position, mainWaypoint) < robot_local_sprite_size.x * 0.5f)
+        if (UsefulFunctions.GetDistanceOfTwoPoints(parent_object.transform.position, disignated_position) < robot_local_sprite_size.x * 0.5f)
         {
             SetCurrentState(ROBOT_STATES.ROAM);
             return true;
@@ -294,7 +300,8 @@ public class State_Manager : MonoBehaviour {
     public bool ChangeStateToGather()
     {
         item_target = UsefulFunctions.GetNearbyItemWithBoxCollider(parent_object.transform.position, robot_local_sprite_size * 2);
-        if (item_target != null && Random.Range(1, 101) < parent_object.GetComponent<Robot_Status>().GetChanceToGather())
+        if (item_target != null && Random.Range(1, 101) < parent_object.GetComponent<Robot_Status>().GetChanceToGather()
+            && item_target.GetComponent<Item_Base>().GetMainGather() == null)
         {
             SetCurrentState(ROBOT_STATES.GATHER);
             return true;

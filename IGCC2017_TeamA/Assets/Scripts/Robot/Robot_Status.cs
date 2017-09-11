@@ -207,6 +207,11 @@ public class Robot_Status : MonoBehaviour {
         }
     }
 
+    public void GiveRobotDirections(Vector3 pos)
+    {
+        state_manager.SetMoveToLocation(pos);
+    }
+
     public void SetHealthPoint(float value)
     {
        

@@ -16,17 +16,22 @@ public class Gather_State : Robot_BaseState
     {
         //TODO: Collect Items
         base.Update();
-        
 
         if (state_holder_stateManager.item_target == null)
         {
+            timer = 0f;
             isDone = true;
             return;
         }
-        else if (UsefulFunctions.GetDistanceOfTwoPoints(main_robot.transform.position, state_holder_stateManager.item_target.transform.position) < state_holder_stateManager.robot_local_sprite_size.x * 2)
+        if (state_holder_stateManager.item_target.GetComponent<Item_Base>().GetMainGather() == null)
+        {
+            state_holder_stateManager.item_target.GetComponent<Item_Base>().SetMainGather(main_robot);
+        }
+        else if (UsefulFunctions.GetDistanceOfTwoPoints(main_robot.transform.position, state_holder_stateManager.item_target.transform.position) < state_holder_stateManager.robot_local_sprite_size.x * 2
+            && state_holder_stateManager.item_target.GetComponent<Item_Base>().GetMainGather() == main_robot)
         {
             timer += Time.deltaTime;
-            Debug.Log(timer);
+            //Debug.Log(timer);
             if (timer > gather_time)
             {
                 timer = 0f;
@@ -36,10 +41,18 @@ public class Gather_State : Robot_BaseState
                 state_holder_stateManager.item_target = null;
             }
         }
+        else if(state_holder_stateManager.item_target.GetComponent<Item_Base>().GetMainGather() != main_robot)
+        {
+            timer = 0f;
+            isDone = true;
+            return;
+        }
         else
         {
             if (UsefulFunctions.GetDistanceOfTwoPoints(main_robot.transform.position, state_holder_stateManager.item_target.transform.position) > state_holder_stateManager.robot_local_sprite_size.x * 4)
             {
+                timer = 0f;
+                state_holder_stateManager.item_target.GetComponent<Item_Base>().SetMainGather(null);
                 isDone = true;
                 return;
             }
