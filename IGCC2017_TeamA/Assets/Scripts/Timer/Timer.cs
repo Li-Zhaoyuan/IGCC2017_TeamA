@@ -25,7 +25,7 @@ public class Timer : MonoBehaviour
     private float m_elapsedTime = 0.0f;
 
 	//計測を止めるかどうか
-	private bool m_isStoped = false;
+	private bool m_isStop = false;
 
     void Start()
     {
@@ -36,21 +36,32 @@ public class Timer : MonoBehaviour
     // 更新処理
     void Update()
     {
-		//
-        if (!(m_isStoped))
+		//時間の計測
+        if (!(m_isStop))
         {
             m_elapsedTime += Time.deltaTime;
         }
 
-		//
+		//設定した時間が過ぎたら計測を止める
 		if (m_elapsedTime > m_timeLimit)
 		{
 			m_elapsedTime = m_timeLimit;
-			m_isStoped = true;
+			StopCount();
 		}
 
 		//時間描画
 		m_text.text = ConvertStringTime(m_timeLimit - m_elapsedTime);
+	}
+
+
+	public void StopCount()
+	{
+		m_isStop = true;
+	}
+
+	public void StartCount()
+	{
+		m_isStop = false;
 	}
 
 	/// <summary>
@@ -62,10 +73,15 @@ public class Timer : MonoBehaviour
         return m_elapsedTime;
     }
 
-    /// <summary>
-    /// タイムを文字列に変換して返す
-    /// </summary>
-    static public string ConvertStringTime(float time)
+	public float GetRemainingTime()
+	{
+		return m_timeLimit - m_elapsedTime;
+	}
+
+	/// <summary>
+	/// タイムを文字列に変換して返す
+	/// </summary>
+	static public string ConvertStringTime(float time)
     {
         //分・秒・ミリ秒
         int minute = (int)time / 60;
