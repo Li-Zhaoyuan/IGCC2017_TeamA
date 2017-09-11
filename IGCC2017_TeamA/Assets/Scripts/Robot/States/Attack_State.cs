@@ -53,7 +53,7 @@ public class Attack_State : Robot_BaseState
                 return;
             }
             Vector2 temp = UsefulFunctions.GetDirectionFromOneToTwo(main_robot.transform.position, state_holder_stateManager.enemy_target.transform.position);
-            main_robot.GetComponent<Rigidbody2D>().velocity = new Vector2(temp.x, temp.y);
+            main_robot.GetComponent<Rigidbody2D>().velocity = new Vector2(temp.x * (main_robot.GetComponent<Robot_Status>().GetSpeedPoint() * 10) * Time.deltaTime, temp.y * (main_robot.GetComponent<Robot_Status>().GetSpeedPoint() * 10) * Time.deltaTime);
         }
 	}
 

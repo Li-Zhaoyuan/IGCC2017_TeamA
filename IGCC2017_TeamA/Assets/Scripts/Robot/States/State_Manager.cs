@@ -163,7 +163,8 @@ public class State_Manager : MonoBehaviour {
 
     public bool ChangeStateFromMoveToRoam()
     {
-        if (UsefulFunctions.GetDistanceOfTwoPoints(parent_object.transform.position, mainWaypoint) < robot_local_sprite_size.x * 0.5f)
+       
+        if (UsefulFunctions.GetDistanceOfTwoPoints((Vector2)parent_object.transform.position, (Vector2)disignated_position) < robot_local_sprite_size.x )
         {
             SetCurrentState(ROBOT_STATES.ROAM);
             return true;
@@ -327,6 +328,9 @@ public class State_Manager : MonoBehaviour {
 
     public void SetMoveToLocation(Vector3 pos)
     {
+        item_target = null;
+        ally_target = null;
+        enemy_target = null;
         disignated_position = pos;
         SetCurrentState(ROBOT_STATES.MOVETO);
     }
