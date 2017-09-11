@@ -1,17 +1,17 @@
 ﻿//************************************************/
-//* @file  :ChaseMonsterDeadState.cs
-//* @brief :ロボットを追跡するモンスターの死亡状態
+//* @file  :RoamMonsterDeadState.cs
+//* @brief :徘徊するモンスターの死亡状態
 //* @brief :State of death
-//* @date  :2017/09/07
+//* @date  :2017/09/11
 //* @author:S.Katou
 //************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChaseMonsterDeadState : State<ChaseMonster>
+public class RoamMonsterDeadState : State<RoamMonster>
 {
-	public ChaseMonsterDeadState(ChaseMonster obj) : base(obj) { }
+	public RoamMonsterDeadState(RoamMonster obj) : base(obj) { }
 
 	private float m_cnt;
 	private float m_time;
@@ -51,4 +51,5 @@ public class ChaseMonsterDeadState : State<ChaseMonster>
 	{
 
 	}
+
 }

@@ -16,12 +16,13 @@ public class ImmovableMonsterIdleState : State<ImmovableMonster>
 	/// </summary>
 	public override void Enter()
 	{
-		m_target = GameObject.Find("TestMonster");
 		obj.m_anime.SetBool("isIdle", true);
+		m_target = null;
 	}
 
 	/// <summary>
 	/// 実行処理
+	/// <summary>
 	public override void Execute()
 	{
 		if (m_target == null)

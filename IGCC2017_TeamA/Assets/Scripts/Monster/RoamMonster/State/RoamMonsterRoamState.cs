@@ -1,7 +1,7 @@
 ﻿//************************************************/
-//* @file  :ChaseMonsterIdleState.cs
-//* @brief :ロボットを追跡するモンスター待機状態
-//* @brief :State to idle the robot
+//* @file  :RoamMonsterRoamState.cs
+//* @brief :徘徊するモンスターの徘徊状態
+//* @brief :Roam status of monster
 //* @date  :2017/09/11
 //* @author:S.Katou
 //************************************************/
@@ -9,12 +9,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChaseMonsterIdleState : State<ChaseMonster>
+public class RoamMonsterRoamState : State<RoamMonster>
 {
-	public ChaseMonsterIdleState(ChaseMonster obj) : base(obj) { }
+	public RoamMonsterRoamState(RoamMonster obj) : base(obj) { }
 
-	//追跡するターゲット
-	//Target to chase
 	private GameObject m_target = null;
 
 	private float m_timer = 0.0f;
@@ -27,15 +25,17 @@ public class ChaseMonsterIdleState : State<ChaseMonster>
 	/// </summary>
 	public override void Enter()
 	{
+		m_timer = 0.0f;
 		m_target = null;
-		obj.m_anime.SetBool("isIdle", true);
+
+		obj.m_anime.SetBool("isWalked", true);
 
 		if (m_stats == null)
 		{
 			m_stats = obj.GetStats();
 		}
 
-		if (m_area == null)
+		if (m_area==null)
 		{
 			m_area = obj.GetStats().m_chargeArea.GetComponent<Collider2D>();
 		}
@@ -43,6 +43,7 @@ public class ChaseMonsterIdleState : State<ChaseMonster>
 
 	/// <summary>
 	/// 実行処理
+	/// </summary>
 	public override void Execute()
 	{
 		m_timer += Time.deltaTime;
@@ -55,13 +56,14 @@ public class ChaseMonsterIdleState : State<ChaseMonster>
 			SetSpd();
 		}
 
+
 		if (m_target == null)
 		{
-			m_target = obj.GetStats().m_robotList.GetTarget(obj.transform.position);
+			SetTarget();
 		}
 		else
 		{
-			obj.ChangeState(CHASE_MONSTER_STATE.CHASE);
+			obj.ChangeState(ROAM_MONSTER_STATE.ATTACK);
 		}
 	}
 
@@ -71,31 +73,36 @@ public class ChaseMonsterIdleState : State<ChaseMonster>
 	/// </summary>
 	public override void Exit()
 	{
-		obj.m_anime.SetBool("isIdle", false);
 		obj.m_anime.SetBool("isWalked", false);
+
 	}
 
+	private void SetTarget()
+	{
+		var target = obj.GetStats().m_robotList.GetTarget(obj.transform.position);
+		if (target != null)
+		{
+			Vector3 direction = target.transform.position - obj.transform.position;
+
+			if (direction.magnitude < 1.0f)
+			{
+				m_target = obj.GetStats().m_robotList.GetTarget(obj.transform.position);
+			}
+		}
+	}
 
 	private void SetSpd()
 	{
-		if (Random.Range(0, 19) < 6)//60% to not move
+		if (Random.Range(0, 19) < 2)//20% to not move
 		{
 			m_spd = Vector3.zero;
-
-			obj.m_anime.SetBool("isIdle", true);
-			obj.m_anime.SetBool("isWalked", false);
-
 		}
 		else
 		{
-			m_spd = new Vector3(Random.Range(-0.3f, 0.3f), Random.Range(-0.3f, 0.3f), 0.0f) * m_stats.SPD * Time.deltaTime;
+			m_spd = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 0.0f)* m_stats.SPD * Time.deltaTime;
 			obj.SpriteFlipX(obj.transform.position.x + m_spd.x);
-
-			obj.m_anime.SetBool("isIdle", false);
-			obj.m_anime.SetBool("isWalked", true);
 		}
 	}
-
 
 	private void ClampPos()
 	{
