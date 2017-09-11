@@ -232,10 +232,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_hp: 100
-  m_atk: 1
+  m_atk: 3
   m_spd: 1
-  m_def: 10
-  m_mag: 0
+  m_def: 2
+  m_mag: 30
   m_chargeArea: {fileID: 0}
 --- !u!212 &212075976819513220
 SpriteRenderer:
