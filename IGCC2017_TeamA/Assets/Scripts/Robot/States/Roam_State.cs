@@ -19,6 +19,7 @@ public class Roam_State : Robot_BaseState
     {
         //TODO: Roam the disignated area
         timer += Time.deltaTime;
+        base.Update();
         if (timer > 1.0f)
         {
             timer = 0.0f;
