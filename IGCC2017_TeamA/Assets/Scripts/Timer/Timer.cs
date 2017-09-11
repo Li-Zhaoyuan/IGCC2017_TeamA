@@ -2,7 +2,7 @@
 //* @file  :Timer.cs
 //* @brief :時間の計測と描画
 //* @brief :Time measurement and drawing
-//* @date  :2017/09/08
+//* @date  :2017/09/11
 //* @author:S.Katou
 //************************************************/
 using System.Collections;
@@ -29,7 +29,6 @@ public class Timer : MonoBehaviour
 
     void Start()
     {
-        //m_text = GetComponent<Text>();
         m_elapsedTime = 0.0f;
     }
 
@@ -37,12 +36,18 @@ public class Timer : MonoBehaviour
     // 更新処理
     void Update()
     {
-
-        //プレイヤーが生きていてゴールしていない間カウントする
+		//
         if (!(m_isStoped))
         {
             m_elapsedTime += Time.deltaTime;
         }
+
+		//
+		if (m_elapsedTime > m_timeLimit)
+		{
+			m_elapsedTime = m_timeLimit;
+			m_isStoped = true;
+		}
 
 		//時間描画
 		m_text.text = ConvertStringTime(m_timeLimit - m_elapsedTime);
