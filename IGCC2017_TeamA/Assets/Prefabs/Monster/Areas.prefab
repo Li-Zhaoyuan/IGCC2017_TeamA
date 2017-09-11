@@ -26,7 +26,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1319087076008790
 GameObject:
   m_ObjectHideFlags: 1
@@ -59,7 +59,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1369773833962970
 GameObject:
   m_ObjectHideFlags: 0
@@ -76,7 +76,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1400641946567546
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,7 +157,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1922943611623158
 GameObject:
   m_ObjectHideFlags: 1
@@ -230,7 +230,7 @@ Transform:
   m_GameObject: {fileID: 1847365612895644}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -5.5, y: -2.5, z: 0}
-  m_LocalScale: {x: 9, y: 4.5, z: 1}
+  m_LocalScale: {x: 9, y: 4, z: 1}
   m_Children:
   - {fileID: 4224296115563920}
   m_Father: {fileID: 4081665551796974}
@@ -288,7 +288,7 @@ Transform:
   m_GameObject: {fileID: 1405640628494494}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.5, y: 2.5, z: 0}
-  m_LocalScale: {x: 9, y: 4.5, z: 1}
+  m_LocalScale: {x: 9, y: 4, z: 1}
   m_Children:
   - {fileID: 4737407165313218}
   m_Father: {fileID: 4081665551796974}
@@ -356,7 +356,7 @@ Transform:
   m_GameObject: {fileID: 1319621718834038}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -5.5, y: 2.5, z: 0}
-  m_LocalScale: {x: 9, y: 4.5, z: 1}
+  m_LocalScale: {x: 9, y: 4, z: 1}
   m_Children:
   - {fileID: 4290940580494394}
   m_Father: {fileID: 4081665551796974}
@@ -370,7 +370,7 @@ Transform:
   m_GameObject: {fileID: 1369773833962970}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5.5, y: -2.5, z: 0}
-  m_LocalScale: {x: 9, y: 4.5, z: 1}
+  m_LocalScale: {x: 9, y: 4, z: 1}
   m_Children:
   - {fileID: 4294732871266868}
   m_Father: {fileID: 4081665551796974}
@@ -514,8 +514,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57aab210be3698b4f9b9a3557689b439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_unit: {fileID: 1868861289385158, guid: b7cf9e2e84da90c468e96e30145453ab, type: 2}
-  m_interval: 1
+  m_unit:
+  - {fileID: 1868861289385158, guid: b7cf9e2e84da90c468e96e30145453ab, type: 2}
+  - {fileID: 1173193063010188, guid: 24d8caaa8cf585147ab6a1c8933c77a0, type: 2}
+  m_maxInterval: 5
+  m_minInterval: 1
   m_chargeArea: {fileID: 1847365612895644}
 --- !u!114 &114104603498203092
 MonoBehaviour:
@@ -550,8 +553,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57aab210be3698b4f9b9a3557689b439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_unit: {fileID: 1868861289385158, guid: b7cf9e2e84da90c468e96e30145453ab, type: 2}
-  m_interval: 1
+  m_unit:
+  - {fileID: 1868861289385158, guid: b7cf9e2e84da90c468e96e30145453ab, type: 2}
+  - {fileID: 1173193063010188, guid: 24d8caaa8cf585147ab6a1c8933c77a0, type: 2}
+  m_maxInterval: 5
+  m_minInterval: 1
   m_chargeArea: {fileID: 1319621718834038}
 --- !u!114 &114678135991205970
 MonoBehaviour:
@@ -564,8 +570,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57aab210be3698b4f9b9a3557689b439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_unit: {fileID: 1868861289385158, guid: b7cf9e2e84da90c468e96e30145453ab, type: 2}
-  m_interval: 1
+  m_unit:
+  - {fileID: 1868861289385158, guid: b7cf9e2e84da90c468e96e30145453ab, type: 2}
+  - {fileID: 1173193063010188, guid: 24d8caaa8cf585147ab6a1c8933c77a0, type: 2}
+  m_maxInterval: 5
+  m_minInterval: 1
   m_chargeArea: {fileID: 1369773833962970}
 --- !u!114 &114700315570170098
 MonoBehaviour:
@@ -578,8 +587,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57aab210be3698b4f9b9a3557689b439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_unit: {fileID: 1868861289385158, guid: b7cf9e2e84da90c468e96e30145453ab, type: 2}
-  m_interval: 1
+  m_unit:
+  - {fileID: 1868861289385158, guid: b7cf9e2e84da90c468e96e30145453ab, type: 2}
+  - {fileID: 1173193063010188, guid: 24d8caaa8cf585147ab6a1c8933c77a0, type: 2}
+  m_maxInterval: 5
+  m_minInterval: 1
   m_chargeArea: {fileID: 1405640628494494}
 --- !u!114 &114715456496037108
 MonoBehaviour:

@@ -2,7 +2,7 @@
 //* @file  :MonsterSummoner.cs
 //* @brief :モンスターを召喚する
 //* @brief :Summon a monster
-//* @date  :2017/09/08
+//* @date  :2017/09/10
 //* @author:S.Katou
 //************************************************/
 using System.Collections;
@@ -13,7 +13,7 @@ public class MonsterSummoner : MonoBehaviour {
 
 	//召喚するモンスター
 	[SerializeField]
-	private GameObject m_unit = null;
+	private GameObject[] m_unit = null;
 
 	//召喚の間隔
 	[SerializeField]
@@ -58,7 +58,9 @@ public class MonsterSummoner : MonoBehaviour {
 	private void Summon()
 	{
 		GameObject unit;
-		unit = Instantiate(m_unit) as GameObject;
+		int num = Random.Range(0, m_unit.Length);
+
+		unit = Instantiate(m_unit[num]) as GameObject;
 		unit.transform.position = RandomPos(gameObject.transform.position);
 
 		var stats = unit.GetComponent<MonsterStats>();
