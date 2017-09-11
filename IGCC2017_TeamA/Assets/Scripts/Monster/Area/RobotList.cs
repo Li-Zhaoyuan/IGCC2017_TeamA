@@ -59,12 +59,16 @@ public class RobotList : MonoBehaviour {
 
 		foreach (var robot in m_robotList)
 		{
-			Vector3 distance = robot.transform.position - monsterPos;
-
-			if (distance.magnitude < minDistance)
+			var robotStats = robot.GetComponent<Robot_Status>();
+			if (robotStats != null)
 			{
-				target = robot;
-				minDistance = distance.magnitude;
+				Vector3 distance = robot.transform.position - monsterPos;
+
+				if (distance.magnitude < minDistance && robotStats.health_point > 0.0f)
+				{
+					target = robot;
+					minDistance = distance.magnitude;
+				}
 			}
 		}
 

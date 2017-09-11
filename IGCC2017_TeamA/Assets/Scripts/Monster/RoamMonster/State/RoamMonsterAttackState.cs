@@ -49,7 +49,7 @@ public class RoamMonsterAttackState : State<RoamMonster>
 	/// </summary>
 	public override void Execute()
 	{
-		if (m_target == null)
+		if (ShouldChangeRoamState())
 		{
 			obj.ChangeState(ROAM_MONSTER_STATE.ROAM);
 			return;
@@ -75,18 +75,6 @@ public class RoamMonsterAttackState : State<RoamMonster>
 		{
 			isTakedDamage = false;
 		}
-
-		//ターゲットの存在する方向
-		//Direction in which the target exists
-		Vector3 direction = m_target.transform.position - obj.transform.position;
-
-		//ターゲットから離れていたら徘徊状態に移行する
-		//If you are away from the target, go to wandering state
-		if (direction.magnitude >= 1.0f)
-		{
-			obj.ChangeState(ROAM_MONSTER_STATE.ROAM);
-			return;
-		}
 	}
 
 
@@ -98,4 +86,35 @@ public class RoamMonsterAttackState : State<RoamMonster>
 		isTakedDamage = false;
 	}
 
+
+	/// <summary>
+	/// 徘徊状態に戻るべきかどうか
+	/// Whether to return to the Roam state or not
+	/// </summary>
+	private bool ShouldChangeRoamState()
+	{
+		if (m_target == null)
+		{
+			return true;
+		}
+
+		//ターゲットの存在する方向
+		//Direction in which the target exists
+		Vector3 direction = m_target.transform.position - obj.transform.position;
+
+		//ターゲットから離れていたら徘徊状態に移行する
+		//If you are away from the target, go to wandering state
+		if (direction.magnitude >= 1.0f)
+		{
+			return true;
+		}
+
+
+		if (m_robotStats.health_point <= 0.0f)
+		{
+			return true;
+		}
+
+		return false;
+	}
 }
