@@ -716,9 +716,7 @@ MonoBehaviour:
   robot_local_sprite_size: {x: 0, y: 0}
   robot_sprite_across_length: 0
   robot_sprite: {fileID: 0}
-  waypoints: []
-  mainWaypoint: {x: 0, y: 0, z: 0}
-  decision_timer: 0
+  decision_interval: 5
   enemy_target: {fileID: 0}
   ally_target: {fileID: 0}
   item_target: {fileID: 0}
