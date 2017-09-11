@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UsefulFunctions  {
+public static class UsefulFunctions  {
+
+
 
 	public static float GetDistanceOfTwoPoints(Vector2 one , Vector2 two)
     {
@@ -339,5 +341,64 @@ public class UsefulFunctions  {
             }
         }
         return false;
+    }
+
+
+    //for drawing rect
+
+    static Texture2D white_texture;
+    public static Texture2D White_Texture
+    {
+        get
+        {
+            if(white_texture == null)
+            {
+                white_texture = new Texture2D(1, 1);
+                white_texture.SetPixel(0, 0, Color.white);
+                white_texture.Apply();
+            }
+            return white_texture;
+        }
+    }
+
+    public static void DrawScreenRect(Rect rect, Color color)
+    {
+        GUI.color = color;
+        GUI.DrawTexture(rect, White_Texture);
+        GUI.color = Color.white;
+    }
+
+    public static void DrawScreenRectBorder(Rect rect,float thickness,Color color)
+    {
+        //top
+        DrawScreenRect(new Rect(rect.xMin, rect.yMin, rect.width, thickness), color);
+        //left
+        DrawScreenRect(new Rect(rect.xMin, rect.yMin, thickness, rect.height), color);
+        //right
+        DrawScreenRect(new Rect(rect.xMax - thickness, rect.yMin, thickness, rect.height), color);
+        //bottom
+        DrawScreenRect(new Rect(rect.xMin, rect.yMax - thickness, rect.width, thickness), color);
+    }
+
+    public static Rect GetScreenRect(Vector3 screenpos1, Vector3 screenpos2)
+    {
+        //move the origin to the top left
+        screenpos1.y = Screen.height - screenpos1.y;
+        screenpos2.y = Screen.height - screenpos2.y;
+
+        //corners
+        var top_left = Vector3.Min(screenpos1,screenpos2);
+        var bottom_right = Vector3.Max(screenpos1, screenpos2);
+
+        return Rect.MinMaxRect(top_left.x, top_left.y, bottom_right.x, bottom_right.y);
+    }
+
+    public static Vector3 GetCenterOfLine(Vector3 pos1,Vector3 pos2)
+    {
+        //Vector3 tempTopleft, tempBottomRight;
+        //tempTopleft = Vector3.Min(pos1, pos2);
+        //tempBottomRight = Vector3.Max(pos1, pos2);
+
+        return new Vector3((pos1.x + pos2.x) / 2, (pos1.y + pos2.y) / 2);
     }
 }

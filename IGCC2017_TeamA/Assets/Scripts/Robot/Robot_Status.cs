@@ -288,6 +288,11 @@ public class Robot_Status : MonoBehaviour {
         personality = p;
     }
 
+    public void SetMood(PERSONALITY p)
+    {
+        mood = p;
+    }
+
     //Getters
     public State_Manager GetStateManager()
     {
@@ -306,7 +311,7 @@ public class Robot_Status : MonoBehaviour {
 
     public float GetAttackPoint()
     {                            
-        return attack_point ;
+        return attack_point;
     }
 
     public float GetSpeedPoint()
@@ -388,6 +393,11 @@ public class Robot_Status : MonoBehaviour {
     public PERSONALITY GetPersonality()
     {
         return personality;
+    }
+
+    public PERSONALITY GetMood()
+    {
+        return mood;
     }
 
     //incrementer
