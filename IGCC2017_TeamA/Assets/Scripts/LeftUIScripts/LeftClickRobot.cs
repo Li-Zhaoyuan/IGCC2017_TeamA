@@ -84,7 +84,7 @@ public class LeftClickRobot : MonoBehaviour
 
                     //Get Status Here
                     personality_point = robot_status.GetPersonality();
-                    mood_point = robot_status.GetPersonality();
+                    mood_point = robot_status.GetMood();
                     atk_point = robot_status.GetAttackPoint();
                     spd_point = robot_status.GetSpeedPoint();
                     int_point = robot_status.GetMagicPoint();
@@ -93,7 +93,7 @@ public class LeftClickRobot : MonoBehaviour
 
                     //Text
                     statusText[(int)STATUS.PERSONALITY].text = "" + personality_point;
-                  //  statusText[(int)STATUS.MOOD].text = "" + mood_point;
+                    statusText[(int)STATUS.MOOD].text = "" + mood_point;
                     statusText[(int)STATUS.ATK].text = "ATK:" + atk_point.ToString();
                     statusText[(int)STATUS.SPD].text = "SPD:" + spd_point.ToString();
                     statusText[(int)STATUS.INT].text = "INT:" + int_point.ToString();
