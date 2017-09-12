@@ -10,6 +10,7 @@ public class RobotCreater : MonoBehaviour {
 
 	private ItemHolder m_itemHolder = null;
 
+	private ITEM_TYPE m_type = ITEM_TYPE.RESOURCE_FOUR;
 
 	public void Start()
 	{
@@ -22,7 +23,7 @@ public class RobotCreater : MonoBehaviour {
 
 	public void CreateRobot()
 	{
-		bool isCreate = m_itemHolder.UseItem(m_useItemNum);
+		bool isCreate = m_itemHolder.UseItem(m_type,m_useItemNum);
 
 		if (isCreate)
 		{

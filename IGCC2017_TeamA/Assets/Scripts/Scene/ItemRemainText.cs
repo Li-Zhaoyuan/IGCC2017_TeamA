@@ -17,6 +17,6 @@ public class ItemRemainText : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		m_text.text = "ItemRemain : " + m_itemHolder.GetItemRemain().ToString();
+		//m_text.text = "ItemRemain : " + m_itemHolder.GetItemRemain().ToString();
 	}
 }
