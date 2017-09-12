@@ -43,6 +43,10 @@ public class Attack_State : Robot_BaseState
                     state_holder_stateManager.enemy_target.GetComponent<ChaseMonster>().TakeDamage(main_robot.GetComponent<Robot_Status>().GetAttackPoint() * 3);
                 else if(state_holder_stateManager.enemy_target.GetComponent<TestMonster>() != null)
                     state_holder_stateManager.enemy_target.GetComponent<TestMonster>().TakeDamage(main_robot.GetComponent<Robot_Status>().GetAttackPoint() * 3);
+                else if (state_holder_stateManager.enemy_target.GetComponent<ImmovableMonster>() != null)
+                    state_holder_stateManager.enemy_target.GetComponent<ImmovableMonster>().TakeDamage(main_robot.GetComponent<Robot_Status>().GetAttackPoint() * 3);
+                else if (state_holder_stateManager.enemy_target.GetComponent<RoamMonster>() != null)
+                    state_holder_stateManager.enemy_target.GetComponent<RoamMonster>().TakeDamage(main_robot.GetComponent<Robot_Status>().GetAttackPoint() * 3);
             }
         }
         else
