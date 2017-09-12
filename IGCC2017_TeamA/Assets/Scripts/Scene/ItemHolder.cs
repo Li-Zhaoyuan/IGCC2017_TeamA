@@ -21,7 +21,7 @@ public class ItemHolder : MonoBehaviour
 		}
 	}
 
-	bool UseItem(int numResources,int num)
+	public bool UseItem(int num)
 	{
 
 		if (m_remainNum > num)
