@@ -21,33 +21,25 @@ public class ItemGenerator : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.LeftAlt))
         {
-            //Debug.Log(Random.Range(1, 101));
-            if (Random.Range(1,101) < 10)
-                {
-                    SpawnRandomUsable(new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), 1));
-                }
-                else
-                {
-                    SpawnRandomResource(new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), 1));
-                }
+            SpawnRandowmItem(new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), 1));
         }
-        timer += Time.deltaTime;
-        if(timer > spawn_intervals)
-        {
-            timer = 0f;
-            if(Random.Range(0,2) == 0)
-            {
-                if(Random.Range(1,101) < 10)
-                {
-                    SpawnRandomUsable(new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), 1));
-                }
-                else
-                {
-                    SpawnRandomResource(new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), 1));
-                }
+        //timer += Time.deltaTime;
+        //if(timer > spawn_intervals)
+        //{
+        //    timer = 0f;
+        //    if(Random.Range(0,2) == 0)
+        //    {
+        //        if(Random.Range(1,101) < 10)
+        //        {
+        //            SpawnRandomUsable(new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), 1));
+        //        }
+        //        else
+        //        {
+        //            SpawnRandomResource(new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), 1));
+        //        }
                
-            }
-        }
+        //    }
+        //}
     }
 
     public void SpawnRandomResource(Vector3 pos)
@@ -60,5 +52,17 @@ public class ItemGenerator : MonoBehaviour {
     {
         GameObject tempItem = Instantiate(item_usable, pos, Quaternion.Euler(0, 0, 0)) as GameObject;
         tempItem.GetComponent<Item_Base>().Initialize((ITEM_TYPE)Random.Range((int)ITEM_TYPE.TOTAL_RESOURCE + 1, (int)ITEM_TYPE.TOTAL_USABLE));
+    }
+
+    public void SpawnRandowmItem(Vector3 pos)
+    {
+        if (Random.Range(1, 101) < 10)
+        {
+            SpawnRandomUsable(pos);
+        }
+        else
+        {
+            SpawnRandomResource(pos);
+        }
     }
 }
