@@ -20,17 +20,22 @@ public class LeftClickMap : MonoBehaviour
     //state
     public bool _state;
 
+    private GameObject this_obj;
 
+    private void Awake()
+    {
+        clonePotision.x = -20.0f;
+        clonePotision.y = 4.0f;
+        //初回起動はHome画面にしておく。
+        target = Instantiate(viewUI, new Vector2(clonePotision.x, clonePotision.y), Quaternion.identity);
+    }
     // Use this for initialization
     void Start()
     {
         //取得
         robotUIcs = GetComponent<LeftClickRobot>();
-
-        clonePotision.x = -20.0f;
-        clonePotision.y = 4.0f;
-
-        _state = false;
+        this_obj = GameObject.Find("LeftBaseUI");
+        _state = true;
 
         //if _getObject null
         if (_getObject == null)
@@ -43,7 +48,17 @@ public class LeftClickMap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         robotState = robotUIcs.GetState();
+        //Object Active NoActive
+        if (robotState == true)
+        {
+            this_obj.SetActive(false);
+        }
+        else
+        {
+            this_obj.SetActive(true);
+        }
 
         // 左クリックされた場所のオブジェクトを取得
         // Left Click
@@ -67,10 +82,11 @@ public class LeftClickMap : MonoBehaviour
                     _state = false;
 
                 }
-                //_getObject = collition2d.transform.gameObject;
+
+                _getObject = collition2d.transform.gameObject;
                 //Make clone of robot clicked
                 //クリックしたロボットのcloneを作る
-               target=Instantiate(viewUI, new Vector2(clonePotision.x, clonePotision.y), Quaternion.identity);
+                target = Instantiate(viewUI, new Vector2(clonePotision.x, clonePotision.y), Quaternion.identity);
 
                 _state = true;
             }
