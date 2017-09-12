@@ -57,6 +57,9 @@ public class State_Manager : MonoBehaviour {
     public GameObject ally_target = null;
     public GameObject item_target = null;
 
+    public GameObject home_base = null;
+    Vector3 home_base_pos;
+
     // Use this for initialization
     void Start () {
         //SetCurrentState(roam_state);
@@ -75,6 +78,9 @@ public class State_Manager : MonoBehaviour {
         //waypoints = FindObjectsOfType<TempScripts>();
         //mainWaypoint = Vector3.zero;
 
+
+        //get the home base that is in the game scene
+        home_base = GameObject.FindGameObjectWithTag("Base");
     }
 
 	// Update is called once per frame
@@ -190,11 +196,14 @@ public class State_Manager : MonoBehaviour {
 
     public bool ChangeStateToReturn()
     {
-        if(UsefulFunctions.GetPercentageInFloat(parent_object.GetComponent<Robot_Status>().GetEnergyPoint(), parent_object.GetComponent<Robot_Status>().GetBaseEnergyPoint()) < 0.2f
-            || (UsefulFunctions.GetPercentageInFloat(parent_object.GetComponent<Robot_Status>().GetEnergyPoint(), parent_object.GetComponent<Robot_Status>().GetBaseEnergyPoint()) < 1f && UsefulFunctions.GetDistanceOfTwoPoints((Vector2)parent_object.transform.position,Vector2.zero) < robot_local_sprite_size.x))
+        if (home_base != null)
         {
-            SetCurrentState(ROBOT_STATES.RETURN);
-            return true;
+            if (UsefulFunctions.GetPercentageInFloat(parent_object.GetComponent<Robot_Status>().GetEnergyPoint(), parent_object.GetComponent<Robot_Status>().GetBaseEnergyPoint()) < 0.2f
+                || (UsefulFunctions.GetPercentageInFloat(parent_object.GetComponent<Robot_Status>().GetEnergyPoint(), parent_object.GetComponent<Robot_Status>().GetBaseEnergyPoint()) < 1f && UsefulFunctions.GetDistanceOfTwoPoints((Vector2)parent_object.transform.position, (Vector2)home_base.transform.position) < robot_local_sprite_size.x))
+            {
+                SetCurrentState(ROBOT_STATES.RETURN);
+                return true;
+            }
         }
         return false;
     }

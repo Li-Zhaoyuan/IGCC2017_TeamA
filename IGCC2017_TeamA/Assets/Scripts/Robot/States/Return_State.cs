@@ -16,13 +16,13 @@ public class Return_State : Robot_BaseState
     {
         //TODO: return to base
         //using vector3 zero first since dont know where is the home base for now.
-        if (UsefulFunctions.GetDistanceOfTwoPoints((Vector2)main_robot.transform.position, Vector2.zero) < state_holder_stateManager.robot_local_sprite_size.x)
+        if (UsefulFunctions.GetDistanceOfTwoPoints((Vector2)main_robot.transform.position, (Vector2)state_holder_stateManager.home_base.transform.position) < state_holder_stateManager.robot_local_sprite_size.x)
         {
             robot_status.AddEnergyPoint(rate_of_recharge * UsefulFunctions.ConstantValueToReplaceDT());
         }
         else
         {
-            Vector2 temp = UsefulFunctions.GetDirectionFromOneToTwo(main_robot.transform.position, Vector3.zero);
+            Vector2 temp = UsefulFunctions.GetDirectionFromOneToTwo(main_robot.transform.position, state_holder_stateManager.home_base.transform.position);
             main_robot.GetComponent<Rigidbody2D>().velocity = new Vector2(temp.x * (main_robot.GetComponent<Robot_Status>().GetSpeedPoint() * 10) * UsefulFunctions.ConstantValueToReplaceDT()
                 , temp.y * (main_robot.GetComponent<Robot_Status>().GetSpeedPoint() * 10) * UsefulFunctions.ConstantValueToReplaceDT());
         }
