@@ -9,10 +9,17 @@ public class LeftClickRobot : MonoBehaviour
     public GameObject _getObject = null;
     //clone draw position
     Vector2 clonePotision;
-    private GameObject target;
+    public GameObject target;
     //情報取得
     //Get status
     public Robot_Status robot_status;
+    //LeftClickMap.cs　と　相互関係
+    //                Mutual relationship
+    public LeftClickMap baseUIcs;
+    bool baseState;
+    //state
+    public bool _state;
+
     //PERSONALITY
     PERSONALITY personality_point;
     //MOOD
@@ -30,7 +37,6 @@ public class LeftClickRobot : MonoBehaviour
 
     //draw status Text
     public Text[] statusText;
-
     enum STATUS
     {
         PERSONALITY,
@@ -45,7 +51,12 @@ public class LeftClickRobot : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        clonePotision.x = -11.0f;
+        //取得
+        baseUIcs = GetComponent<LeftClickMap>();
+
+
+
+        clonePotision.x = -20.0f;
         clonePotision.y = 4.0f;
         
         //if _getObject null
@@ -59,19 +70,31 @@ public class LeftClickRobot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        baseState = baseUIcs.GetState();
+
+        //左クリックした奴を顔を拡大して出す。
         // 左クリックされた場所のオブジェクトを取得
         // Left Click
         if (Input.GetMouseButtonDown(0))
         {
             Vector2 tapPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Collider2D collition2d = Physics2D.OverlapPoint(tapPoint);
-            if (collition2d)
+            if (collition2d && collition2d.gameObject.tag == "Robot")
             {
-                if(_getObject!=null)
+                //BaseUIStateがtrueだったらBaseUIを消す
+                if (baseState == true)
+                {
+                    Destroy(baseUIcs.target);
+                    baseUIcs._state = false;
+                }
+
+                //すでにRobotのUIが表示されていたら消す
+                if (_getObject!=null)
                 {
                     Destroy(target);
                     
                 }
+
                 _getObject = collition2d.transform.gameObject;
                 //Make clone of robot clicked
                 //クリックしたロボットのcloneを作る
@@ -99,8 +122,13 @@ public class LeftClickRobot : MonoBehaviour
                     statusText[(int)STATUS.INT].text = "INT:" + int_point.ToString();
                     statusText[(int)STATUS.LUK].text = "LUK:" + luk_point.ToString();
                     statusText[(int)STATUS.DEF].text = "DEF:" + def_point.ToString();
+                    _state = true;
                 }
             }
         }
+    }
+    public bool GetState()
+    {
+        return _state;
     }
 }
