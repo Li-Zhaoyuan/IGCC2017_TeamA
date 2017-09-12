@@ -47,7 +47,7 @@ public class Rescue_State : Robot_BaseState
             }
             else
             {
-                state_holder_stateManager.GetAllyTarget().GetComponent<Robot_Status>().AddEnergyPoint((energy_recoverrate + (2 * robot_status.GetMagicPoint())) * Time.deltaTime);
+                state_holder_stateManager.GetAllyTarget().GetComponent<Robot_Status>().AddEnergyPoint((energy_recoverrate + (2 * robot_status.GetMagicPoint())) * UsefulFunctions.ConstantValueToReplaceDT());
 
 
             }
@@ -57,8 +57,8 @@ public class Rescue_State : Robot_BaseState
         else
         {
             Vector2 temp = UsefulFunctions.GetDirectionFromOneToTwo(main_robot.transform.position, state_holder_stateManager.GetAllyTarget().transform.position);
-            main_robot.GetComponent<Rigidbody2D>().velocity = new Vector2(temp.x * (main_robot.GetComponent<Robot_Status>().GetSpeedPoint() * 10) * Time.deltaTime
-                , temp.y * (main_robot.GetComponent<Robot_Status>().GetSpeedPoint() * 10) * Time.deltaTime);
+            main_robot.GetComponent<Rigidbody2D>().velocity = new Vector2(temp.x * (main_robot.GetComponent<Robot_Status>().GetSpeedPoint() * 10) * UsefulFunctions.ConstantValueToReplaceDT()
+                , temp.y * (main_robot.GetComponent<Robot_Status>().GetSpeedPoint() * 10) * UsefulFunctions.ConstantValueToReplaceDT());
         }
         if(rescued_from_poweroutage && rescued_from_nohealth)
         {

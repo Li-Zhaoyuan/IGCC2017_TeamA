@@ -8,6 +8,7 @@ TagManager:
   - Robot_Bullet
   - Item
   - Base
+  - Monster
   layers:
   - Default
   - TransparentFX

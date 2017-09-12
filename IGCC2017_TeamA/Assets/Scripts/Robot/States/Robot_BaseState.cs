@@ -32,7 +32,7 @@ public class Robot_BaseState : MonoBehaviour {
     // Update is called once per frame
     public virtual void Update()
     {
-        robot_status.MinusEnergyPoint(Time.deltaTime);
+        robot_status.MinusEnergyPoint(UsefulFunctions.ConstantValueToReplaceDT());
     }
 
     //Update is called once per frame manually

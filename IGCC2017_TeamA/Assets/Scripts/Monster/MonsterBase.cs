@@ -76,7 +76,7 @@ public class MonsterBase<T, TEnum> : MonoBehaviour
 	}
 
 
-	public void TakeDamage(float damage)
+	public virtual void TakeDamage(float damage)
 	{
 		float d = (damage - m_stats.DEF);
 		if (d > 0.0f)

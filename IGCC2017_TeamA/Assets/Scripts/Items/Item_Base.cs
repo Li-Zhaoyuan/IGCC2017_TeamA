@@ -11,6 +11,8 @@ public enum ITEM_TYPE
     TOTAL_RESOURCE,
     USABLE_ONE,
     USABLE_TWO,
+    USABLE_THREE,
+    USABLE_FOUR,
     TOTAL_USABLE,
 }
 
