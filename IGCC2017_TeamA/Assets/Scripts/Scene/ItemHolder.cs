@@ -6,13 +6,17 @@ public class ItemHolder : MonoBehaviour
 {
 	static public ItemHolder instance;
 
-	int m_remainNum = 0;
+	[SerializeField]
+	private int m_firstRemainNum = 100;
+
+	private int m_remainNum = 0;
 
 	void Awake()
 	{
 		if (instance == null)
 		{
 			instance = this;
+			m_remainNum = m_firstRemainNum;
 			DontDestroyOnLoad(gameObject);
 		}
 		else
@@ -31,5 +35,10 @@ public class ItemHolder : MonoBehaviour
 		}
 
 		return false;
+	}
+
+	public int GetItemRemain()
+	{
+		return m_remainNum;
 	}
 }

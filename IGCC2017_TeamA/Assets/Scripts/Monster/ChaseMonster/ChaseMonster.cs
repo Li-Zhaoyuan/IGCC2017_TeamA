@@ -43,4 +43,13 @@ public class ChaseMonster : MonsterBase<ChaseMonster, CHASE_MONSTER_STATE>
 			ChangeState(CHASE_MONSTER_STATE.DEAD);
 		}
 	}
+
+	public override void TakeDamage(float damage)
+	{
+		float d = (damage - m_stats.DEF);
+		if (d > 0.0f)
+		{
+			m_stats.HP -= damage;
+		}
+	}
 }
