@@ -5,6 +5,7 @@ using UnityEngine;
 public class Attack_State : Robot_BaseState
 {
     public GameObject projectile;
+    public GameObject hit_effect;
 
     public float attack_interval;
     public float attack_speed;
@@ -47,6 +48,8 @@ public class Attack_State : Robot_BaseState
                     state_holder_stateManager.enemy_target.GetComponent<ImmovableMonster>().TakeDamage(main_robot.GetComponent<Robot_Status>().GetAttackPoint() * 3);
                 else if (state_holder_stateManager.enemy_target.GetComponent<RoamMonster>() != null)
                     state_holder_stateManager.enemy_target.GetComponent<RoamMonster>().TakeDamage(main_robot.GetComponent<Robot_Status>().GetAttackPoint() * 3);
+
+                SpawnParticles(hit_effect, state_holder_stateManager.enemy_target.transform.position);
             }
         }
         else

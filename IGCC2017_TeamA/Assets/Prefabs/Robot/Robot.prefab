@@ -669,6 +669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 1627779928775928, guid: e9ed70bae6c9b8242bb9a49e1a411597, type: 2}
+  hit_effect: {fileID: 1910950555300444, guid: 701ea67025558dd4692b16e11cff7f83, type: 2}
   attack_interval: 1
   attack_speed: 5
   attack_damage: 5
@@ -720,6 +721,7 @@ MonoBehaviour:
   enemy_target: {fileID: 0}
   ally_target: {fileID: 0}
   item_target: {fileID: 0}
+  home_base: {fileID: 0}
 --- !u!114 &114294601197172724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -806,6 +808,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 654edabad39b2524d87e786fd875f3dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  time_till_disappearance: 30
+  explosion_effect: {fileID: 1379051174820794, guid: 78eb422cfee659349b891554d6826ca8,
+    type: 2}
 --- !u!114 &114625403072443370
 MonoBehaviour:
   m_ObjectHideFlags: 1

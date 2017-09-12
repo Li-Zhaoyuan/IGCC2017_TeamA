@@ -5,9 +5,20 @@ using UnityEngine;
 public class RobotGenerator : MonoBehaviour {
 
     public GameObject robot;
+
+    GameObject home_base;
+    Vector3 spawn_pos;
 	// Use this for initialization
 	void Start () {
-		
+        home_base = GameObject.FindGameObjectWithTag("Base");
+        if(home_base != null)
+        {
+            spawn_pos = home_base.transform.position;
+        }
+        else
+        {
+            spawn_pos = Vector3.zero;
+        }
 	}
 	
 	// Update is called once per frame
@@ -37,7 +48,7 @@ public class RobotGenerator : MonoBehaviour {
 
     void MakeBraveRobot()
     {
-        GameObject tempRobot = Instantiate(robot, transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
+        GameObject tempRobot = Instantiate(robot, spawn_pos, Quaternion.Euler(0, 0, 0)) as GameObject;
         tempRobot.GetComponent<Robot_Status>().SetAllRobotStatus(Random.Range(7,11)
                                                                , Random.Range(4, 7)
                                                                , Random.Range(1, 5)
@@ -50,7 +61,7 @@ public class RobotGenerator : MonoBehaviour {
 
     void MakeCuriousRobot()
     {
-        GameObject tempRobot = Instantiate(robot, transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
+        GameObject tempRobot = Instantiate(robot, spawn_pos, Quaternion.Euler(0, 0, 0)) as GameObject;
         tempRobot.GetComponent<Robot_Status>().SetAllRobotStatus(Random.Range(4, 7)
                                                                        , Random.Range(4, 7)
                                                                        , Random.Range(4, 7)
@@ -62,7 +73,7 @@ public class RobotGenerator : MonoBehaviour {
     }
     void MakeSensitiveRobot()
     {
-        GameObject tempRobot = Instantiate(robot, transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
+        GameObject tempRobot = Instantiate(robot, spawn_pos, Quaternion.Euler(0, 0, 0)) as GameObject;
         tempRobot.GetComponent<Robot_Status>().SetAllRobotStatus(Random.Range(1, 5)
                                                                        , Random.Range(4, 7)
                                                                        , Random.Range(7, 11)
@@ -74,7 +85,7 @@ public class RobotGenerator : MonoBehaviour {
     }
     void MakeLazyRobot()
     {
-        GameObject tempRobot = Instantiate(robot, transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
+        GameObject tempRobot = Instantiate(robot, spawn_pos, Quaternion.Euler(0, 0, 0)) as GameObject;
         tempRobot.GetComponent<Robot_Status>().SetAllRobotStatus(Random.Range(1, 5)
                                                                        , Random.Range(1, 5)
                                                                        , Random.Range(1, 5)
@@ -87,7 +98,7 @@ public class RobotGenerator : MonoBehaviour {
     void MakeImpatientRobot()
     {
 
-        GameObject tempRobot = Instantiate(robot, transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
+        GameObject tempRobot = Instantiate(robot, spawn_pos, Quaternion.Euler(0, 0, 0)) as GameObject;
         tempRobot.GetComponent<Robot_Status>().SetAllRobotStatus(Random.Range(4, 7)
                                                                        , Random.Range(7, 11)
                                                                        , Random.Range(4, 7)
@@ -99,7 +110,7 @@ public class RobotGenerator : MonoBehaviour {
     }
     void MakeCarefulRobot()
     {
-        GameObject tempRobot = Instantiate(robot, transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
+        GameObject tempRobot = Instantiate(robot, spawn_pos, Quaternion.Euler(0, 0, 0)) as GameObject;
         tempRobot.GetComponent<Robot_Status>().SetAllRobotStatus(Random.Range(4, 7)
                                                                        , Random.Range(1, 5)
                                                                        , Random.Range(4, 7)

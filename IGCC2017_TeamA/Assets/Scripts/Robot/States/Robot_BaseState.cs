@@ -73,4 +73,8 @@ public class Robot_BaseState : MonoBehaviour {
         isDone = !isDone;
     }
 
+    public virtual void SpawnParticles(GameObject go,Vector3 pos)
+    {
+        GameObject tempGO = Instantiate(go, pos, Quaternion.Euler(0, 0, 0)) as GameObject;
+    }
 }
