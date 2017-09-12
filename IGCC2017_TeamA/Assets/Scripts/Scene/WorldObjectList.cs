@@ -44,6 +44,13 @@ public class WorldObjectList : MonoBehaviour {
 			{
 				Destroy(obj);
 			}
+
+			//アイテムを消す
+			GameObject[] items = GameObject.FindGameObjectsWithTag("Item");
+			foreach (GameObject cube in items)
+			{
+				Destroy(cube);
+			}
 		}
 	}
 }
