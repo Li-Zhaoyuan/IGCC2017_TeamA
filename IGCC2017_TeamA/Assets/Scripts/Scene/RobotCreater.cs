@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RobotCreater : MonoBehaviour {
-
-	[SerializeField]
-	private RobotGenerator m_robotCreater = null;
+	private RobotGenerator m_robotGenerator = null;
 
 	[SerializeField]
 	private int m_useItemNum = 0;
@@ -16,17 +14,19 @@ public class RobotCreater : MonoBehaviour {
 	public void Start()
 	{
 		m_itemHolder = ItemHolder.instance;
+		if (m_robotGenerator == null)
+		{
+			m_robotGenerator = GetComponentInChildren<RobotGenerator>();
+		}
 	}
 
-	public bool CreateRobot()
+	public void CreateRobot()
 	{
 		bool isCreate = m_itemHolder.UseItem(m_useItemNum);
 
 		if (isCreate)
 		{
-			m_robotCreater.MakeRandomRobot();
-			return true;
+			m_robotGenerator.MakeRandomRobot();
 		}
-		return false;
 	}
 }
