@@ -6,9 +6,6 @@ public class ItemHolder : MonoBehaviour
 {
 	static public ItemHolder instance;
 
-	[SerializeField]
-	private int m_firstRemainNum = 100;
-
 	private int m_remainNum = 0;
 
 	public Dictionary<ITEM_TYPE, int> m_itemsCollected = new Dictionary<ITEM_TYPE, int>();
@@ -18,9 +15,7 @@ public class ItemHolder : MonoBehaviour
 		if (instance == null)
 		{
 			instance = this;
-			m_remainNum = m_firstRemainNum;
 
-			//items = new GameObject();
 			for (int i = 0; i < (int)ITEM_TYPE.TOTAL_USABLE; ++i)
 			{
 				if (i != (int)ITEM_TYPE.TOTAL_RESOURCE && i != (int)ITEM_TYPE.TOTAL_USABLE)
@@ -37,7 +32,7 @@ public class ItemHolder : MonoBehaviour
 		}
 	}
 
-	public void AddItemNum(ITEM_TYPE type, int num)
+	public void AddItem(ITEM_TYPE type, int num)
 	{
 		m_itemsCollected[type] += num;
 	}
@@ -45,7 +40,7 @@ public class ItemHolder : MonoBehaviour
 	public bool UseItem(ITEM_TYPE type,int num)
 	{
 		var remain = m_itemsCollected[type];
-		if (remain > num)
+		if (remain >= num)
 		{
 			m_itemsCollected[type] = remain - num;
 			return true;

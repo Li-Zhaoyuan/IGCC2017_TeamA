@@ -6,7 +6,7 @@ public class UpgradeManager : MonoBehaviour {
 
 	private ItemHolder m_item = null;
 
-	private ITEM_TYPE m_type = ITEM_TYPE.RESOURCE_FOUR;
+	private ITEM_TYPE m_type = ITEM_TYPE.RESOURCE_COG;
 
 	// Use this for initialization
 	void Start () {

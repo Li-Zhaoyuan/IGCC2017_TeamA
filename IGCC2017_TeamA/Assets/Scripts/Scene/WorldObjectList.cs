@@ -18,6 +18,8 @@ public class WorldObjectList : MonoBehaviour {
 
 	void OnDestroy()
 	{
+		ItemHolder itemHolder = ItemHolder.instance;
+
 		//当たったオブジェクトがロボットならばリストから削除
 		//Delete from the list if the hit object is a robot
 		foreach (var obj in m_gameObjectList)
@@ -29,6 +31,14 @@ public class WorldObjectList : MonoBehaviour {
 			if (robotStats != null)
 			{
 				RobotHolder.instance.AddRobot(obj);
+				var inventory = obj.GetComponentInChildren<Robot_Inventory>();
+
+				for (int i = 0; i < (int)ITEM_TYPE.TOTAL_RESOURCE; i++)
+				{
+					ITEM_TYPE type = (ITEM_TYPE)i;
+					int num = inventory.GetNumberOfresourcesCollected(type);
+					itemHolder.AddItem(type, num);
+				}
 			}
 			else
 			{

@@ -10,7 +10,7 @@ public class RobotCreater : MonoBehaviour {
 
 	private ItemHolder m_itemHolder = null;
 
-	private ITEM_TYPE m_type = ITEM_TYPE.RESOURCE_FOUR;
+	private ITEM_TYPE m_type = ITEM_TYPE.RESOURCE_SPRING;
 
 	public void Start()
 	{
