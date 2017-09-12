@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 54143691}
   - component: {fileID: 54143693}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: CancelButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -256,7 +256,7 @@ RectTransform:
   m_GameObject: {fileID: 54143689}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_Children:
   - {fileID: 1477003237}
   m_Father: {fileID: 826457785}
@@ -264,8 +264,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -26.6, y: -74.9}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &54143691
 MonoBehaviour:
@@ -338,7 +338,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 54143691}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1651696738}
+        m_MethodName: ResetTarget
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &155985189
@@ -408,7 +419,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: HP
+  m_Text: 'ENAGY
+
+'
 --- !u!222 &155985192
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -582,7 +595,7 @@ GameObject:
   - component: {fileID: 630549089}
   - component: {fileID: 630549088}
   m_Layer: 5
-  m_Name: Text
+  m_Name: text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -638,7 +651,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: HP
+  m_Text: MAG
 --- !u!222 &630549089
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -801,7 +814,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: HP
+  m_Text: LUK
 --- !u!222 &645923132
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -835,6 +848,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f251e3297000a3849a2b0fee96105a47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_radius: 3
   m_upgradeButton:
   - {fileID: 1839689952}
   - {fileID: 1217044960}
@@ -926,7 +940,7 @@ Canvas:
   m_GameObject: {fileID: 826457781}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 2
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -946,7 +960,7 @@ RectTransform:
   m_GameObject: {fileID: 826457781}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1839689951}
   - {fileID: 1217044957}
@@ -962,8 +976,8 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_SizeDelta: {x: 10, y: 10}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &865930930
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,7 +990,7 @@ GameObject:
   - component: {fileID: 865930932}
   - component: {fileID: 865930934}
   m_Layer: 5
-  m_Name: Button (6)
+  m_Name: SpdUpgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -990,7 +1004,7 @@ RectTransform:
   m_GameObject: {fileID: 865930930}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_Children:
   - {fileID: 1146957237}
   m_Father: {fileID: 826457785}
@@ -998,8 +1012,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 31.1, y: -72.1}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &865930932
 MonoBehaviour:
@@ -1114,6 +1128,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1437477798353108, guid: ff18973d5f79d2f498db771108044a4a, type: 2}
+      propertyPath: m_TagString
+      value: World
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ff18973d5f79d2f498db771108044a4a, type: 2}
   m_IsPrefabParent: 0
@@ -1129,7 +1147,7 @@ GameObject:
   - component: {fileID: 929732725}
   - component: {fileID: 929732727}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: DefUpgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1143,7 +1161,7 @@ RectTransform:
   m_GameObject: {fileID: 929732723}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_Children:
   - {fileID: 1708431971}
   m_Father: {fileID: 826457785}
@@ -1151,8 +1169,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 66.4}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &929732725
 MonoBehaviour:
@@ -1352,7 +1370,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: HP
+  m_Text: ATK
 --- !u!222 &958649181
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1610,7 +1628,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: HP
+  m_Text: SPD
 --- !u!222 &1146957239
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1629,7 +1647,7 @@ GameObject:
   - component: {fileID: 1217044958}
   - component: {fileID: 1217044960}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: AtkUpgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1643,7 +1661,7 @@ RectTransform:
   m_GameObject: {fileID: 1217044956}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_Children:
   - {fileID: 958649179}
   m_Father: {fileID: 826457785}
@@ -1651,8 +1669,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 68.3, y: -21.3}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1217044958
 MonoBehaviour:
@@ -2039,7 +2057,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: HP
+  m_Text: "\xD7"
 --- !u!222 &1477003239
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2358,7 +2376,7 @@ GameObject:
   - component: {fileID: 1660302898}
   - component: {fileID: 1660302897}
   m_Layer: 5
-  m_Name: Button (7)
+  m_Name: EnagyUpgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2446,7 +2464,7 @@ RectTransform:
   m_GameObject: {fileID: 1660302896}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_Children:
   - {fileID: 155985190}
   m_Father: {fileID: 826457785}
@@ -2454,8 +2472,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 31.100006, y: -72.09999}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1708431970
 GameObject:
@@ -2524,7 +2542,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: HP
+  m_Text: DEF
 --- !u!222 &1708431973
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2543,7 +2561,7 @@ GameObject:
   - component: {fileID: 1839689953}
   - component: {fileID: 1839689952}
   m_Layer: 5
-  m_Name: Button
+  m_Name: HpUpgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2557,7 +2575,7 @@ RectTransform:
   m_GameObject: {fileID: 1839689950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_Children:
   - {fileID: 241437041}
   m_Father: {fileID: 826457785}
@@ -2565,8 +2583,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 57.1, y: 31.7}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 4.5, y: 0}
+  m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1839689952
 MonoBehaviour:
@@ -2776,7 +2794,7 @@ GameObject:
   - component: {fileID: 1972696177}
   - component: {fileID: 1972696179}
   m_Layer: 5
-  m_Name: Button (5)
+  m_Name: LukUpgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2790,7 +2808,7 @@ RectTransform:
   m_GameObject: {fileID: 1972696175}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_Children:
   - {fileID: 645923130}
   m_Father: {fileID: 826457785}
@@ -2798,8 +2816,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -56.2, y: 31.6}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1972696177
 MonoBehaviour:
@@ -2887,7 +2905,7 @@ GameObject:
   - component: {fileID: 2003883281}
   - component: {fileID: 2003883283}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: MagUpgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2901,7 +2919,7 @@ RectTransform:
   m_GameObject: {fileID: 2003883279}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_Children:
   - {fileID: 630549087}
   m_Father: {fileID: 826457785}
@@ -2909,8 +2927,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -70, y: -25.6}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2003883281
 MonoBehaviour:

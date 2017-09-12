@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class UpgradeButtonManager : MonoBehaviour {
 
 	[SerializeField]
+	private float m_radius = 2.0f;
+
+	[SerializeField]
 	private Button[] m_upgradeButton = new Button[8];
 
 	[SerializeField]
@@ -30,13 +33,13 @@ public class UpgradeButtonManager : MonoBehaviour {
 				//オブジェクト間の角度差
 				float angleDiff = 360.0f / 8.0f;
 
-				Vector3 postion = transform.position;
+				Vector3 postion = m_target.transform.position;
 
 				float angle = (90 - angleDiff * i) * Mathf.Deg2Rad;
-				postion.x += 360.0f*Mathf.Cos(angle);
-				postion.y += 360.0f * Mathf.Sin(angle);
+				postion.x += m_radius*Mathf.Cos(angle);
+				postion.y += m_radius*Mathf.Sin(angle);
 
-				m_upgradeButton[i].transform.position = m_target.transform.position + postion;
+				m_upgradeButton[i].transform.position = postion;
 			}
 		}
 		else

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ClickObject : MonoBehaviour {
 
@@ -15,6 +16,11 @@ public class ClickObject : MonoBehaviour {
 
 	void GetClickObject()
 	{
+		if (EventSystem.current.IsPointerOverGameObject())
+		{
+			return;
+		}
+
 		// 左クリックされた場所のオブジェクトを取得
 		if (Input.GetMouseButtonDown(0))
 		{
@@ -27,9 +33,15 @@ public class ClickObject : MonoBehaviour {
 					m_target = collition2d.transform.gameObject;
 					return;
 				}
+
 			}
 
 			m_target = null;
 		}
+	}
+
+	public void ResetTarget()
+	{
+		m_target = null;
 	}
 }
