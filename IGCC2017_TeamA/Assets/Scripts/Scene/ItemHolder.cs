@@ -2,25 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-enum ITEM_LIST
-{
-	ITEM = 0,
-}
 public class ItemHolder : MonoBehaviour
 {
-
 	static public ItemHolder instance;
 
-	Dictionary<ITEM_LIST, int> m_itemMap;
+	int m_remainNum = 0;
 
 	void Awake()
 	{
 		if (instance == null)
 		{
-			m_itemMap = new Dictionary<ITEM_LIST, int>() {
-				{ITEM_LIST.ITEM,0 },
-			};
-
 			instance = this;
 			DontDestroyOnLoad(gameObject);
 		}
@@ -30,13 +21,12 @@ public class ItemHolder : MonoBehaviour
 		}
 	}
 
-	bool UseItem(ITEM_LIST item,int num)
+	bool UseItem(int numResources,int num)
 	{
-		int remainNum = m_itemMap[item];
 
-		if (remainNum > num)
+		if (m_remainNum > num)
 		{
-			m_itemMap[item] = remainNum - num;
+			m_remainNum -= num;
 			return true;
 		}
 

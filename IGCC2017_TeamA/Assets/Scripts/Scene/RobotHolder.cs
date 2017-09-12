@@ -30,7 +30,7 @@ public class RobotHolder : MonoBehaviour {
 	{
 		if (!(m_robotList.Contains(robot)))
 		{
-			robot.SetActive(false);
+			//robot.SetActive(false);
 			Debug.Log("Add Robot");
 			m_robotList.Add(robot);
 

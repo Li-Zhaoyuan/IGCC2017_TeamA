@@ -12,8 +12,11 @@ public class TestRobotSummon : MonoBehaviour {
 		{
 			if (robot != null)
 			{
-				robot.SetActive(true);
+				//robot.SetActive(true);
 				robot.transform.position = Vector3.zero;
+				var stats = robot.GetComponent<Robot_Status>();
+				stats.health_point = 100.0f;
+				stats.energy_point = 100.0f;
 			}
 		}
 	}
@@ -26,7 +29,7 @@ public class TestRobotSummon : MonoBehaviour {
 		{
 			if (robot != null)
 			{
-				robot.SetActive(false);
+				//robot.SetActive(false);
 			}
 		}
 	}
