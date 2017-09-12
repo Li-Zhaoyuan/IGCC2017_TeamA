@@ -20,6 +20,8 @@ public class LeftClickRobot : MonoBehaviour
     //state
     public bool _state;
 
+    private GameObject this_obj;
+
     //PERSONALITY
     PERSONALITY personality_point;
     //MOOD
@@ -53,7 +55,7 @@ public class LeftClickRobot : MonoBehaviour
     {
         //取得
         baseUIcs = GetComponent<LeftClickMap>();
-
+        this_obj = GameObject.Find("StatusUI");
 
 
         clonePotision.x = -20.0f;
@@ -71,6 +73,15 @@ public class LeftClickRobot : MonoBehaviour
     void Update()
     {
         baseState = baseUIcs.GetState();
+        //Object Active NoActive
+        if (baseState == true)
+        {
+            this_obj.SetActive(false);
+        }
+        else
+        {
+            this_obj.SetActive(true);
+        }
 
         //左クリックした奴を顔を拡大して出す。
         // 左クリックされた場所のオブジェクトを取得
@@ -92,7 +103,7 @@ public class LeftClickRobot : MonoBehaviour
                 if (_getObject!=null)
                 {
                     Destroy(target);
-                    
+                    _state = false;
                 }
 
                 _getObject = collition2d.transform.gameObject;
@@ -101,8 +112,11 @@ public class LeftClickRobot : MonoBehaviour
                 target = Instantiate(_getObject, new Vector2(clonePotision.x, clonePotision.y), Quaternion.identity);
                 //scripts取得
                 robot_status = _getObject.GetComponent<Robot_Status>();
+                
+                target.GetComponentInChildren<State_Manager>().enabled = false;
+                //gameObject.GetComponent<コンポーネント名>().enabled = false;
 
-                if(robot_status!=null)
+                if (robot_status!=null)
                 {
 
                     //Get Status Here

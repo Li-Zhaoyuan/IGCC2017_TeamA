@@ -10,7 +10,7 @@ public class UpgradeManager : MonoBehaviour {
 		m_item = ItemHolder.instance;
 	}
 
-	public bool UpgradeAttack(GameObject robot)
+	public void UpgradeAttack(GameObject robot)
 	{
 		var stats = robot.GetComponent<Robot_Status>().base_attack_point;
 
@@ -19,11 +19,9 @@ public class UpgradeManager : MonoBehaviour {
 		{
 			robot.GetComponent<Robot_Status>().AddBaseAttackPoint(1.0f);
 		}
-
-		return isUpgrade;
 	}
 
-	public bool UpgradeDefence(GameObject robot)
+	public void UpgradeDefence(GameObject robot)
 	{
 		var stats = robot.GetComponent<Robot_Status>().base_defence_point;
 
@@ -32,11 +30,9 @@ public class UpgradeManager : MonoBehaviour {
 		{
 			robot.GetComponent<Robot_Status>().AddBaseDefencePoint(1.0f);
 		}
-
-		return isUpgrade;
 	}
 
-	public bool UpgradeSpeed(GameObject robot)
+	public void UpgradeSpeed(GameObject robot)
 	{
 		var stats = robot.GetComponent<Robot_Status>().base_speed_point;
 
@@ -45,11 +41,9 @@ public class UpgradeManager : MonoBehaviour {
 		{
 			robot.GetComponent<Robot_Status>().AddBaseSpeedPoint(0.1f);
 		}
-
-		return isUpgrade;
 	}
 
-	public bool UpgradeMagic(GameObject robot)
+	public void UpgradeMagic(GameObject robot)
 	{
 		var stats = robot.GetComponent<Robot_Status>().base_magic_point;
 
@@ -58,11 +52,9 @@ public class UpgradeManager : MonoBehaviour {
 		{
 			robot.GetComponent<Robot_Status>().AddBaseMagicPoint(1.0f);
 		}
-
-		return isUpgrade;
 	}
 
-	public bool UpgradeLuck(GameObject robot)
+	public void UpgradeLuck(GameObject robot)
 	{
 		var stats = robot.GetComponent<Robot_Status>().base_luck_point;
 
@@ -71,10 +63,9 @@ public class UpgradeManager : MonoBehaviour {
 		{
 			robot.GetComponent<Robot_Status>().AddLuckPoint(1.0f);
 		}
-
-		return isUpgrade;
 	}
-	public bool UpgradeHP(GameObject robot)
+
+	public void UpgradeHP(GameObject robot)
 	{
 		var stats = robot.GetComponent<Robot_Status>().base_health_point;
 
@@ -83,11 +74,9 @@ public class UpgradeManager : MonoBehaviour {
 		{
 			robot.GetComponent<Robot_Status>().AddBaseHealthPoint(10.0f);
 		}
-
-		return isUpgrade;
 	}
 
-	public bool UpgradeEnergy(GameObject robot)
+	public void UpgradeEnergy(GameObject robot)
 	{
 		var stats = robot.GetComponent<Robot_Status>().base_energy_point;
 
@@ -96,7 +85,5 @@ public class UpgradeManager : MonoBehaviour {
 		{
 			robot.GetComponent<Robot_Status>().AddBaseEnergyPoint(10.0f);
 		}
-
-		return isUpgrade;
 	}
 }
