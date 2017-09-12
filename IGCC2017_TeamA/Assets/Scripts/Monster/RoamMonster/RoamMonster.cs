@@ -42,4 +42,13 @@ public class RoamMonster : MonsterBase<RoamMonster, ROAM_MONSTER_STATE>
 			ChangeState(ROAM_MONSTER_STATE.DEAD);
 		}
 	}
+
+	public override void TakeDamage(float damage)
+	{
+		float d = (damage - m_stats.DEF);
+		if (d > 0.0f)
+		{
+			m_stats.HP -= damage;
+		}
+	}
 }
