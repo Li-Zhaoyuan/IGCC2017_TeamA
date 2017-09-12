@@ -23,7 +23,7 @@ public class Heal_State : Robot_BaseState
             {
                 state_holder_stateManager.GetAllyTarget()
                        .GetComponent<Robot_Status>()
-                       .AddHealthPoint(base_healing_value * Time.deltaTime * robot_status.GetMagicPoint());//heal
+                       .AddHealthPoint(base_healing_value * UsefulFunctions.ConstantValueToReplaceDT() * robot_status.GetMagicPoint());//heal
             }
            
 
@@ -32,8 +32,8 @@ public class Heal_State : Robot_BaseState
         else
         {
             Vector2 temp = UsefulFunctions.GetDirectionFromOneToTwo(main_robot.transform.position, state_holder_stateManager.GetAllyTarget().transform.position);
-            main_robot.GetComponent<Rigidbody2D>().velocity = new Vector2(temp.x * (main_robot.GetComponent<Robot_Status>().GetSpeedPoint() * 10) * Time.deltaTime
-                , temp.y * (main_robot.GetComponent<Robot_Status>().GetSpeedPoint() * 10) * Time.deltaTime);
+            main_robot.GetComponent<Rigidbody2D>().velocity = new Vector2(temp.x * (main_robot.GetComponent<Robot_Status>().GetSpeedPoint() * 10) * UsefulFunctions.ConstantValueToReplaceDT()
+                , temp.y * (main_robot.GetComponent<Robot_Status>().GetSpeedPoint() * 10) * UsefulFunctions.ConstantValueToReplaceDT());
         }
 
         if(state_holder_stateManager.GetAllyTarget()

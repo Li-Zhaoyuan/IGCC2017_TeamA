@@ -12,6 +12,8 @@ public class RobotMover2017 : MonoBehaviour {
     public Vector3 world_mouse_currentpos;
     public Vector3 center_of_quad;
     public Vector3 size_of_boxcollider;
+    public GameObject effect_for_selected_unit;
+    
 
     // Use this for initialization
     void Start () {
@@ -30,6 +32,10 @@ public class RobotMover2017 : MonoBehaviour {
         else if(Input.GetMouseButtonUp(0))
         {
             is_selecting = false;
+            foreach (Selected_Effect go in FindObjectsOfType<Selected_Effect>())
+            {
+                Destroy(go.gameObject);
+            }
             //do find the units in the rect here 
             //box collider herez
             world_mouse_initialpos = Camera.main.ScreenToWorldPoint(screen_mouse_initialpos);
@@ -38,6 +44,14 @@ public class RobotMover2017 : MonoBehaviour {
             size_of_boxcollider = new Vector3(Mathf.Abs(world_mouse_currentpos.x - world_mouse_initialpos.x), Mathf.Abs(world_mouse_currentpos.y - world_mouse_initialpos.y), 1);
 
             robots = UsefulFunctions.GetNearbyRobotWithBoxColliderArray(center_of_quad, size_of_boxcollider);
+
+            GameObject temp;
+            foreach (GameObject go in robots)
+            {
+                temp = Instantiate(effect_for_selected_unit, Vector3.zero, Quaternion.Euler(0, 0, 0)) as GameObject;
+                temp.transform.parent = go.transform;
+                temp.transform.localPosition = new Vector3(0,0,0);
+            }
 
 
             Debug.Log("center " + center_of_quad);

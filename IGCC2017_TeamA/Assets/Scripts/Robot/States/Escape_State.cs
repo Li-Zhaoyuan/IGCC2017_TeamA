@@ -24,7 +24,7 @@ public class Escape_State : Robot_BaseState
         else if (UsefulFunctions.GetDistanceOfTwoPoints(main_robot.transform.position, state_holder_stateManager.enemy_target.transform.position) < state_holder_stateManager.robot_local_sprite_size.x * 2)
         {
             Vector2 temp = UsefulFunctions.GetDirectionFromOneToTwo(state_holder_stateManager.enemy_target.transform.position, main_robot.transform.position);
-            main_robot.GetComponent<Rigidbody2D>().velocity = new Vector2(temp.x * (main_robot.GetComponent<Robot_Status>().GetSpeedPoint() * 10) * Time.deltaTime, temp.y * (main_robot.GetComponent<Robot_Status>().GetSpeedPoint() * 10) * Time.deltaTime);
+            main_robot.GetComponent<Rigidbody2D>().velocity = new Vector2(temp.x * (main_robot.GetComponent<Robot_Status>().GetSpeedPoint() * 10) * UsefulFunctions.ConstantValueToReplaceDT(), temp.y * (main_robot.GetComponent<Robot_Status>().GetSpeedPoint() * 10) * UsefulFunctions.ConstantValueToReplaceDT());
 
         }
         else// out of range #escaped

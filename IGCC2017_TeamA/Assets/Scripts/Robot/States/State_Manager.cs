@@ -46,8 +46,8 @@ public class State_Manager : MonoBehaviour {
     public Sprite robot_sprite;
 
 
-    public TempScripts[] waypoints;
-    public Vector3 mainWaypoint;
+    //public TempScripts[] waypoints;
+    //public Vector3 mainWaypoint;
 
     // the time interval for the robots to make a decision
     public float decision_timer  = 0f;
@@ -71,9 +71,9 @@ public class State_Manager : MonoBehaviour {
         robot_local_sprite_size = robot_sprite_size / robot_sprite.pixelsPerUnit;
         robot_sprite_across_length = Mathf.Sqrt(robot_local_sprite_size.x * robot_local_sprite_size.x + robot_local_sprite_size.y * robot_local_sprite_size.y);
 
-
-        waypoints = FindObjectsOfType<TempScripts>();
-        mainWaypoint = Vector3.zero;
+        //parent_object.GetComponent<SpriteRenderer>().ma
+        //waypoints = FindObjectsOfType<TempScripts>();
+        //mainWaypoint = Vector3.zero;
 
     }
 
@@ -90,16 +90,21 @@ public class State_Manager : MonoBehaviour {
             if (ChangeStateToDead()) return;
         else if (states_enum != ROBOT_STATES.OUTOFENERGY)
             if (ChangeStateToOutOfEnergy()) return;
+        decision_timer += Time.deltaTime;
         switch (states_enum)
         {
             case ROBOT_STATES.ROAM:
                 {
-                    if (ChangeStateToReturn()) break;
-                    if (ChangeStateToEscape()) break;
-                    if (ChangeStateToAttack()) break;
-                    if (ChangeStateToRescue()) break;
-                    if (ChangeStateToHeal() ) break;
-                    if (ChangeStateToGather()) break;
+                    if (decision_timer > 1f)
+                    {
+                        if (ChangeStateToReturn()) break;
+                        if (ChangeStateToEscape()) break;
+                        if (ChangeStateToAttack()) break;
+                        if (ChangeStateToRescue()) break;
+                        if (ChangeStateToHeal()) break;
+                        if (ChangeStateToGather()) break;
+                        decision_timer = 0f;
+                    }
                     break;
                 }
             case ROBOT_STATES.ATTACK:
@@ -185,7 +190,8 @@ public class State_Manager : MonoBehaviour {
 
     public bool ChangeStateToReturn()
     {
-        if(UsefulFunctions.GetPercentageInFloat(parent_object.GetComponent<Robot_Status>().GetEnergyPoint(), parent_object.GetComponent<Robot_Status>().GetBaseEnergyPoint()) < 0.2f)
+        if(UsefulFunctions.GetPercentageInFloat(parent_object.GetComponent<Robot_Status>().GetEnergyPoint(), parent_object.GetComponent<Robot_Status>().GetBaseEnergyPoint()) < 0.2f
+            || (UsefulFunctions.GetPercentageInFloat(parent_object.GetComponent<Robot_Status>().GetEnergyPoint(), parent_object.GetComponent<Robot_Status>().GetBaseEnergyPoint()) < 1f && UsefulFunctions.GetDistanceOfTwoPoints((Vector2)parent_object.transform.position,Vector2.zero) < robot_local_sprite_size.x))
         {
             SetCurrentState(ROBOT_STATES.RETURN);
             return true;

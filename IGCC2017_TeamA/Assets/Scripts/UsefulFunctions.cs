@@ -401,4 +401,9 @@ public static class UsefulFunctions  {
 
         return new Vector3((pos1.x + pos2.x) / 2, (pos1.y + pos2.y) / 2);
     }
+
+    public static float ConstantValueToReplaceDT()
+    {
+        return 0.01667f;
+    }
 }

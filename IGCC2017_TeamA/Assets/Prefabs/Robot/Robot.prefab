@@ -716,7 +716,7 @@ MonoBehaviour:
   robot_local_sprite_size: {x: 0, y: 0}
   robot_sprite_across_length: 0
   robot_sprite: {fileID: 0}
-  decision_interval: 5
+  decision_timer: 0
   enemy_target: {fileID: 0}
   ally_target: {fileID: 0}
   item_target: {fileID: 0}
@@ -829,7 +829,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 389c62745104d6a4d9998a6bf2d0d73d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
   max_inventory_size: 100
   resources_collected: 0
 --- !u!114 &114760892329778260

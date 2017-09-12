@@ -30,8 +30,8 @@ public class Roam_State : Robot_BaseState
             else
             {
                 robot_velocity = new Vector2(Random.Range(-1, 2), Random.Range(-1, 2)).normalized;
-                robot_velocity.x = robot_velocity.x * (main_robot.GetComponent<Robot_Status>().GetSpeedPoint() * 10) * Time.deltaTime;
-                robot_velocity.y = robot_velocity.y * (main_robot.GetComponent<Robot_Status>().GetSpeedPoint() * 10) * Time.deltaTime;
+                robot_velocity.x = robot_velocity.x * (main_robot.GetComponent<Robot_Status>().GetSpeedPoint() * 10) * UsefulFunctions.ConstantValueToReplaceDT();
+                robot_velocity.y = robot_velocity.y * (main_robot.GetComponent<Robot_Status>().GetSpeedPoint() * 10) * UsefulFunctions.ConstantValueToReplaceDT();
             }
             main_robot.GetComponent<Rigidbody2D>().velocity = robot_velocity;
         }
