@@ -11,6 +11,12 @@ using UnityEngine;
 
 public class MonsterSummoner : MonoBehaviour {
 
+	[SerializeField]
+	private ItemGenerator m_itemGenerator = null;
+
+	[SerializeField]
+	private float m_probabilityOfItem = 20.0f;
+
 	//召喚するモンスター
 	[SerializeField]
 	private GameObject[] m_unit = null;
@@ -71,17 +77,21 @@ public class MonsterSummoner : MonoBehaviour {
 
 	private void Summon()
 	{
-		GameObject unit;
-		int num = Random.Range(0, m_unit.Length);
+		float probability = Random.Range(0.0f, 100.0f);
 
-		unit = Instantiate(m_unit[num]) as GameObject;
-		unit.transform.position = RandomPos(gameObject.transform.position);
 
 		//召喚するユニットがモンスターならばエリアの情報を設定する
 		//If the unit to be summoned is a monster, set area information
-		var stats = unit.GetComponent<MonsterStats>();
-		if (stats != null)
+		if (probability > m_probabilityOfItem)
 		{
+			GameObject unit;
+			int num = Random.Range(0, m_unit.Length);
+
+			unit = Instantiate(m_unit[num]) as GameObject;
+			unit.transform.position = RandomPos(gameObject.transform.position);
+
+			var stats = unit.GetComponent<MonsterStats>();
+
 			stats.m_chargeArea = m_chargeArea;
 			stats.m_robotList = m_chargeArea.GetComponent<RobotList>();
 
@@ -89,6 +99,10 @@ public class MonsterSummoner : MonoBehaviour {
 			stats.ATK += Random.Range(0, m_addATKMax);
 			stats.DEF += Random.Range(0, m_addDEFMax);
 			stats.SPD += Random.Range(0, m_addSPDMax);
+		}
+		else
+		{
+			m_itemGenerator.SpawnRandomResource(RandomPos(gameObject.transform.position));
 		}
 	}
 
