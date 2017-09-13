@@ -28,7 +28,7 @@ public class RoamMonsterRoamState : State<RoamMonster>
 		m_timer = 0.0f;
 		m_target = null;
 
-		obj.m_anime.SetBool("isWalked", true);
+		//obj.m_anime.SetBool("isWalked", true);
 
 		if (m_stats == null)
 		{
@@ -73,8 +73,8 @@ public class RoamMonsterRoamState : State<RoamMonster>
 	/// </summary>
 	public override void Exit()
 	{
-		obj.m_anime.SetBool("isWalked", false);
-		obj.m_anime.SetBool("isIdle", false);
+		//obj.m_anime.SetBool("isWalked", false);
+		//obj.m_anime.SetBool("isIdle", false);
 	}
 
 	private void SetTarget()
@@ -96,15 +96,15 @@ public class RoamMonsterRoamState : State<RoamMonster>
 		if (Random.Range(0, 19) < 2)//20% to not move
 		{
 			m_spd = Vector3.zero;
-			obj.m_anime.SetBool("isWalked", false);
-			obj.m_anime.SetBool("isIdle", true);
+			//obj.m_anime.SetBool("isWalked", false);
+			//obj.m_anime.SetBool("isIdle", true);
 		}
 		else
 		{
 			m_spd = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 0.0f)* m_stats.SPD * Time.deltaTime;
 			obj.SpriteFlipX(obj.transform.position.x + m_spd.x);
-			obj.m_anime.SetBool("isWalked", true);
-			obj.m_anime.SetBool("isIdle", false);
+			//obj.m_anime.SetBool("isWalked", true);
+			//obj.m_anime.SetBool("isIdle", false);
 		}
 	}
 

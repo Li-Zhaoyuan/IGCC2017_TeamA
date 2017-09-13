@@ -17,7 +17,6 @@ public class ChaseMonsterChaseState : State<ChaseMonster>
 	//Target to chase
 	private GameObject m_target = null;
 
-
 	/// <summary>
 	/// 開始処理
 	/// Start processing
@@ -26,7 +25,7 @@ public class ChaseMonsterChaseState : State<ChaseMonster>
 	{
 		//m_target = obj.GetStats().m_robotList.GetTarget(obj.transform.position);
 
-		obj.m_anime.SetBool("isWalked",true);
+		//obj.m_anime.SetBool("isWalked",true);
 	}
 
 	/// <summary>
@@ -42,7 +41,6 @@ public class ChaseMonsterChaseState : State<ChaseMonster>
 			obj.ChangeState(CHASE_MONSTER_STATE.IDLE);
 			return;
 		}
-
 		// 画像の向きをターゲットがいる方向に合わせる
 		// Fit the orientation of the image to the direction in which the target is located
 		obj.SpriteFlipX(m_target.transform.position.x);
@@ -72,6 +70,6 @@ public class ChaseMonsterChaseState : State<ChaseMonster>
 	/// </summary>
 	public override void Exit()
 	{
-		obj.m_anime.SetBool("isWalked", false);
+		//obj.m_anime.SetBool("isWalked", false);
 	}
 }

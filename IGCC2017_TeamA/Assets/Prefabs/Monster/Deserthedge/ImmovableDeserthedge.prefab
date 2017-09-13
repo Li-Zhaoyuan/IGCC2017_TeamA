@@ -186,7 +186,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1831737559945944}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 09148c4da64cc6a4d91fe9c1dad8a343, type: 2}
   m_CullingMode: 0
@@ -226,6 +226,7 @@ MonoBehaviour:
     type: 2}
   m_hp: 100
   m_atk: 5
+  m_attackInterval: 1
   m_spd: 0
   m_def: 15
   m_mag: 0
@@ -273,7 +274,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 22c5c1b3c1bd7014c9440ebafe877023, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 068d792898c58b64599814f55d510387, type: 3}
   m_Color: {r: 1, g: 0.55862063, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0

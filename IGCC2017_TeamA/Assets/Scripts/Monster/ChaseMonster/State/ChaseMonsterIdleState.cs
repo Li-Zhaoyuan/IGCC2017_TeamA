@@ -28,7 +28,7 @@ public class ChaseMonsterIdleState : State<ChaseMonster>
 	public override void Enter()
 	{
 		m_target = null;
-		obj.m_anime.SetBool("isIdle", true);
+		//obj.m_anime.SetBool("isIdle", true);
 
 		if (m_stats == null)
 		{
@@ -71,8 +71,8 @@ public class ChaseMonsterIdleState : State<ChaseMonster>
 	/// </summary>
 	public override void Exit()
 	{
-		obj.m_anime.SetBool("isIdle", false);
-		obj.m_anime.SetBool("isWalked", false);
+		//obj.m_anime.SetBool("isIdle", false);
+		//obj.m_anime.SetBool("isWalked", false);
 	}
 
 
@@ -82,8 +82,8 @@ public class ChaseMonsterIdleState : State<ChaseMonster>
 		{
 			m_spd = Vector3.zero;
 
-			obj.m_anime.SetBool("isIdle", true);
-			obj.m_anime.SetBool("isWalked", false);
+			//obj.m_anime.SetBool("isIdle", true);
+			//obj.m_anime.SetBool("isWalked", false);
 
 		}
 		else
@@ -91,8 +91,8 @@ public class ChaseMonsterIdleState : State<ChaseMonster>
 			m_spd = new Vector3(Random.Range(-0.3f, 0.3f), Random.Range(-0.3f, 0.3f), 0.0f) * m_stats.SPD * Time.deltaTime;
 			obj.SpriteFlipX(obj.transform.position.x + m_spd.x);
 
-			obj.m_anime.SetBool("isIdle", false);
-			obj.m_anime.SetBool("isWalked", true);
+			//obj.m_anime.SetBool("isIdle", false);
+			//obj.m_anime.SetBool("isWalked", true);
 		}
 	}
 

@@ -16,7 +16,7 @@ public class ImmovableMonsterIdleState : State<ImmovableMonster>
 	/// </summary>
 	public override void Enter()
 	{
-		obj.m_anime.SetBool("isIdle", true);
+		//obj.m_anime.SetBool("isIdle", true);
 		m_target = null;
 	}
 
@@ -50,7 +50,7 @@ public class ImmovableMonsterIdleState : State<ImmovableMonster>
 	/// </summary>
 	public override void Exit()
 	{
-		obj.m_anime.SetBool("isIdle", false);
+		//obj.m_anime.SetBool("isIdle", false);
 	}
 
 }
