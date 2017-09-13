@@ -8,20 +8,34 @@ public class ClickObject : MonoBehaviour {
 	[System.NonSerialized]
 	public GameObject m_target = null;
 
+	[SerializeField]
+	private GameObject m_selectEffect;
+
 	// Update is called once per frame
 	void Update()
 	{
 		GetClickObject();
+		DragObject();
+		if (m_target == null)
+		{
+			foreach (Selected_Effect effect in FindObjectsOfType<Selected_Effect>())
+			{
+				Destroy(effect.gameObject);
+			}
+		}
 	}
 
 	void GetClickObject()
 	{
+		//UIの場合は判定をしない
+		//In case of UI, do not make judgment
 		if (EventSystem.current.IsPointerOverGameObject())
 		{
 			return;
 		}
 
 		// 左クリックされた場所のオブジェクトを取得
+		//Get the object of the left clicked place
 		if (Input.GetMouseButtonDown(0))
 		{
 			Vector2 tapPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -30,6 +44,7 @@ public class ClickObject : MonoBehaviour {
 			{
 				if (collition2d.gameObject.tag == "Robot")
 				{
+					CreateEffect(collition2d.transform.gameObject);
 					m_target = collition2d.transform.gameObject;
 					return;
 				}
@@ -37,6 +52,37 @@ public class ClickObject : MonoBehaviour {
 			}
 
 			m_target = null;
+		}
+	}
+
+	void DragObject()
+	{
+		//UIの場合は判定をしない
+		//In case of UI, do not make judgment
+		if (EventSystem.current.IsPointerOverGameObject())
+		{
+			return;
+		}
+
+		if (Input.GetMouseButton(0))
+		{
+			if (m_target != null)
+			{
+				Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+				m_target.transform.position = pos;
+			}
+		}
+	}
+
+
+	void CreateEffect(GameObject target)
+	{
+		if (m_target == null)
+		{
+			GameObject effect = null;
+			effect = Instantiate(m_selectEffect, Vector3.zero, Quaternion.Euler(0, 0, 0)) as GameObject;
+			effect.transform.parent = target.transform;
+			effect.transform.localPosition = new Vector3(0, 0, 0);
 		}
 	}
 
