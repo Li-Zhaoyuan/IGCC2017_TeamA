@@ -13,6 +13,7 @@ public class LeftClickRobot : MonoBehaviour
     //情報取得
     //Get status
     public Robot_Status robot_status;
+    public Robot_Status target_status;
     //LeftClickMap.cs　と　相互関係
     //                Mutual relationship
     public LeftClickMap baseUIcs;
@@ -72,6 +73,20 @@ public class LeftClickRobot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //scripts取得
+        //HP Energyリアルタイム更新
+        //cloneのスピード0
+        if (_getObject != null)
+        {
+            robot_status = _getObject.GetComponent<Robot_Status>();
+            target_status = target.GetComponent<Robot_Status>();
+            //target
+            target_status.speed_point = 0.0f;
+            //hp energy test
+            target_status.SetHealthPoint(robot_status.GetHealthPoint());
+            target_status.SetEnergyPoint(robot_status.GetEnergyPoint());
+        }
+        //Status取得
         baseState = baseUIcs.GetState();
         //Object Active NoActive
         if (baseState == true)
@@ -110,39 +125,42 @@ public class LeftClickRobot : MonoBehaviour
                 //Make clone of robot clicked
                 //クリックしたロボットのcloneを作る
                 target = Instantiate(_getObject, new Vector2(clonePotision.x, clonePotision.y), Quaternion.identity);
-                //scripts取得
-                robot_status = _getObject.GetComponent<Robot_Status>();
-                
-                target.GetComponentInChildren<State_Manager>().enabled = false;
-                //gameObject.GetComponent<コンポーネント名>().enabled = false;
 
-                if (robot_status!=null)
+               // target.GetComponentInChildren<State_Manager>().enabled = false;
+                if (robot_status != null)
                 {
-
-                    //Get Status Here
-                    personality_point = robot_status.GetPersonality();
-                    mood_point = robot_status.GetMood();
-                    atk_point = robot_status.GetAttackPoint();
-                    spd_point = robot_status.GetSpeedPoint();
-                    int_point = robot_status.GetMagicPoint();
-                    luk_point = robot_status.GetLuckPoint();
-                    def_point = robot_status.GetDefencePoint();
-
-                    //Text
-                    statusText[(int)STATUS.PERSONALITY].text = "" + personality_point;
-                    statusText[(int)STATUS.MOOD].text = "" + mood_point;
-                    statusText[(int)STATUS.ATK].text = "ATK:" + atk_point.ToString();
-                    statusText[(int)STATUS.SPD].text = "SPD:" + spd_point.ToString();
-                    statusText[(int)STATUS.INT].text = "INT:" + int_point.ToString();
-                    statusText[(int)STATUS.LUK].text = "LUK:" + luk_point.ToString();
-                    statusText[(int)STATUS.DEF].text = "DEF:" + def_point.ToString();
                     _state = true;
                 }
             }
+        }
+        //ステータスリアルタイム更新
+        if (robot_status != null)
+        {
+
+            //Get Status Here
+            personality_point = robot_status.GetPersonality();
+            mood_point = robot_status.GetMood();
+            atk_point = robot_status.GetAttackPoint();
+            spd_point = robot_status.GetSpeedPoint();
+            int_point = robot_status.GetMagicPoint();
+            luk_point = robot_status.GetLuckPoint();
+            def_point = robot_status.GetDefencePoint();
+
+            //Text
+            statusText[(int)STATUS.PERSONALITY].text = "" + personality_point;
+            statusText[(int)STATUS.MOOD].text = "" + mood_point;
+            statusText[(int)STATUS.ATK].text = "ATK:" + atk_point.ToString();
+            statusText[(int)STATUS.SPD].text = "SPD:" + spd_point.ToString();
+            statusText[(int)STATUS.INT].text = "INT:" + int_point.ToString();
+            statusText[(int)STATUS.LUK].text = "LUK:" + luk_point.ToString();
+            statusText[(int)STATUS.DEF].text = "DEF:" + def_point.ToString();
         }
     }
     public bool GetState()
     {
         return _state;
     }
+
+
+    //HPをカメラで追従する
 }

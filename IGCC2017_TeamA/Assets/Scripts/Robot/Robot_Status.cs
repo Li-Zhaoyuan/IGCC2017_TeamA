@@ -22,6 +22,18 @@ public enum ACTIONS
     TOTAL
 }
 
+public enum ROBOT_ICON
+{
+    BRAVE,
+    CAREFUL,
+    CURIOUS,
+    DEAD,
+    IMPATIENT,
+    LAZY,
+    SENSITIVE,
+    TOTAL
+}
+
 public class Robot_Status : MonoBehaviour {
 
     // all the status is now PUBLIC for debugging
@@ -48,8 +60,8 @@ public class Robot_Status : MonoBehaviour {
     public float luck_point;
     public float defence_point;
 
-    
 
+    public Sprite[] sprites_for_robot;
 
     public PERSONALITY personality;
     public PERSONALITY mood;
@@ -75,9 +87,43 @@ public class Robot_Status : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//TODO: mood to affect stats
-        
-	}
+        //TODO: mood to affect stats
+        CheckCorrectIconForRobot();
+
+    }
+
+    public void CheckCorrectIconForRobot()
+    {
+        if (health_point <= 0 || energy_point <= 0)
+        {
+            state_manager.ChangeSpriteOnMood(sprites_for_robot[(int)ROBOT_ICON.DEAD]);
+        }
+        else if(mood == PERSONALITY.BRAVE)
+        {
+            state_manager.ChangeSpriteOnMood(sprites_for_robot[(int)ROBOT_ICON.BRAVE]);
+        }
+        else if (mood == PERSONALITY.CAREFUL)
+        {
+            state_manager.ChangeSpriteOnMood(sprites_for_robot[(int)ROBOT_ICON.CAREFUL]);
+        }
+        else if (mood == PERSONALITY.CURIOUS)
+        {
+            state_manager.ChangeSpriteOnMood(sprites_for_robot[(int)ROBOT_ICON.CURIOUS]);
+        }
+        else if (mood == PERSONALITY.IMPATIENT)
+        {
+            state_manager.ChangeSpriteOnMood(sprites_for_robot[(int)ROBOT_ICON.IMPATIENT]);
+        }
+        else if (mood == PERSONALITY.LAZY)
+        {
+            state_manager.ChangeSpriteOnMood(sprites_for_robot[(int)ROBOT_ICON.LAZY]);
+        }
+        else if (mood == PERSONALITY.SENSITIVE)
+        {
+            state_manager.ChangeSpriteOnMood(sprites_for_robot[(int)ROBOT_ICON.SENSITIVE]);
+        }
+
+    }
 
     //Setters
     public void SetAllRobotStatus(float att,float spd,float mag, float luk, float def , float hp,float enrg,PERSONALITY p)
@@ -485,7 +531,7 @@ public class Robot_Status : MonoBehaviour {
 
     public void TakeDamage(float value)
     {
-        health_point -= Mathf.Clamp( value - (defence_point* 1.2f),0,health_point);
+        health_point -= Mathf.Clamp( value - (defence_point* 2f),0,health_point);
     }
 
     public void MinusEnergyPoint(float value)

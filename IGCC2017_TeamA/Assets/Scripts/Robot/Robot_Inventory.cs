@@ -56,7 +56,7 @@ public class Robot_Inventory : MonoBehaviour {
 
     public virtual void SetNumberOfresourcesCollected(int value, ITEM_TYPE type)
     {
-        items_collected[type] = value;
+        items_collected[type] = Mathf.Clamp(value, 0, max_space_for_items[type]);
         //resources_collected = value;
     }
 
@@ -68,7 +68,8 @@ public class Robot_Inventory : MonoBehaviour {
 
     public virtual void MinusNumberOfresourcesCollected(int value, ITEM_TYPE type)
     {
-        items_collected[type] = Mathf.Clamp(items_collected[type] - value, 0, max_space_for_items[type]);
+        if (items_collected[type] >= value)
+            items_collected[type] = Mathf.Clamp(items_collected[type] - value, 0, max_space_for_items[type]);
     }
 
 

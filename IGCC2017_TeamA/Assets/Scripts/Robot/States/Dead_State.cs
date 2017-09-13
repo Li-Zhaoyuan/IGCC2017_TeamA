@@ -21,7 +21,7 @@ public class Dead_State : Robot_BaseState
         {
             timer = 0;
             Destroy(main_robot);
-            SpawnParticles(explosion_effect, main_robot.transform.position);
+            SpawnParticles(explosion_effect, Vector3.zero, main_robot);
         }
         if (UsefulFunctions.GetPercentageInFloat(main_robot.GetComponent<Robot_Status>().GetHealthPoint(), main_robot.GetComponent<Robot_Status>().GetBaseHealthPoint()) >= 0.5)//at least 50 health to go on
         {

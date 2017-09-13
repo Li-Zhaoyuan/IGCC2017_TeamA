@@ -648,7 +648,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.84, y: 0.84}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -717,6 +717,7 @@ MonoBehaviour:
   robot_local_sprite_size: {x: 0, y: 0}
   robot_sprite_across_length: 0
   robot_sprite: {fileID: 0}
+  robot_sprite_renderer: {fileID: 0}
   decision_timer: 0
   enemy_target: {fileID: 0}
   ally_target: {fileID: 0}
@@ -744,6 +745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c6cb57cb08dfd44e8798fd4fe610e69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heal_effect: {fileID: 120786, guid: f926e33764cef7f4a8949bd9285751e9, type: 2}
   base_healing_value: 5
 --- !u!114 &114459320263905480
 MonoBehaviour:
@@ -770,10 +772,19 @@ MonoBehaviour:
   magic_point: 0
   luck_point: 0
   defence_point: 0
+  sprites_for_robot:
+  - {fileID: 21300000, guid: 2e34194bd335cbd4f877cd82dd601e74, type: 3}
+  - {fileID: 21300000, guid: 7f752e61307b08f42818ef9767189cf7, type: 3}
+  - {fileID: 21300000, guid: aa23be203867c8a4a9c26507b12e80d8, type: 3}
+  - {fileID: 21300000, guid: 9ef6f77c02d34bd4e8eb8241cfedb6e0, type: 3}
+  - {fileID: 21300000, guid: 9eeaba5a416521d4d95bf10c5699ee07, type: 3}
+  - {fileID: 21300000, guid: 09521bb6c1fdf4846a19c6dcf1e852d7, type: 3}
+  - {fileID: 21300000, guid: 7cfd6d1bad793d740862ee4e62283700, type: 3}
   personality: 0
   mood: 0
   state_manager: {fileID: 0}
   inventory: {fileID: 0}
+  bank: {fileID: 0}
 --- !u!114 &114465500657110896
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -835,7 +846,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   max_inventory_size: 100
-  resources_collected: 0
 --- !u!114 &114760892329778260
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -871,6 +881,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfce814a820011941a6bab99e8716068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  revival_effect: {fileID: 1879828762689820, guid: fa4a5f7ed98a77b4e81ee7707be4844d,
+    type: 2}
   needed_time_torevive: 1
   energy_recoverrate: 5
 --- !u!114 &114950402445411700
@@ -1000,8 +1012,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 99161c51479e695469f54a18577aacde, type: 3}
-  m_Color: {r: 0.6985294, g: 0.6985294, b: 0.6985294, a: 0.322}
+  m_Sprite: {fileID: 21300000, guid: 2e34194bd335cbd4f877cd82dd601e74, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
