@@ -36,6 +36,7 @@ public class MonsterSummoner : MonoBehaviour {
 	//For area range acquisition
 	private Collider2D m_col = null;
 
+	private MonsterList m_monsterList = null;
 
 	[SerializeField]
 	private float m_addHPMax = 200.0f;
@@ -60,13 +61,14 @@ public class MonsterSummoner : MonoBehaviour {
 		m_interval = Random.Range(m_minInterval, m_maxInterval);
 
 		m_col = m_chargeArea.GetComponent<Collider2D>();
+		m_monsterList = m_chargeArea.GetComponent<MonsterList>();
 	}
 
 	void Update()
 	{
 		m_cnt = Time.time - m_startTime;
 
-		if (m_cnt > m_interval)
+		if (m_cnt > m_interval && m_monsterList.GetListLength() < m_monsterList.MaxMonster)
 		{
 			Summon();
 

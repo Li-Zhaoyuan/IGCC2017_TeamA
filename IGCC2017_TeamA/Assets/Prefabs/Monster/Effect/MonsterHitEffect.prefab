@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4808637477466660}
   - component: {fileID: 198295763587611770}
   - component: {fileID: 199184741515082526}
+  - component: {fileID: 114822655363293892}
   m_Layer: 0
   m_Name: MonsterHitEffect
   m_TagString: Untagged
@@ -41,6 +42,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114822655363293892
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1374686979408696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06ceb1b3df473cf4e8274739e41f3504, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &198295763587611770
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -100,7 +112,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 548486810
+  randomSeed: -1931072090
   InitialModule:
     serializedVersion: 3
     enabled: 1

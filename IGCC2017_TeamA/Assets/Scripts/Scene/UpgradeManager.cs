@@ -33,7 +33,6 @@ public class UpgradeManager : MonoBehaviour {
 		var stats = m_target.GetComponent<Robot_Status>().base_attack_point;
 
 		bool isUpgrade = m_item.UseItem(m_type, (int)stats);
-		isUpgrade = m_item.UseItem(m_type, 0);
 		if (isUpgrade)
 		{
 			m_target.GetComponent<Robot_Status>().AddBaseAttackPoint(1.0f);
