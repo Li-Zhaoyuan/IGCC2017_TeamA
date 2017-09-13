@@ -32,7 +32,7 @@ public class Gather_State : Robot_BaseState
             && state_holder_stateManager.item_target.GetComponent<Item_Base>().GetMainGather() == main_robot)
         {
             timer += Time.deltaTime;
-            //Debug.Log(timer);
+            Debug.Log(timer);
             if (timer > gather_time)
             {
                 timer = 0f;

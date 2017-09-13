@@ -43,14 +43,14 @@ public class Rescue_State : Robot_BaseState
                 }
                 SpawnParticles(revival_effect, Vector3.zero, state_holder_stateManager.GetAllyTarget());
             }
-            if (state_holder_stateManager.GetAllyTarget().GetComponent<Robot_Status>().GetEnergyPoint() > state_holder_stateManager.GetAllyTarget().GetComponent<Robot_Status>().GetBaseEnergyPoint() * 0.5)
+            if (state_holder_stateManager.GetAllyTarget().GetComponent<Robot_Status>().GetEnergyPoint() >= state_holder_stateManager.GetAllyTarget().GetComponent<Robot_Status>().GetBaseEnergyPoint())
             {
                 rescued_from_poweroutage = true;
             }
             else
             {
-                state_holder_stateManager.GetAllyTarget().GetComponent<Robot_Status>().AddEnergyPoint((energy_recoverrate + (2 * robot_status.GetMagicPoint())) * UsefulFunctions.ConstantValueToReplaceDT());
-
+                state_holder_stateManager.GetAllyTarget().GetComponent<Robot_Status>().AddEnergyPoint((energy_recoverrate + (10 * robot_status.GetMagicPoint())) * UsefulFunctions.ConstantValueToReplaceDT());
+                SpawnParticles(revival_effect, Vector3.zero, state_holder_stateManager.GetAllyTarget());
 
             }
 
@@ -64,6 +64,9 @@ public class Rescue_State : Robot_BaseState
         }
         if(rescued_from_poweroutage && rescued_from_nohealth)
         {
+            rescued_from_poweroutage = false;
+            rescued_from_nohealth = false;
+
             isDone = true;
         }
     }

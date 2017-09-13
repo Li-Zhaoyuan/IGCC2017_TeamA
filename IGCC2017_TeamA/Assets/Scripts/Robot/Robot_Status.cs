@@ -125,6 +125,12 @@ public class Robot_Status : MonoBehaviour {
 
     }
 
+    public void RandomMood()
+    {
+        mood = (PERSONALITY)Random.Range(0, (int)PERSONALITY.TOTAL);
+        MoodOnEffectingStats();
+    }
+
     //Setters
     public void SetAllRobotStatus(float att,float spd,float mag, float luk, float def , float hp,float enrg,PERSONALITY p)
     {

@@ -117,13 +117,15 @@ public class State_Manager : MonoBehaviour {
                 {
                     if (decision_timer > 1f)
                     {
-                        if (ChangeStateToReturn()) break;
+                        decision_timer = 0f;
+                        
                         if (ChangeStateToEscape()) break;
-                        if (ChangeStateToAttack()) break;
                         if (ChangeStateToRescue()) break;
+                        if (ChangeStateToAttack()) break;
+                        
                         if (ChangeStateToHeal()) break;
                         if (ChangeStateToGather()) break;
-                        decision_timer = 0f;
+                        if (ChangeStateToReturn()) break;
                     }
                     break;
                 }
@@ -150,6 +152,19 @@ public class State_Manager : MonoBehaviour {
                 }
             case ROBOT_STATES.RETURN:
                 {
+                    if (decision_timer > 1f && (UsefulFunctions.GetPercentageInFloat(parent_object.GetComponent<Robot_Status>().GetEnergyPoint(), parent_object.GetComponent<Robot_Status>().GetBaseEnergyPoint()) > 0.5f && UsefulFunctions.GetPercentageInFloat(parent_object.GetComponent<Robot_Status>().GetHealthPoint(), parent_object.GetComponent<Robot_Status>().GetBaseHealthPoint()) > 0.5f))
+                    {
+                        decision_timer = 0f;
+                        //if (ChangeStateToReturn()) break;
+                        if (ChangeStateToEscape()) break;
+                        if (ChangeStateToRescue()) break;
+                        if (ChangeStateToAttack()) break;
+
+                        if (ChangeStateToHeal()) break;
+                        if (ChangeStateToGather()) break;
+                        if (ChangeStateToReturn()) break;
+
+                    }
                     ChangeStateToRoamIfDone();
                     break;
                 }
@@ -213,7 +228,7 @@ public class State_Manager : MonoBehaviour {
         if (home_base != null)
         {
             if (UsefulFunctions.GetPercentageInFloat(parent_object.GetComponent<Robot_Status>().GetEnergyPoint(), parent_object.GetComponent<Robot_Status>().GetBaseEnergyPoint()) < 0.2f
-                || (UsefulFunctions.GetPercentageInFloat(parent_object.GetComponent<Robot_Status>().GetEnergyPoint(), parent_object.GetComponent<Robot_Status>().GetBaseEnergyPoint()) < 1f && UsefulFunctions.GetDistanceOfTwoPoints((Vector2)parent_object.transform.position, (Vector2)home_base.transform.position) < robot_local_sprite_size.x))
+                || (UsefulFunctions.GetPercentageInFloat(parent_object.GetComponent<Robot_Status>().GetEnergyPoint(), parent_object.GetComponent<Robot_Status>().GetBaseEnergyPoint()) < 1f && UsefulFunctions.GetDistanceOfTwoPoints((Vector2)parent_object.transform.position, (Vector2)home_base.transform.position) < robot_local_sprite_size.x *1.5f))
             {
                 SetCurrentState(ROBOT_STATES.RETURN);
                 return true;
