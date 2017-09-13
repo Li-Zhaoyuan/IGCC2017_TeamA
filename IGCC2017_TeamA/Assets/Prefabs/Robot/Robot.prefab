@@ -808,6 +808,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gather_time: 5
+  gather_effect: {fileID: 1882934852728462, guid: e6a3a5c50e6bfe34899df7e2584e682f,
+    type: 2}
 --- !u!114 &114537841989514154
 MonoBehaviour:
   m_ObjectHideFlags: 1

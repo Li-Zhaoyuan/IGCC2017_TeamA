@@ -5,6 +5,7 @@ using UnityEngine;
 public class Gather_State : Robot_BaseState
 {
     public float gather_time;
+    public GameObject gather_effect;
     // Use this for initialization
     public override void Start()
     {
@@ -40,6 +41,7 @@ public class Gather_State : Robot_BaseState
                 Destroy(state_holder_stateManager.item_target);
                 state_holder_stateManager.item_target = null;
             }
+            SpawnParticles(gather_effect, Vector3.zero, state_holder_stateManager.item_target);
         }
         else if(state_holder_stateManager.item_target.GetComponent<Item_Base>().GetMainGather() != main_robot)
         {
