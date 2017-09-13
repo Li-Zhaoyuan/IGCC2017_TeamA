@@ -163,7 +163,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4776419906742160, guid: d90b7adeb1d6ae047ada855ef2b67d42, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 4776419906742160, guid: d90b7adeb1d6ae047ada855ef2b67d42, type: 2}
       propertyPath: m_LocalPosition.z
@@ -188,6 +188,26 @@ Prefab:
     - target: {fileID: 4776419906742160, guid: d90b7adeb1d6ae047ada855ef2b67d42, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 20403971250476254, guid: d90b7adeb1d6ae047ada855ef2b67d42,
+        type: 2}
+      propertyPath: orthographic size
+      value: 1.918804
+      objectReference: {fileID: 0}
+    - target: {fileID: 20403971250476254, guid: d90b7adeb1d6ae047ada855ef2b67d42,
+        type: 2}
+      propertyPath: orthographic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20403971250476254, guid: d90b7adeb1d6ae047ada855ef2b67d42,
+        type: 2}
+      propertyPath: field of view
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 20403971250476254, guid: d90b7adeb1d6ae047ada855ef2b67d42,
+        type: 2}
+      propertyPath: m_NormalizedViewPortRect.x
+      value: -0.047
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d90b7adeb1d6ae047ada855ef2b67d42, type: 2}
@@ -815,6 +835,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114398531893662436, guid: 10c51206e8e6dbf4e8975f9d1ef6d131,
+        type: 2}
+      propertyPath: viewUI.Array.size
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4385863021209768, guid: 10c51206e8e6dbf4e8975f9d1ef6d131, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -845,7 +870,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4385863021209768, guid: 10c51206e8e6dbf4e8975f9d1ef6d131, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114398531893662436, guid: 10c51206e8e6dbf4e8975f9d1ef6d131,
         type: 2}
@@ -892,6 +917,48 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114398531893662436, guid: 10c51206e8e6dbf4e8975f9d1ef6d131,
+        type: 2}
+      propertyPath: viewUI.Array.data[0]
+      value: 
+      objectReference: {fileID: 1884810442558944, guid: 285a2ebf10b59fc49bdedfb8042ac3b8,
+        type: 2}
+    - target: {fileID: 114398531893662436, guid: 10c51206e8e6dbf4e8975f9d1ef6d131,
+        type: 2}
+      propertyPath: viewUI.Array.data[1]
+      value: 
+      objectReference: {fileID: 1054897826429248, guid: 5abeca293ac22df4a9020ca46347aace,
+        type: 2}
+    - target: {fileID: 114398531893662436, guid: 10c51206e8e6dbf4e8975f9d1ef6d131,
+        type: 2}
+      propertyPath: viewUI.Array.data[2]
+      value: 
+      objectReference: {fileID: 1323362018355326, guid: 422e10464024e8c4383f459175f2cedc,
+        type: 2}
+    - target: {fileID: 114398531893662436, guid: 10c51206e8e6dbf4e8975f9d1ef6d131,
+        type: 2}
+      propertyPath: viewUI.Array.data[3]
+      value: 
+      objectReference: {fileID: 1318976524693080, guid: bdb3141d7fb03b9488c715ee0a7bc2ef,
+        type: 2}
+    - target: {fileID: 114398531893662436, guid: 10c51206e8e6dbf4e8975f9d1ef6d131,
+        type: 2}
+      propertyPath: viewUI.Array.data[4]
+      value: 
+      objectReference: {fileID: 1302590661951802, guid: ed4262d06acf8be4ea8e330b18979ccf,
+        type: 2}
+    - target: {fileID: 114398531893662436, guid: 10c51206e8e6dbf4e8975f9d1ef6d131,
+        type: 2}
+      propertyPath: viewUI.Array.data[5]
+      value: 
+      objectReference: {fileID: 1303699444847642, guid: 5225d5b60b4b8a047b706ceb6546368b,
+        type: 2}
+    - target: {fileID: 114398531893662436, guid: 10c51206e8e6dbf4e8975f9d1ef6d131,
+        type: 2}
+      propertyPath: viewUI.Array.data[6]
+      value: 
+      objectReference: {fileID: 1790176695066198, guid: dfa52d2c95dac1f46bc44b8f771497f9,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 10c51206e8e6dbf4e8975f9d1ef6d131, type: 2}
   m_IsPrefabParent: 0
@@ -1297,7 +1364,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2055581984 stripped
 MonoBehaviour:
