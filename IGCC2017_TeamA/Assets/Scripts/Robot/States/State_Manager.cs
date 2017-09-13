@@ -278,7 +278,7 @@ public class State_Manager : MonoBehaviour {
             if (go != parent_object)
             {
                 temptarget = go.GetComponent<Robot_Status>();
-                if (temptarget.GetHealthPoint() < temptarget.GetBaseHealthPoint())
+                if (temptarget.GetHealthPoint() < temptarget.GetBaseHealthPoint() && (temptarget.state_manager.states_enum != ROBOT_STATES.DEAD && temptarget.state_manager.states_enum != ROBOT_STATES.OUTOFENERGY))
                 {
                     ally_target = go;
                     break;

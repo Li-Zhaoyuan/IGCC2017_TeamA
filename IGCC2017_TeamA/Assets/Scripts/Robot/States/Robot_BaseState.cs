@@ -17,7 +17,7 @@ public class Robot_BaseState : MonoBehaviour {
     protected Vector2 robot_velocity;
 
     protected bool isDone;
-
+    protected GameObject current_effect;
 
     // Use this for initialization
     public virtual void Start()
@@ -73,8 +73,18 @@ public class Robot_BaseState : MonoBehaviour {
         isDone = !isDone;
     }
 
-    public virtual void SpawnParticles(GameObject go,Vector3 pos)
+    public virtual void SpawnParticles(GameObject go,Vector3 pos , GameObject parent = null, bool enable_multiple = false)
     {
-        GameObject tempGO = Instantiate(go, pos, Quaternion.Euler(0, 0, 0)) as GameObject;
+        if(!enable_multiple)
+        {
+            if (current_effect != null)
+                return;
+        }
+        current_effect = Instantiate(go, pos, Quaternion.Euler(0, 0, 0)) as GameObject;
+        if(parent != null)
+        {
+            current_effect.transform.parent = parent.transform;
+            current_effect.transform.localPosition = pos;
+        }
     }
 }

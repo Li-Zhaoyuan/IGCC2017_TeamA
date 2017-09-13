@@ -744,6 +744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c6cb57cb08dfd44e8798fd4fe610e69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heal_effect: {fileID: 120786, guid: f926e33764cef7f4a8949bd9285751e9, type: 2}
   base_healing_value: 5
 --- !u!114 &114459320263905480
 MonoBehaviour:
@@ -774,6 +775,7 @@ MonoBehaviour:
   mood: 0
   state_manager: {fileID: 0}
   inventory: {fileID: 0}
+  bank: {fileID: 0}
 --- !u!114 &114465500657110896
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -835,7 +837,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   max_inventory_size: 100
-  resources_collected: 0
 --- !u!114 &114760892329778260
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -871,6 +872,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfce814a820011941a6bab99e8716068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  revival_effect: {fileID: 1879828762689820, guid: fa4a5f7ed98a77b4e81ee7707be4844d,
+    type: 2}
   needed_time_torevive: 1
   energy_recoverrate: 5
 --- !u!114 &114950402445411700

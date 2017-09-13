@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Heal_State : Robot_BaseState
 {
+    public GameObject heal_effect;
     public float base_healing_value;
     // Use this for initialization
     public override void Start()
@@ -24,6 +25,7 @@ public class Heal_State : Robot_BaseState
                 state_holder_stateManager.GetAllyTarget()
                        .GetComponent<Robot_Status>()
                        .AddHealthPoint(base_healing_value * UsefulFunctions.ConstantValueToReplaceDT() * robot_status.GetMagicPoint());//heal
+                SpawnParticles(heal_effect, Vector3.zero, state_holder_stateManager.GetAllyTarget());
             }
            
 
@@ -37,7 +39,7 @@ public class Heal_State : Robot_BaseState
         }
 
         if(state_holder_stateManager.GetAllyTarget()
-                       .GetComponent<Robot_Status>().GetHealthPoint() > state_holder_stateManager.GetAllyTarget()
+                       .GetComponent<Robot_Status>().GetHealthPoint() >= state_holder_stateManager.GetAllyTarget()
                        .GetComponent<Robot_Status>().GetBaseHealthPoint())
             isDone = true;
     }
