@@ -11,6 +11,9 @@ public class ClickObject : MonoBehaviour {
 	[SerializeField]
 	private GameObject m_selectEffect;
 
+	[SerializeField]
+	private AudioSource m_selectSE;
+
 	// Update is called once per frame
 	void Update()
 	{
@@ -46,6 +49,7 @@ public class ClickObject : MonoBehaviour {
 				{
 					CreateEffect(collition2d.transform.gameObject);
 					m_target = collition2d.transform.gameObject;
+					m_selectSE.Play();
 					return;
 				}
 
