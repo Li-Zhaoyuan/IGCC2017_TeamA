@@ -18,6 +18,8 @@ public class ChaseMonsterDeadState : State<ChaseMonster>
 
 	private GameObject m_target = null;
 
+	private bool m_isDead = false;
+
 	/// <summary>
 	/// 開始処理
 	/// Start processing
@@ -25,6 +27,7 @@ public class ChaseMonsterDeadState : State<ChaseMonster>
 	public override void Enter()
 	{
 		m_time = Time.time;
+		m_isDead = false;
 		//obj.m_anime.SetTrigger("dead");
 	}
 
@@ -36,10 +39,13 @@ public class ChaseMonsterDeadState : State<ChaseMonster>
 	{
 		m_cnt = Time.time - m_time;
 
-		if (m_cnt > 1.0f)
+		if (m_cnt > 1.0f&& !(m_isDead))
 		{
+			m_isDead = true;
 			CreateEffect();
-			GameObject.Destroy(obj.gameObject);
+			obj.GetStats().m_deadSE.Play();
+			obj.m_spriteRenderer.enabled = false;
+			GameObject.Destroy(obj.gameObject, obj.GetStats().m_deadSE.clip.length);
 		}
 	}
 

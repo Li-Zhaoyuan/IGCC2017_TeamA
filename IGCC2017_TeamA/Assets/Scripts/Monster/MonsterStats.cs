@@ -2,7 +2,7 @@
 //* @file  :MonsterStats.cs
 //* @brief :モンスターに必要なステータス
 //* @brief :State required for monsters
-//* @date  :2017/09/06
+//* @date  :2017/09/13
 //* @author:S.Katou
 //************************************************/
 
@@ -18,6 +18,9 @@ public class MonsterStats : MonoBehaviour
 
 	[System.NonSerialized]
 	public AudioSource m_hitSE;
+
+	[System.NonSerialized]
+	public AudioSource m_deadSE;
 
 	//体力 HitPoint
 	[SerializeField]
@@ -113,7 +116,10 @@ public class MonsterStats : MonoBehaviour
 
 	public void Start()
 	{
-		m_hitSE = GetComponentInChildren<AudioSource>();
+		var audio= GetComponentsInChildren<AudioSource>();
+		m_hitSE = audio[0];
+		m_deadSE = audio[1];
+
 		m_maxHp = m_hp;
 		if (m_chargeArea != null)
 		{
