@@ -9,6 +9,7 @@ public class Gather_State : Robot_BaseState
     // Use this for initialization
     public override void Start()
     {
+        gather_time = 1;
         base.Start();
     }
 
@@ -20,39 +21,47 @@ public class Gather_State : Robot_BaseState
 
         if (state_holder_stateManager.item_target == null)
         {
+            
             timer = 0f;
             isDone = true;
             return;
         }
-        if (state_holder_stateManager.item_target.GetComponent<Item_Base>().GetMainGather() == null)
-        {
-            state_holder_stateManager.item_target.GetComponent<Item_Base>().SetMainGather(main_robot);
-        }
+        //if (state_holder_stateManager.item_target.GetComponent<Item_Base>().GetMainGather() == null)
+        //{
+        //    state_holder_stateManager.item_target.GetComponent<Item_Base>().SetMainGather(main_robot);
+        //}
         if (UsefulFunctions.GetDistanceOfTwoPoints((Vector2)main_robot.transform.position, (Vector2)state_holder_stateManager.item_target.transform.position) < state_holder_stateManager.robot_local_sprite_size.x
-            && state_holder_stateManager.item_target.GetComponent<Item_Base>().GetMainGather() == main_robot)
+            /*&& state_holder_stateManager.item_target.GetComponent<Item_Base>().GetMainGather() == main_robot*/)
         {
             timer += Time.deltaTime;
             Debug.Log(timer);
+            Debug.Log((Vector2)state_holder_stateManager.item_target.transform.position);
             if (timer > gather_time)
             {
                 timer = 0f;
-                robot_status.bank.AddNumberOfresourcesCollected(
-                    state_holder_stateManager.item_target.GetComponent<Item_Base>().GetNumberOfResourcesWorth() + (int)(main_robot.GetComponent<Robot_Status>().GetLuckPoint()), state_holder_stateManager.item_target.GetComponent<Item_Base>().GetItemType());
+                robot_status.bank.AddItem(
+                    state_holder_stateManager.item_target.GetComponent<Item_Base>().GetItemType(), state_holder_stateManager.item_target.GetComponent<Item_Base>().GetNumberOfResourcesWorth() + (int)(main_robot.GetComponent<Robot_Status>().GetLuckPoint()));
                 Destroy(state_holder_stateManager.item_target);
                 state_holder_stateManager.item_target = null;
+                //state_holder_stateManager.item_target.GetComponent<Item_Base>().DestroyOwnself();
+                isDone = true;
+                
             }
-            SpawnParticles(gather_effect, Vector3.zero, state_holder_stateManager.item_target);
+            if(state_holder_stateManager.item_target != null)
+                SpawnParticles(gather_effect, Vector3.zero, state_holder_stateManager.item_target);
         }
-        else if(state_holder_stateManager.item_target.GetComponent<Item_Base>().GetMainGather() != main_robot)
-        {
-            timer = 0f;
-            isDone = true;
-            return;
-        }
+        //else if(state_holder_stateManager.item_target.GetComponent<Item_Base>().GetMainGather() != main_robot)
+        //{
+        //    Debug.Log("1");
+        //    timer = 0f;
+        //    isDone = true;
+        //    return;
+        //}
         else
         {
             if (UsefulFunctions.GetDistanceOfTwoPoints((Vector2)main_robot.transform.position, (Vector2)state_holder_stateManager.item_target.transform.position) > state_holder_stateManager.robot_local_sprite_size.x * 4)
             {
+                Debug.Log("2");
                 timer = 0f;
                 state_holder_stateManager.item_target.GetComponent<Item_Base>().SetMainGather(null);
                 isDone = true;
