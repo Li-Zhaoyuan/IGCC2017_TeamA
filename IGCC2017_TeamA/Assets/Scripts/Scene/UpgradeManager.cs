@@ -81,7 +81,7 @@ public class UpgradeManager : MonoBehaviour {
 	{
 		var stats = m_target.GetComponent<Robot_Status>().base_health_point;
 
-		bool isUpgrade = m_item.UseItem(m_type,(int)stats);
+		bool isUpgrade = m_item.UseItem(m_type,(int)(stats/10.0f));
 		if (isUpgrade)
 		{
 			m_target.GetComponent<Robot_Status>().AddBaseHealthPoint(10.0f);
@@ -92,7 +92,7 @@ public class UpgradeManager : MonoBehaviour {
 	{
 		var stats = m_target.GetComponent<Robot_Status>().base_energy_point;
 
-		bool isUpgrade = m_item.UseItem(m_type,(int)stats);
+		bool isUpgrade = m_item.UseItem(m_type,(int)(stats / 10.0f));
 		if (isUpgrade)
 		{
 			m_target.GetComponent<Robot_Status>().AddBaseEnergyPoint(10.0f);

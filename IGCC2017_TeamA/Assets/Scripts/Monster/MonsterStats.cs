@@ -49,6 +49,19 @@ public class MonsterStats : MonoBehaviour
 		}
 	}
 
+	//攻撃速度　AttackSpeed
+	[SerializeField]
+	private float m_attackInterval;
+	public float AtkInterval
+	{
+		get { return m_attackInterval; }
+		set
+		{
+			if (value > 0.1f) { m_attackInterval = value; }
+			else { m_attackInterval = 0.1f; }
+		}
+	}
+
 	//移動速度　MoveSpeed
 	[SerializeField]
 	private float m_spd;
