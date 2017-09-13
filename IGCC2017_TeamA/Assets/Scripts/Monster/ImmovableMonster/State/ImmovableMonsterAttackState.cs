@@ -40,6 +40,7 @@ public class ImmovableMonsterAttackState : State<ImmovableMonster>
 		{
 			m_robotStats = m_target.GetComponent<Robot_Status>();
 			m_robotStats.TakeDamage(obj.GetStats().ATK);
+			obj.GetStats().m_hitSE.Play();
 			CreateEffect();
 			isTakedDamage = true;
 		}
@@ -73,6 +74,7 @@ public class ImmovableMonsterAttackState : State<ImmovableMonster>
 			if (m_robotStats != null && !(isTakedDamage))
 			{
 				m_robotStats.TakeDamage(obj.GetStats().ATK);
+				obj.GetStats().m_hitSE.Play();
 				CreateEffect();
 				isTakedDamage = true;
 			}
@@ -112,7 +114,7 @@ public class ImmovableMonsterAttackState : State<ImmovableMonster>
 
 		//ターゲットに離れていたら追跡状態に移行する
 		//If you are away from target, shift to chase state
-		if (direction.magnitude >= 1.0f)
+		if (direction.magnitude >= 1.5f)
 		{
 			return true;
 		}
