@@ -18,7 +18,7 @@ public class LeftClickMap : MonoBehaviour
     public LeftClickRobot robotUIcs;
     bool robotState;
     //state
-    public bool _state;
+    public bool _state = false;
 
     private GameObject this_obj;
 
@@ -79,6 +79,7 @@ public class LeftClickMap : MonoBehaviour
                 if (_getObject != null)
                 {
                     Destroy(target);
+                    target = null;
                     _state = false;
 
                 }
@@ -86,8 +87,10 @@ public class LeftClickMap : MonoBehaviour
                 _getObject = collition2d.transform.gameObject;
                 //Make clone of robot clicked
                 //クリックしたロボットのcloneを作る
-                target = Instantiate(viewUI, new Vector2(clonePotision.x, clonePotision.y), Quaternion.identity);
-
+                if (_state == false)
+                {
+                    target = Instantiate(viewUI, new Vector2(clonePotision.x, clonePotision.y), Quaternion.identity);
+                }
                 _state = true;
             }
         }
