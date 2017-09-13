@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 199817939081942926}
   - component: {fileID: 114394648944757214}
   m_Layer: 0
-  m_Name: SelectedAura
+  m_Name: GreenBlueAura
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

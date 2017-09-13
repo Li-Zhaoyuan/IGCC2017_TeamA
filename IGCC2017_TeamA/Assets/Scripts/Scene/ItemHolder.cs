@@ -7,6 +7,7 @@ public class ItemHolder : MonoBehaviour
 	static public ItemHolder instance;
 
 	private int m_remainNum = 0;
+    private int m_maxItems = 100;
 
 	public Dictionary<ITEM_TYPE, int> m_itemsCollected = new Dictionary<ITEM_TYPE, int>();
 
@@ -32,9 +33,14 @@ public class ItemHolder : MonoBehaviour
 		}
 	}
 
-	public void AddItem(ITEM_TYPE type, int num)
+    public void SetItem(ITEM_TYPE type, int num)
+    {
+        m_itemsCollected[type] = Mathf.Clamp(num, 0, m_maxItems); 
+    }
+
+    public void AddItem(ITEM_TYPE type, int num)
 	{
-		m_itemsCollected[type] += num;
+		m_itemsCollected[type] = Mathf.Clamp(m_itemsCollected[type] + num, 0, m_maxItems);
 	}
 
 	public bool UseItem(ITEM_TYPE type,int num)
