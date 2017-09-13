@@ -23,6 +23,8 @@ public class RoamMonsterAttackState : State<RoamMonster>
 	//Limit damage processing to one at time during animation
 	private bool isTakedDamage = false;
 
+	private float m_timer = 0.0f;
+
 	/// <summary>
 	/// 開始処理
 	/// </summary>
@@ -30,11 +32,14 @@ public class RoamMonsterAttackState : State<RoamMonster>
 	{
 		m_target = obj.GetStats().m_robotList.GetTarget(obj.transform.position);
 
-		obj.m_anime.SetTrigger("attack");
-
+		//obj.m_anime.SetTrigger("attack");
+		m_timer = 0.0f;
 		if (m_target != null)
 		{
 			m_robotStats = m_target.GetComponent<Robot_Status>();
+			m_robotStats.TakeDamage(obj.GetStats().ATK);
+			CreateEffect();
+			isTakedDamage = true;
 		}
 	}
 
@@ -49,15 +54,18 @@ public class RoamMonsterAttackState : State<RoamMonster>
 			return;
 		}
 
+		m_timer += Time.deltaTime;
+
 		// 画像の向きをターゲットがいる方向に合わせる
 		// Fit the orientation of the image to the direction in which the target is located
 		obj.SpriteFlipX(m_target.transform.position.x);
 
 		//攻撃が終わったらもう一度攻撃する
 		//Attack once again when the attack ends
-		if (obj.m_anime.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
+		//if (obj.m_anime.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
+		if (m_timer > obj.GetStats().AtkInterval)
 		{
-			obj.m_anime.SetTrigger("attack");
+			//obj.m_anime.SetTrigger("attack");
 
 			if (m_robotStats != null && !(isTakedDamage))
 			{
@@ -65,6 +73,7 @@ public class RoamMonsterAttackState : State<RoamMonster>
 				CreateEffect();
 				isTakedDamage = true;
 			}
+			m_timer = 0.0f;
 		}
 		else
 		{

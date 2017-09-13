@@ -25,7 +25,7 @@ public class ImmovableMonsterDeadState : State<ImmovableMonster>
 	public override void Enter()
 	{
 		m_time = Time.time;
-		obj.m_anime.SetTrigger("dead");
+		//obj.m_anime.SetTrigger("dead");
 	}
 
 	/// <summary>
@@ -36,7 +36,7 @@ public class ImmovableMonsterDeadState : State<ImmovableMonster>
 	{
 		m_cnt = Time.time - m_time;
 
-		if (m_cnt > 2.0f)
+		if (m_cnt > 1.0f)
 		{
 			CreateEffect();
 			GameObject.Destroy(obj.gameObject);
