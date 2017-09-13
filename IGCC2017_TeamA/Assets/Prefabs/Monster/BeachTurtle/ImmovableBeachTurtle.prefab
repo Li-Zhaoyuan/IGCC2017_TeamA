@@ -214,7 +214,7 @@ MonoBehaviour:
   m_hp: 1000
   m_atk: 5
   m_spd: 0
-  m_def: 30
+  m_def: 3
   m_mag: 0
   m_chargeArea: {fileID: 0}
 --- !u!114 &114119100613019730
