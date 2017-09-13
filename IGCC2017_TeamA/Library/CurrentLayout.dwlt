@@ -111,7 +111,7 @@ MonoBehaviour:
   m_MinSize: {x: 917, y: 442}
   m_MaxSize: {x: 22012, y: 10021}
   vertical: 0
-  controlID: 6133
+  controlID: 3015
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 442}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 6134
+  controlID: 2943
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_MinSize: {x: 204, y: 342}
   m_MaxSize: {x: 4004, y: 8042}
   vertical: 1
-  controlID: 6099
+  controlID: 2868
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -414,14 +414,14 @@ MonoBehaviour:
     width: 426
     height: 283
   m_SceneLighting: 1
-  lastFramingTime: 84.59766519665904
+  lastFramingTime: 242.84622135789112
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 224.88313, y: 92.82223, z: 0}
+    m_Target: {x: 1.56, y: 0, z: 0}
     speed: 2
-    m_Value: {x: 224.88313, y: 92.82223, z: 0}
+    m_Value: {x: 1.56, y: 0, z: 0}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -448,9 +448,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 202.3467
+    m_Target: 8.365531
     speed: 2
-    m_Value: 202.3467
+    m_Value: 8.365531
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -561,9 +561,9 @@ MonoBehaviour:
     height: 357
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: e28effff
-    m_LastClickedID: -28958
-    m_ExpandedIDs: 68e8ffff00000000
+    m_SelectedIDs: a8300000
+    m_LastClickedID: 0
+    m_ExpandedIDs: 6ae0feff6830ffff6239ffffe253ffff4e5bffff78baffff48c2ffff74daffff16e3ffffd6eeffff000000001e33000034350000cc360000cc3c0000fc3c0000063d0000983d00006a410000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -650,19 +650,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Prefabs/Monster/ForestWasp
+    - Assets/Scene/Game
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs/Monster/ForestWasp
+  - Assets/Scene/Game
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\s162044\Documents\IGCC2017_TeamA\IGCC2017_TeamA
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: e8320000
-    m_LastClickedID: 13032
-    m_ExpandedIDs: 00000000ba320000c2320000c4320000f23200003233000082330000bc330000d0330000ffffff7f
+    m_SelectedIDs: be310000
+    m_LastClickedID: 12734
+    m_ExpandedIDs: 00000000463000004e3000005030000090300000d03000003e31000094310000aa310000ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -690,7 +690,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ba320000c2320000c4320000f23200003233000082330000bc330000d0330000ffffff7f
+    m_ExpandedIDs: 00000000463000004e3000005030000090300000d03000003e31000094310000aa310000ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -717,7 +717,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 7227000000000000584f0000c83100008c2b00007428000066300000
     m_RenameOverlay:
       m_UserAcceptedRename: 0

@@ -7,6 +7,12 @@ public class UpgradeManager : MonoBehaviour {
 	[SerializeField]
 	private ClickObject m_clickObject;
 
+	[SerializeField]
+	private AudioSource m_upgradeSE;
+
+	[SerializeField]
+	private AudioSource m_upgradeFailedSE;
+
 	private GameObject m_target = null;
 
 	private ItemHolder m_item = null;
@@ -26,10 +32,17 @@ public class UpgradeManager : MonoBehaviour {
 	{
 		var stats = m_target.GetComponent<Robot_Status>().base_attack_point;
 
-		bool isUpgrade = m_item.UseItem(m_type,(int)stats);
+		bool isUpgrade = m_item.UseItem(m_type, (int)stats);
+		isUpgrade = m_item.UseItem(m_type, 0);
 		if (isUpgrade)
 		{
 			m_target.GetComponent<Robot_Status>().AddBaseAttackPoint(1.0f);
+			m_upgradeSE.Play();
+			return;
+		}
+		else
+		{
+			m_upgradeFailedSE.Play();
 		}
 	}
 
@@ -41,7 +54,14 @@ public class UpgradeManager : MonoBehaviour {
 		if (isUpgrade)
 		{
 			m_target.GetComponent<Robot_Status>().AddBaseDefencePoint(1.0f);
+			m_upgradeSE.Play();
+			return;
 		}
+		else
+		{
+			m_upgradeFailedSE.Play();
+		}
+
 	}
 
 	public void UpgradeSpeed()
@@ -52,7 +72,14 @@ public class UpgradeManager : MonoBehaviour {
 		if (isUpgrade)
 		{
 			m_target.GetComponent<Robot_Status>().AddBaseSpeedPoint(0.1f);
+			m_upgradeSE.Play();
+			return;
 		}
+		else
+		{
+			m_upgradeFailedSE.Play();
+		}
+
 	}
 
 	public void UpgradeMagic()
@@ -63,7 +90,14 @@ public class UpgradeManager : MonoBehaviour {
 		if (isUpgrade)
 		{
 			m_target.GetComponent<Robot_Status>().AddBaseMagicPoint(1.0f);
+			m_upgradeSE.Play();
+			return;
 		}
+		else
+		{
+			m_upgradeFailedSE.Play();
+		}
+
 	}
 
 	public void UpgradeLuck()
@@ -74,7 +108,14 @@ public class UpgradeManager : MonoBehaviour {
 		if (isUpgrade)
 		{
 			m_target.GetComponent<Robot_Status>().AddLuckPoint(1.0f);
+			m_upgradeSE.Play();
+			return;
 		}
+		else
+		{
+			m_upgradeFailedSE.Play();
+		}
+
 	}
 
 	public void UpgradeHP()
@@ -85,7 +126,14 @@ public class UpgradeManager : MonoBehaviour {
 		if (isUpgrade)
 		{
 			m_target.GetComponent<Robot_Status>().AddBaseHealthPoint(10.0f);
+			m_upgradeSE.Play();
+			return;
 		}
+		else
+		{
+			m_upgradeFailedSE.Play();
+		}
+
 	}
 
 	public void UpgradeEnergy()
@@ -96,6 +144,13 @@ public class UpgradeManager : MonoBehaviour {
 		if (isUpgrade)
 		{
 			m_target.GetComponent<Robot_Status>().AddBaseEnergyPoint(10.0f);
+			m_upgradeSE.Play();
+			return;
 		}
+		else
+		{
+			m_upgradeFailedSE.Play();
+		}
+
 	}
 }
