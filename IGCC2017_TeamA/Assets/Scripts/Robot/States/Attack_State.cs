@@ -41,13 +41,13 @@ public class Attack_State : Robot_BaseState
                 //    , attack_damage + (main_robot.GetComponent<Robot_Status>().GetAttackPoint() * 3)
                 //    , alive_time);
                 if(state_holder_stateManager.enemy_target.GetComponent<ChaseMonster>() != null)
-                    state_holder_stateManager.enemy_target.GetComponent<ChaseMonster>().TakeDamage(main_robot.GetComponent<Robot_Status>().GetAttackPoint() * 3);
+                    state_holder_stateManager.enemy_target.GetComponent<ChaseMonster>().TakeDamage(main_robot.GetComponent<Robot_Status>().GetAttackPoint() * 5);
                 else if(state_holder_stateManager.enemy_target.GetComponent<TestMonster>() != null)
-                    state_holder_stateManager.enemy_target.GetComponent<TestMonster>().TakeDamage(main_robot.GetComponent<Robot_Status>().GetAttackPoint() * 3);
+                    state_holder_stateManager.enemy_target.GetComponent<TestMonster>().TakeDamage(main_robot.GetComponent<Robot_Status>().GetAttackPoint() * 5);
                 else if (state_holder_stateManager.enemy_target.GetComponent<ImmovableMonster>() != null)
-                    state_holder_stateManager.enemy_target.GetComponent<ImmovableMonster>().TakeDamage(main_robot.GetComponent<Robot_Status>().GetAttackPoint() * 3);
+                    state_holder_stateManager.enemy_target.GetComponent<ImmovableMonster>().TakeDamage(main_robot.GetComponent<Robot_Status>().GetAttackPoint() * 5);
                 else if (state_holder_stateManager.enemy_target.GetComponent<RoamMonster>() != null)
-                    state_holder_stateManager.enemy_target.GetComponent<RoamMonster>().TakeDamage(main_robot.GetComponent<Robot_Status>().GetAttackPoint() * 3);
+                    state_holder_stateManager.enemy_target.GetComponent<RoamMonster>().TakeDamage(main_robot.GetComponent<Robot_Status>().GetAttackPoint() * 5);
 
                 SpawnParticles(hit_effect, Vector3.zero, state_holder_stateManager.enemy_target);
             }

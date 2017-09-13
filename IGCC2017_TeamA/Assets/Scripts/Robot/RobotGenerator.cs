@@ -14,6 +14,7 @@ public class RobotGenerator : MonoBehaviour {
         if(home_base != null)
         {
             spawn_pos = home_base.transform.position;
+            Debug.Log(spawn_pos);
         }
         else
         {
@@ -27,10 +28,22 @@ public class RobotGenerator : MonoBehaviour {
         {
             MakeRandomRobot();
         }
-	}
+       
+
+    }
 
     public void MakeRandomRobot()
     {
+        if (home_base == null)
+        {
+            home_base = GameObject.FindGameObjectWithTag("Base");
+            
+            if (home_base != null)
+            {
+                spawn_pos = home_base.transform.position;
+            }
+        }
+       
         int rnd_robot = Random.Range(0, 6);
         if (rnd_robot == 0)
             MakeBraveRobot();
@@ -57,6 +70,7 @@ public class RobotGenerator : MonoBehaviour {
                                                                , 100
                                                                , 100
                                                                , PERSONALITY.BRAVE);
+       
     }
 
     void MakeCuriousRobot()
@@ -70,6 +84,7 @@ public class RobotGenerator : MonoBehaviour {
                                                                        , 100
                                                                        , 100
                                                                        , PERSONALITY.CURIOUS);
+        
     }
     void MakeSensitiveRobot()
     {
@@ -82,6 +97,7 @@ public class RobotGenerator : MonoBehaviour {
                                                                        , 100
                                                                        , 100
                                                                        , PERSONALITY.SENSITIVE);
+       
     }
     void MakeLazyRobot()
     {
@@ -94,6 +110,7 @@ public class RobotGenerator : MonoBehaviour {
                                                                        , 100
                                                                        , 100
                                                                        , PERSONALITY.LAZY);
+      
     }
     void MakeImpatientRobot()
     {
@@ -107,6 +124,7 @@ public class RobotGenerator : MonoBehaviour {
                                                                        , 100
                                                                        , 100
                                                                        , PERSONALITY.IMPATIENT);
+        
     }
     void MakeCarefulRobot()
     {
@@ -119,6 +137,7 @@ public class RobotGenerator : MonoBehaviour {
                                                                        , 100
                                                                        , 100
                                                                        , PERSONALITY.CAREFUL);
+        
     }
    
 }

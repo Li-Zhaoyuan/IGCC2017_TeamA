@@ -7,12 +7,12 @@ public class Item_Resource : Item_Base {
     // Use this for initialization
     public override void Start()
     {
+        base.Start();
         number_resources = Random.Range(1, 11);
+
+        
     }
 
     //// Update is called once per frame
-    //public override void Update()
-    //{
-
-    //}
+    
 }

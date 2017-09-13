@@ -18,6 +18,7 @@ public enum ITEM_TYPE
 
 public class Item_Base : MonoBehaviour {
     protected int number_resources;
+    protected Animator animator;
     public GameObject main_gather;
     private ITEM_TYPE item_type;
     //size of the sprite.
@@ -27,6 +28,7 @@ public class Item_Base : MonoBehaviour {
     public Sprite item_sprite;
     // Use this for initialization
     public virtual void Start () {
+        
         item_sprite = GetComponent<SpriteRenderer>().sprite;
         item_sprite_size = item_sprite.rect.size;
         item_local_sprite_size = item_sprite_size / item_sprite.pixelsPerUnit;
@@ -57,6 +59,26 @@ public class Item_Base : MonoBehaviour {
     public virtual void SetItemType(ITEM_TYPE type)
     {
         item_type = type;
+        if(animator == null)
+        {
+            animator = GetComponent<Animator>();
+        }
+        if(type == ITEM_TYPE.RESOURCE_COG)
+        {
+            animator.SetBool("isCog", true);
+        }
+        else if(type == ITEM_TYPE.RESOURCE_SCRAPMETAL)
+        {
+            animator.SetBool("isMetal", true);
+        }
+        else if (type == ITEM_TYPE.RESOURCE_BATTERY)
+        {
+            animator.SetBool("isBattery", true);
+        }
+        else
+        {
+            animator.SetBool("isSpring", true);
+        }
     }
 
     public virtual ITEM_TYPE GetItemType()

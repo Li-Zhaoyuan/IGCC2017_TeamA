@@ -56,7 +56,7 @@ public class ItemGenerator : MonoBehaviour {
 
     public void SpawnRandowmItem(Vector3 pos)
     {
-        if (Random.Range(1, 101) < 10)
+        if (Random.Range(1, 101) < 0)
         {
             SpawnRandomUsable(pos);
         }
