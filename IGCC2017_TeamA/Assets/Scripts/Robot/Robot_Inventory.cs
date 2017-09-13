@@ -7,12 +7,13 @@ public class Robot_Inventory : MonoBehaviour {
     //public List<GameObject> items;
 
     public int max_inventory_size;
-    public int resources_collected;
+    //public int resources_collected;
+    [SerializeField]
     public Dictionary<ITEM_TYPE, int> items_collected = new Dictionary<ITEM_TYPE, int>();
     public Dictionary<ITEM_TYPE, int> max_space_for_items = new Dictionary<ITEM_TYPE, int>();
     //public int 
 
-    public void Start()
+    public virtual void Start()
     {
         //items = new GameObject();
         for(int i = 0; i < (int)ITEM_TYPE.TOTAL_USABLE; ++i)
@@ -31,9 +32,12 @@ public class Robot_Inventory : MonoBehaviour {
             }
         }
     }
+    public virtual void Update()
+    {
 
+    }
 
-    public int GetTotalNumberOfresourcesCollected()
+    public virtual int GetTotalNumberOfresourcesCollected()
     {
         int temp = 0;
         for (int i = 0; i < (int)ITEM_TYPE.TOTAL_USABLE; ++i)
@@ -45,40 +49,40 @@ public class Robot_Inventory : MonoBehaviour {
         }
         return temp;
     }
-    public int GetNumberOfresourcesCollected(ITEM_TYPE type)
+    public virtual int GetNumberOfresourcesCollected(ITEM_TYPE type)
     {
         return items_collected[type];
     }
 
-    public void SetNumberOfresourcesCollected(int value, ITEM_TYPE type)
+    public virtual void SetNumberOfresourcesCollected(int value, ITEM_TYPE type)
     {
         items_collected[type] = value;
         //resources_collected = value;
     }
 
-    public void AddNumberOfresourcesCollected(int value,ITEM_TYPE type)
+    public virtual void AddNumberOfresourcesCollected(int value,ITEM_TYPE type)
     {
         items_collected[type] = Mathf.Clamp(items_collected[type] + value, 0, max_space_for_items[type]);
         //resources_collected = Mathf.Clamp(resources_collected+ value,0, max_inventory_size);
     }
 
-    public void MinusNumberOfresourcesCollected(int value, ITEM_TYPE type)
+    public virtual void MinusNumberOfresourcesCollected(int value, ITEM_TYPE type)
     {
         items_collected[type] = Mathf.Clamp(items_collected[type] - value, 0, max_space_for_items[type]);
     }
 
 
-    public void SetMaxInventorySize(int value, ITEM_TYPE type)
+    public virtual void SetMaxInventorySize(int value, ITEM_TYPE type)
     {
         max_space_for_items[type] = value;
     }
 
-    public void AddMaxInventorySize(int value, ITEM_TYPE type)
+    public virtual void AddMaxInventorySize(int value, ITEM_TYPE type)
     {
         max_space_for_items[type] += value;
     }
 
-    public void MinusMaxInventorySize(int value, ITEM_TYPE type)
+    public virtual void MinusMaxInventorySize(int value, ITEM_TYPE type)
     {
         max_space_for_items[type] -= value;
     }

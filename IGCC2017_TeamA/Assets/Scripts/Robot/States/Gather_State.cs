@@ -35,7 +35,7 @@ public class Gather_State : Robot_BaseState
             if (timer > gather_time)
             {
                 timer = 0f;
-                robot_status.inventory.AddNumberOfresourcesCollected(
+                robot_status.bank.AddNumberOfresourcesCollected(
                     state_holder_stateManager.item_target.GetComponent<Item_Base>().GetNumberOfResourcesWorth() + (int)(main_robot.GetComponent<Robot_Status>().GetLuckPoint()), state_holder_stateManager.item_target.GetComponent<Item_Base>().GetItemType());
                 Destroy(state_holder_stateManager.item_target);
                 state_holder_stateManager.item_target = null;
