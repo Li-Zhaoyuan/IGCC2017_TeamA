@@ -68,7 +68,7 @@ public class Robot_Status : MonoBehaviour {
 
     public State_Manager state_manager;
     public Robot_Inventory inventory;
-    public Bank_Inventory bank;
+    public ItemHolder bank;
 
     float chance_attack;
     float chance_gather;
@@ -78,7 +78,7 @@ public class Robot_Status : MonoBehaviour {
     void Start () {
         state_manager = GetComponentInChildren<State_Manager>();
         inventory = GetComponentInChildren<Robot_Inventory>();
-        bank = FindObjectOfType<Bank_Inventory>();
+        bank = FindObjectOfType<ItemHolder>();
         chance_attack = 50f;
         chance_gather = 50f;
         chance_heal = 50f;

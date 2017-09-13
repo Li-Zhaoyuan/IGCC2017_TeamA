@@ -95,6 +95,11 @@ public class Item_Base : MonoBehaviour {
     {
         return main_gather;
     }
+
+    public virtual void DestroyOwnself()
+    {
+        Destroy(gameObject);
+    }
     //// Update is called once per frame
     //public virtual void Update () {
 

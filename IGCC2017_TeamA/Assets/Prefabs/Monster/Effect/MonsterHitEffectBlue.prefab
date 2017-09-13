@@ -21,7 +21,11 @@ GameObject:
   - component: {fileID: 4651453469767130}
   - component: {fileID: 198091909119770574}
   - component: {fileID: 199219803868640660}
+<<<<<<< HEAD
   - component: {fileID: 114135198720907776}
+=======
+  - component: {fileID: 114437321552083584}
+>>>>>>> 55d39cb392fc13b11366d91512d9c677d199d4c1
   m_Layer: 0
   m_Name: MonsterHitEffectBlue
   m_TagString: Untagged
@@ -42,7 +46,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!114 &114135198720907776
+=======
+--- !u!114 &114437321552083584
+>>>>>>> 55d39cb392fc13b11366d91512d9c677d199d4c1
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -112,7 +120,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 308424553
+  randomSeed: -610708237
   InitialModule:
     serializedVersion: 3
     enabled: 1
