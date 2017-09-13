@@ -16,9 +16,7 @@ public class LeftClickMap : MonoBehaviour
     //LeftClickRobot.cs　と　相互関係
     //                Mutual relationship
     public LeftClickRobot robotUIcs;
-    bool robotState;
-    //state
-    public bool _state = false;
+    public LeftClickMonster monsterUIcs;
 
     private GameObject this_obj;
 
@@ -34,24 +32,29 @@ public class LeftClickMap : MonoBehaviour
     {
         //取得
         robotUIcs = GetComponent<LeftClickRobot>();
+        monsterUIcs = GetComponent<LeftClickMonster>();
         this_obj = GameObject.Find("LeftBaseUI");
-        _state = true;
-
-        //if _getObject null
-        if (_getObject == null)
-        {
-            return;
-        }
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        robotState = robotUIcs.GetState();
         //Object Active NoActive
-        if (robotState == true)
+        /*
+        if (robotState==true||monsterState==true)
+        {
+            this_obj.SetActive(false);
+        }
+        else if((robotState==true&&monsterState==false)||(robotState==false&&monsterState==true))
+        {
+            this_obj.SetActive(false);
+        }
+        else
+        {
+            this_obj.SetActive(true);
+        }
+        */
+        if(robotUIcs.target!=null||monsterUIcs.target!=null)
         {
             this_obj.SetActive(false);
         }
@@ -69,10 +72,13 @@ public class LeftClickMap : MonoBehaviour
             if (collition2d && collition2d.gameObject.tag == "Base")
             {
                 //robotUIStateがtrueだったらrobotUIを消す
-                if (robotState == true)
+                if (robotUIcs.target!=null)
                 {
                     Destroy(robotUIcs.target);
-                    robotUIcs._state = false;
+                }
+               else if (monsterUIcs.target!=null)
+                {
+                    Destroy(monsterUIcs.target);
                 }
 
                 //すでにRobotのUIが表示されていたら消す
@@ -80,18 +86,15 @@ public class LeftClickMap : MonoBehaviour
                 {
                     Destroy(target);
                     target = null;
-                    _state = false;
+                    //_state = false;
 
                 }
 
                 _getObject = collition2d.transform.gameObject;
                 //Make clone of robot clicked
                 //クリックしたロボットのcloneを作る
-                if (_state == false)
-                {
-                    target = Instantiate(viewUI, new Vector2(clonePotision.x, clonePotision.y), Quaternion.identity);
-                }
-                _state = true;
+                target = Instantiate(viewUI, new Vector2(clonePotision.x, clonePotision.y), Quaternion.identity);
+
             }
         }
     }
@@ -99,8 +102,4 @@ public class LeftClickMap : MonoBehaviour
     //ロボットのUIはほとんどおわり。修正案まち
     //BaseUIの進行をスタート
 
-    public bool GetState()
-    {
-        return _state;
-    }
 }
