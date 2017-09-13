@@ -16,6 +16,9 @@ public class MonsterStats : MonoBehaviour
 
 	public GameObject m_deadEffect;
 
+	[System.NonSerialized]
+	public AudioSource m_hitSE;
+
 	//体力 HitPoint
 	[SerializeField]
 	private float m_hp;
@@ -110,6 +113,7 @@ public class MonsterStats : MonoBehaviour
 
 	public void Start()
 	{
+		m_hitSE = GetComponentInChildren<AudioSource>();
 		m_maxHp = m_hp;
 		if (m_chargeArea != null)
 		{

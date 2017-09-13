@@ -40,6 +40,7 @@ public class ChaseMonsterAttackState : State<ChaseMonster>
 		{
 			m_robotStats = m_target.GetComponent<Robot_Status>();
 			m_robotStats.TakeDamage(obj.GetStats().ATK);
+			obj.GetStats().m_hitSE.Play();
 			CreateEffect();
 			isTakedDamage = true;
 		}
@@ -71,6 +72,7 @@ public class ChaseMonsterAttackState : State<ChaseMonster>
 			if (m_robotStats != null && !(isTakedDamage))
 			{
 				m_robotStats.TakeDamage(obj.GetStats().ATK);
+				obj.GetStats().m_hitSE.Play();
 				CreateEffect();
 				isTakedDamage = true;
 			}
@@ -107,7 +109,7 @@ public class ChaseMonsterAttackState : State<ChaseMonster>
 
 		//ターゲットから離れていたら徘徊状態に移行する
 		//If you are away from the target, go to wandering state
-		if (direction.magnitude >= 1.0f)
+		if (direction.magnitude >= 1.5f)
 		{
 			return true;
 		}
