@@ -36,12 +36,6 @@ public class RoamMonsterAttackState : State<RoamMonster>
 		{
 			m_robotStats = m_target.GetComponent<Robot_Status>();
 		}
-
-		if (m_robotStats != null && !(isTakedDamage))
-		{
-			m_robotStats.TakeDamage(obj.GetStats().ATK);
-			isTakedDamage = true;
-		}
 	}
 
 	/// <summary>
@@ -68,6 +62,7 @@ public class RoamMonsterAttackState : State<RoamMonster>
 			if (m_robotStats != null && !(isTakedDamage))
 			{
 				m_robotStats.TakeDamage(obj.GetStats().ATK);
+				CreateEffect();
 				isTakedDamage = true;
 			}
 		}
@@ -116,5 +111,14 @@ public class RoamMonsterAttackState : State<RoamMonster>
 		}
 
 		return false;
+	}
+
+	private void CreateEffect()
+	{
+		//ターゲットの存在する方向
+		//Direction in which the target exists
+		Vector3 direction = m_target.transform.position - obj.transform.position;
+
+		obj.GetStats().CreateEffect(obj.GetStats().m_attackEffect, (direction * 0.8f) + obj.transform.position);
 	}
 }

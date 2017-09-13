@@ -231,6 +231,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86a7ed58909e8034e9cdc9d21e384b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_attackEffect: {fileID: 1439503761610370, guid: 9facaca449e99e24bb9113c037187aea,
+    type: 2}
+  m_deadEffect: {fileID: 1379051174820794, guid: 78eb422cfee659349b891554d6826ca8,
+    type: 2}
   m_hp: 100
   m_atk: 3
   m_spd: 1

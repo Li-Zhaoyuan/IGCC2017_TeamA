@@ -50,6 +50,7 @@ public class Timer : MonoBehaviour
 		{
 			m_elapsedTime = m_timeLimit;
 			StopCount();
+			m_changeScene.LoadMenu();
 		}
 
 		//時間描画

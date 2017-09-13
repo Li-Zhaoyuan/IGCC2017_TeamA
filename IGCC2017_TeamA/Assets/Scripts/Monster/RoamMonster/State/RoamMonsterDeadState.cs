@@ -38,6 +38,7 @@ public class RoamMonsterDeadState : State<RoamMonster>
 
 		if (m_cnt > 2.0f)
 		{
+			CreateEffect();
 			GameObject.Destroy(obj.gameObject);
 		}
 	}
@@ -52,4 +53,8 @@ public class RoamMonsterDeadState : State<RoamMonster>
 
 	}
 
+	private void CreateEffect()
+	{
+		obj.GetStats().CreateEffect(obj.GetStats().m_deadEffect, obj.transform.position);
+	}
 }
