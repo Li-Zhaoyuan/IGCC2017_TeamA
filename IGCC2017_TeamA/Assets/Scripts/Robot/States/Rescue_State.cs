@@ -39,7 +39,7 @@ public class Rescue_State : Robot_BaseState
                     timer = 0;
                     state_holder_stateManager.GetAllyTarget()
                         .GetComponent<Robot_Status>()
-                        .SetHealthPoint(state_holder_stateManager.GetAllyTarget().GetComponent<Robot_Status>().GetBaseHealthPoint() * 0.5f);//50% health revive with 
+                        .SetHealthPoint(state_holder_stateManager.GetAllyTarget().GetComponent<Robot_Status>().GetBaseHealthPoint());//50% health revive with 
                 }
                 SpawnParticles(revival_effect, Vector3.zero, state_holder_stateManager.GetAllyTarget());
             }

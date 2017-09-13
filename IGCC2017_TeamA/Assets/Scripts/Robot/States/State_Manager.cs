@@ -44,6 +44,7 @@ public class State_Manager : MonoBehaviour {
     public Vector2 robot_local_sprite_size;
     public float robot_sprite_across_length;
     public Sprite robot_sprite;
+    public SpriteRenderer robot_sprite_renderer;
 
 
     //public TempScripts[] waypoints;
@@ -69,7 +70,8 @@ public class State_Manager : MonoBehaviour {
         disignated_position = new Vector3(Random.Range(-4,5), Random.Range(-4, 5), 1);
 
         //get the sprite size
-        robot_sprite = parent_object.GetComponent<SpriteRenderer>().sprite;
+        robot_sprite_renderer = parent_object.GetComponent<SpriteRenderer>();
+        robot_sprite = robot_sprite_renderer.sprite;
         robot_sprite_size = robot_sprite.rect.size;
         robot_local_sprite_size = robot_sprite_size / robot_sprite.pixelsPerUnit;
         robot_sprite_across_length = Mathf.Sqrt(robot_local_sprite_size.x * robot_local_sprite_size.x + robot_local_sprite_size.y * robot_local_sprite_size.y);
@@ -90,6 +92,18 @@ public class State_Manager : MonoBehaviour {
         StateTransitions();
 
     }
+
+    public void ChangeSpriteOnMood(Sprite sprite)
+    {
+        robot_sprite_renderer.sprite = sprite;
+
+        robot_sprite = robot_sprite_renderer.sprite;
+        robot_sprite_size = robot_sprite.rect.size;
+        robot_local_sprite_size = robot_sprite_size / robot_sprite.pixelsPerUnit;
+        robot_sprite_across_length = Mathf.Sqrt(robot_local_sprite_size.x * robot_local_sprite_size.x + robot_local_sprite_size.y * robot_local_sprite_size.y);
+
+    }
+
     public void StateTransitions()
     {
         if(states_enum != ROBOT_STATES.DEAD)
