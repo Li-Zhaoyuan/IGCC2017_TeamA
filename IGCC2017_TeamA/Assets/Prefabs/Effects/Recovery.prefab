@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 19978246}
   - component: {fileID: 114066859996444082}
   m_Layer: 0
-  m_Name: ManaGain
+  m_Name: Recovery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -81,8 +81,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57aab210be3698b4f9b9a3557689b439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_unit: {fileID: 1868861289385158, guid: b7cf9e2e84da90c468e96e30145453ab, type: 2}
-  m_interval: 1
+  m_unit:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_maxInterval: 5
+  m_minInterval: 1
   m_chargeArea: {fileID: 0}
 --- !u!212 &212762858834735384
 SpriteRenderer:
