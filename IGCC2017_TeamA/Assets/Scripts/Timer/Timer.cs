@@ -2,7 +2,7 @@
 //* @file  :Timer.cs
 //* @brief :時間の計測と描画
 //* @brief :Time measurement and drawing
-//* @date  :2017/09/11
+//* @date  :2017/09/12
 //* @author:S.Katou
 //************************************************/
 using System.Collections;
@@ -20,6 +20,9 @@ public class Timer : MonoBehaviour
     //時間描画用
 	[SerializeField]
     private Text m_text;
+
+	[SerializeField]
+	private ChangeScene m_changeScene;
 
     // 経過時間
     private float m_elapsedTime = 0.0f;
