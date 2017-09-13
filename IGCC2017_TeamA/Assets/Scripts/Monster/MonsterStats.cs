@@ -12,6 +12,9 @@ using UnityEngine;
 
 public class MonsterStats : MonoBehaviour
 {
+	public GameObject m_attackEffect;
+
+	public GameObject m_deadEffect;
 
 	//体力 HitPoint
 	[SerializeField]
@@ -99,5 +102,10 @@ public class MonsterStats : MonoBehaviour
 		{
 			m_robotList = m_chargeArea.GetComponent<RobotList>();
 		}
+	}
+
+	public void CreateEffect(GameObject effect, Vector3 pos)
+	{
+		GameObject.Instantiate(effect,pos, Quaternion.Euler(0, 0, 0));
 	}
 }

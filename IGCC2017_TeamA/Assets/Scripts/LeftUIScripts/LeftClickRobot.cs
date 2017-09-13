@@ -15,11 +15,11 @@ public class LeftClickRobot : MonoBehaviour
     public Robot_Status robot_status;
     public Robot_Status target_status;
     //LeftClickMap.cs　と　相互関係
+    //LeftMonster
     //                Mutual relationship
     public LeftClickMap baseUIcs;
-    bool baseState;
-    //state
-    public bool _state;
+    public LeftClickMonster monsterUIcs;
+    
 
     private GameObject this_obj;
 
@@ -56,40 +56,20 @@ public class LeftClickRobot : MonoBehaviour
     {
         //取得
         baseUIcs = GetComponent<LeftClickMap>();
+        monsterUIcs = GetComponent<LeftClickMonster>();
         this_obj = GameObject.Find("StatusUI");
 
 
         clonePotision.x = -20.0f;
         clonePotision.y = 4.0f;
-        
-        //if _getObject null
-        if (_getObject == null)
-        {
-            return;
-        }
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        //scripts取得
-        //HP Energyリアルタイム更新
-        //cloneのスピード0
-        if (_getObject != null)
-        {
-            robot_status = _getObject.GetComponent<Robot_Status>();
-            target_status = target.GetComponent<Robot_Status>();
-            //target
-            target_status.speed_point = 0.0f;
-            //hp energy test
-            target_status.SetHealthPoint(robot_status.GetHealthPoint());
-            target_status.SetEnergyPoint(robot_status.GetEnergyPoint());
-        }
-        //Status取得
-        baseState = baseUIcs.GetState();
-        //Object Active NoActive
-        if (baseState == true)
+
+        
+        if(baseUIcs.target!=null||monsterUIcs.target!=null)
         {
             this_obj.SetActive(false);
         }
@@ -108,31 +88,44 @@ public class LeftClickRobot : MonoBehaviour
             if (collition2d && collition2d.gameObject.tag == "Robot")
             {
                 //BaseUIStateがtrueだったらBaseUIを消す
-                if (baseState == true)
+                if (baseUIcs.target!=null)
                 {
                     Destroy(baseUIcs.target);
-                    baseUIcs._state = false;
                 }
-
+                else if (monsterUIcs.target!=null)
+                {
+                    Destroy(monsterUIcs.target);
+                }
                 //すでにRobotのUIが表示されていたら消す
                 if (_getObject!=null)
                 {
                     Destroy(target);
-                    _state = false;
                 }
 
                 _getObject = collition2d.transform.gameObject;
                 //Make clone of robot clicked
                 //クリックしたロボットのcloneを作る
                 target = Instantiate(_getObject, new Vector2(clonePotision.x, clonePotision.y), Quaternion.identity);
-
-               // target.GetComponentInChildren<State_Manager>().enabled = false;
-                if (robot_status != null)
-                {
-                    _state = true;
-                }
             }
         }
+
+        //scripts取得
+        //HP Energyリアルタイム更新
+        //cloneのスピード0
+        if (_getObject != null)
+        {
+            robot_status = _getObject.GetComponent<Robot_Status>();
+            if (target != null)
+            {
+                target_status = target.GetComponent<Robot_Status>();
+                //target
+                target_status.speed_point = 0.0f;
+                //hp energy test
+                target_status.SetHealthPoint(robot_status.GetHealthPoint());
+                target_status.SetEnergyPoint(robot_status.GetEnergyPoint());
+            }
+        }
+
         //ステータスリアルタイム更新
         if (robot_status != null)
         {
@@ -156,11 +149,5 @@ public class LeftClickRobot : MonoBehaviour
             statusText[(int)STATUS.DEF].text = "DEF:" + def_point.ToString();
         }
     }
-    public bool GetState()
-    {
-        return _state;
-    }
 
-
-    //HPをカメラで追従する
 }

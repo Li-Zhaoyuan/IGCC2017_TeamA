@@ -2,7 +2,7 @@
 //* @file  :MonsterSummoner.cs
 //* @brief :モンスターを召喚する
 //* @brief :Summon a monster
-//* @date  :2017/09/10
+//* @date  :2017/09/13
 //* @author:S.Katou
 //************************************************/
 using System.Collections;
@@ -21,6 +21,7 @@ public class MonsterSummoner : MonoBehaviour {
 	[SerializeField]
 	private float m_minInterval = 1.0f;
 
+
 	//このモンスターのいるエリア
 	//Areas where this monster is located
 	public GameObject m_chargeArea;
@@ -28,6 +29,19 @@ public class MonsterSummoner : MonoBehaviour {
 	//エリア範囲取得用
 	//For area range acquisition
 	private Collider2D m_col = null;
+
+
+	[SerializeField]
+	private float m_addHPMax = 200.0f;
+
+	[SerializeField]
+	private float m_addATKMax = 5.0f;
+
+	[SerializeField]
+	private float m_addDEFMax = 5.0f;
+
+	[SerializeField]
+	private float m_addSPDMax = 5.0f;
 
 	private float m_cnt = 0.0f;
 	private float m_startTime;
@@ -70,6 +84,11 @@ public class MonsterSummoner : MonoBehaviour {
 		{
 			stats.m_chargeArea = m_chargeArea;
 			stats.m_robotList = m_chargeArea.GetComponent<RobotList>();
+
+			stats.HP += Random.Range(0, m_addHPMax);
+			stats.ATK += Random.Range(0, m_addATKMax);
+			stats.DEF += Random.Range(0, m_addDEFMax);
+			stats.SPD += Random.Range(0, m_addSPDMax);
 		}
 	}
 

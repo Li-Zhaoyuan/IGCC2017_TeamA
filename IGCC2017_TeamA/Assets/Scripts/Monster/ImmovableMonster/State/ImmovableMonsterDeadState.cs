@@ -24,7 +24,6 @@ public class ImmovableMonsterDeadState : State<ImmovableMonster>
 	/// </summary>
 	public override void Enter()
 	{
-		Debug.Log(obj.name + " Dead Enter");
 		m_time = Time.time;
 		obj.m_anime.SetTrigger("dead");
 	}
@@ -39,8 +38,7 @@ public class ImmovableMonsterDeadState : State<ImmovableMonster>
 
 		if (m_cnt > 2.0f)
 		{
-			Debug.Log(obj.name + " Dead");
-
+			CreateEffect();
 			GameObject.Destroy(obj.gameObject);
 		}
 	}
@@ -52,6 +50,12 @@ public class ImmovableMonsterDeadState : State<ImmovableMonster>
 	/// </summary>
 	public override void Exit()
 	{
-		Debug.Log(" Dead Exit");
+
 	}
+
+	private void CreateEffect()
+	{
+		obj.GetStats().CreateEffect(obj.GetStats().m_deadEffect, obj.transform.position);
+	}
+
 }
