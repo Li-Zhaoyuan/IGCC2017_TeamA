@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//sorry
+//bulldoze programming through
+
 public class LeftClickMonster : MonoBehaviour
 {
 
     //ゲットしたオブジェクト格納
     public GameObject _getObject = null;
     public GameObject target;
+    public GameObject statusClone;
+    public GameObject viewArea;
     //Monster
     public MonsterStats monster_status;
+    public MonsterStats clone_status;
     public LeftClickMap baseUIcs;
     public LeftClickRobot robotUIcs;
     //表示画像　//普通にクローンすればアニメーションのままクローンする
@@ -23,13 +29,14 @@ public class LeftClickMonster : MonoBehaviour
     Vector2 clonePotision;
 
     //ATK
-    float atk_point;
+    int atk_point;
     //SPD
-    float spd_point;
+    int spd_point;
     //INT
-    float int_point;
+    int int_point;
     //DEF
-    float def_point;
+    int def_point;
+    public GameObject[] viewUI;
     public Text[] statusText;
     private GameObject this_obj;
     enum STATUS
@@ -39,6 +46,13 @@ public class LeftClickMonster : MonoBehaviour
         INT,
         DEF
     }
+    enum MONSTER
+    {
+        WASP,
+        CITYROBOT,
+        TURTLE,
+        DESERT
+    }
 
     // Use this for initialization
     void Start()
@@ -47,31 +61,19 @@ public class LeftClickMonster : MonoBehaviour
         baseUIcs = GetComponent<LeftClickMap>();
         robotUIcs = GetComponent<LeftClickRobot>();
         this_obj = GameObject.Find("MonsterUI");
+        viewArea = GameObject.Find("UIArea");
 
         clonePotision.x = -20.0f;
-        clonePotision.y = 4.0f;
+        clonePotision.y = 0.0f;
         //
-       //MonsterNumber = 99;
+       MonsterNumber = 99;
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        /*
-        if (baseState==true || robotState==true)
-        {
-            this_obj.SetActive(false);
-        }
-        else if ((baseState==true && robotState==false) || (baseState==false&& robotState==true))
-        {
-            this_obj.SetActive(false);
-        }
-        else
-        {
-            this_obj.SetActive(true);
-        }
-        */
+
         if(baseUIcs.target!=null||robotUIcs.target!=null)
         {
             this_obj.SetActive(false);
@@ -84,28 +86,6 @@ public class LeftClickMonster : MonoBehaviour
 
         //MonsterNumber取得
         //CheckMonsterNumber();
-
-        //scripts取得
-        //HP Energyリアルタイム更新
-        //cloneのスピード0
-        if (_getObject != null)
-        {
-            monster_status = _getObject.GetComponent<MonsterStats>();
-        }
-
-        //ステータスリアルタイム更新
-        if (monster_status != null)
-        {
-            atk_point = monster_status.ATK;
-            spd_point = monster_status.SPD;
-            int_point = monster_status.MAG;
-            def_point = monster_status.DEF;
-            statusText[(int)STATUS.ATK].text = "ATK:" + atk_point.ToString();
-            statusText[(int)STATUS.SPD].text = "SPD:" + spd_point.ToString();
-            statusText[(int)STATUS.INT].text = "INT:" + int_point.ToString();
-            statusText[(int)STATUS.DEF].text = "DEF:" + def_point.ToString();
-            //_state = true;
-        }
 
 
         if (Input.GetMouseButtonDown(0))
@@ -128,32 +108,65 @@ public class LeftClickMonster : MonoBehaviour
                 }
 
                 //すでにRobotのUIが表示されていたら消す
-                if (_getObject != null)
+                if (target != null)
                 {
                     Destroy(target);
+                    Destroy(statusClone);
+                    target = null;
+                    _getObject = null;
                 }
+
                 _getObject = collition2d.transform.gameObject;
                 //クリックしたロボットのcloneを作る
-                target = Instantiate(_getObject, new Vector2(clonePotision.x, clonePotision.y), Quaternion.identity);
+                objectName = collition2d.transform.name;
+                if(objectName== "ChaseBeachTurtle(Clone)"||objectName== "ImmovableBeachTurtle(Clone)" || objectName== "RoamBeachTurtle(Clone)")
+                {
+                    MonsterNumber = (int)MONSTER.TURTLE;
+                }
+                else if(objectName== "ChaseCityRobot(Clone)" || objectName== "ImmovableCityRobot(Clone)" || objectName== "RoamCityRobot(Clone)")
+                {
+                    MonsterNumber = (int)MONSTER.CITYROBOT;
+                }
+                else if(objectName== "ChaseDeserthedge(Clone)" || objectName== "ImmovableDeserthedge(Clone)" || objectName== "RoamDeserthedge(Clone)")
+                {
+                    MonsterNumber = (int)MONSTER.DESERT;
+                }
+                else
+                {
+                    MonsterNumber = (int)MONSTER.WASP;
+                }
+
+                statusClone = Instantiate(_getObject, new Vector2(-10.0f, clonePotision.y), Quaternion.identity);
+                monster_status = _getObject.GetComponent<MonsterStats>();
+                target =Instantiate(viewUI[MonsterNumber], new Vector2(clonePotision.x, clonePotision.y), Quaternion.identity);
+
             }
         }
+        if (_getObject != null)
+        {
+            monster_status = _getObject.GetComponent<MonsterStats>();
+            if (target != null)
+            {
+                clone_status = statusClone.GetComponent<MonsterStats>();
+                clone_status.m_chargeArea = viewArea;
+                //target
+                clone_status.SPD = 0.0f;
+                //hp energy test
+                clone_status.HP = monster_status.HP;
+            }
+        }
+        //ステータスリアルタイム更新
+        if (monster_status != null)
+        {
+            atk_point = (int)monster_status.ATK;
+            spd_point = (int)monster_status.SPD;
+            int_point = (int)monster_status.MAG;
+            def_point = (int)monster_status.DEF;
+            statusText[(int)STATUS.ATK].text = "ATK:" + atk_point.ToString();
+            statusText[(int)STATUS.SPD].text = "SPD:" + spd_point.ToString();
+            statusText[(int)STATUS.INT].text = "INT:" + int_point.ToString();
+            statusText[(int)STATUS.DEF].text = "DEF:" + def_point.ToString();
+            //_state = true;
+        }
     }
-    /*
-    void CheckMonsterNumber()
-    {
-        //名前とUIを照らし合わせる
-        if (objectName == "ChaseMonster")
-        {
-            MonsterNumber = 0;
-        }
-        else if (objectName == "ImmovableMonster")
-        {
-            MonsterNumber = 1;
-        }
-        else if (objectName == "RoamMonster")
-        {
-            MonsterNumber = 2;
-        }
-    }
-    */
 }

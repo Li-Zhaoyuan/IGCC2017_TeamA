@@ -53,6 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Robot_camera: {fileID: 0}
   HP_camera: {fileID: 0}
+  monster_camera: []
   UI_manager: {fileID: 0}
   robotUIcs: {fileID: 0}
   baseUIcs: {fileID: 0}
+  monsterUIcs: {fileID: 0}

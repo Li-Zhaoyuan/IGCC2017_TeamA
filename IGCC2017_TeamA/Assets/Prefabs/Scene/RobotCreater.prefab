@@ -93,5 +93,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a087597e94b88846af4470f16011434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_robotCreater: {fileID: 114705775707893096}
-  m_useItemNum: 30
+  m_useItemNum: 0

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//sorry
+//bulldoze programming through
+
 public class LeftClickRobot : MonoBehaviour
 {
     //ゲットしたオブジェクト格納
@@ -48,8 +51,12 @@ public class LeftClickRobot : MonoBehaviour
     //DEF
     float def_point;
 
+    bool deadState;
+    bool healState;
+
     //draw status Text
     public Text[] statusText;
+
     enum STATUS
     {
         PERSONALITY,
@@ -74,6 +81,9 @@ public class LeftClickRobot : MonoBehaviour
         clonePotision.y = 0.0f;
 
         textDead = "DEAD";
+        deadState = false;
+        healState = false;
+
     }
 
     // Update is called once per frame
@@ -120,7 +130,7 @@ public class LeftClickRobot : MonoBehaviour
                 //クリックしたロボットのcloneを作る
 
                 //ロボットの性格を読み取る
-                statusClone = Instantiate(_getObject, new Vector2(clonePotision.x, clonePotision.y), Quaternion.identity);
+                statusClone = Instantiate(_getObject, new Vector2(-40.0f, clonePotision.y), Quaternion.identity);
                 robot_status = _getObject.GetComponent<Robot_Status>();
                 target = Instantiate(viewUI[(int)robot_status.GetMood()], new Vector2(clonePotision.x, clonePotision.y), Quaternion.identity);
                 
@@ -141,7 +151,6 @@ public class LeftClickRobot : MonoBehaviour
                 clone_status.SetHealthPoint(robot_status.GetHealthPoint());
                 clone_status.SetEnergyPoint(robot_status.GetEnergyPoint());
             }
-
         }
 
         //ステータスリアルタイム更新
@@ -161,18 +170,40 @@ public class LeftClickRobot : MonoBehaviour
             if(hp_point<=0||energy_point<=0)
             {
                 textDead = "DEAD";
+                deadState = true;
+            }
+           else if ((deadState && hp_point >= 1) || (deadState && energy_point >= 1))
+            {
+                healState = true;
+                deadState = false;
+                Destroy(target);
             }
             else
             {
                 textDead = personality_point.ToString();
+                deadState = false;
+                healState = false;
             }
+            if(deadState)
+            {
+                if(target)
+                {
+                    Destroy(target);
+                }
+                target = Instantiate(viewUI[6], new Vector2(clonePotision.x, clonePotision.y), Quaternion.identity);
+            }
+           if(healState)
+            {
+                target = Instantiate(viewUI[(int)robot_status.GetMood()], new Vector2(clonePotision.x, clonePotision.y), Quaternion.identity);
+            }
+
             //Text
-            statusText[(int)STATUS.PERSONALITY].text = "" + textDead;
-            statusText[(int)STATUS.MOOD].text = "" + mood_point;
+            statusText[(int)STATUS.PERSONALITY].text = ":" + textDead;
+            statusText[(int)STATUS.MOOD].text = ":" + mood_point;
             statusText[(int)STATUS.ATK].text = "ATK:" + atk_point.ToString();
             statusText[(int)STATUS.SPD].text = "SPD:" + spd_point.ToString();
-            statusText[(int)STATUS.INT].text = "INT:" + int_point.ToString();
-            statusText[(int)STATUS.LUK].text = "LUK:" + luk_point.ToString();
+            statusText[(int)STATUS.INT].text = "MAG:" + int_point.ToString();
+            statusText[(int)STATUS.LUK].text = "LCK:" + luk_point.ToString();
             statusText[(int)STATUS.DEF].text = "DEF:" + def_point.ToString();
         }
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LeftClickMap : MonoBehaviour
 {
@@ -20,12 +21,13 @@ public class LeftClickMap : MonoBehaviour
 
     private GameObject this_obj;
 
+
     private void Awake()
     {
         clonePotision.x = -20.0f;
         clonePotision.y = 4.0f;
         //初回起動はHome画面にしておく。
-        target = Instantiate(viewUI, new Vector2(clonePotision.x, clonePotision.y), Quaternion.identity);
+        target = Instantiate(viewUI, new Vector2(-30, 0 ), Quaternion.identity);
     }
     // Use this for initialization
     void Start()
@@ -39,27 +41,14 @@ public class LeftClickMap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Object Active NoActive
-        /*
-        if (robotState==true||monsterState==true)
-        {
-            this_obj.SetActive(false);
-        }
-        else if((robotState==true&&monsterState==false)||(robotState==false&&monsterState==true))
-        {
-            this_obj.SetActive(false);
-        }
-        else
-        {
-            this_obj.SetActive(true);
-        }
-        */
+
         if(robotUIcs.target!=null||monsterUIcs.target!=null)
         {
             this_obj.SetActive(false);
         }
         else
         {
+
             this_obj.SetActive(true);
         }
 
