@@ -157,8 +157,9 @@ public class LeftClickMonster : MonoBehaviour
                 //target
                 clone_status.SPD = 0.0f;
                 //hp energy test
-                clone_status.HP = monster_status.HP;
+                
                 hp_point = (int)monster_status.HP;
+                clone_status.HP = hp_point; //monster_status.HP;
             }
         }
         //ステータスリアルタイム更新
