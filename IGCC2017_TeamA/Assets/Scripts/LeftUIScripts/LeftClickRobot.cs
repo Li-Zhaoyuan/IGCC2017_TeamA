@@ -40,6 +40,8 @@ public class LeftClickRobot : MonoBehaviour
     //HP NE
     float hp_point;
     float energy_point;
+    int uihp_point;
+    int uienergy_point;
     //ATK
     float atk_point;
     //SPD
@@ -54,7 +56,7 @@ public class LeftClickRobot : MonoBehaviour
     bool deadState;
     bool healState;
 
-    //draw status Text
+     //draw status Text
     public Text[] statusText;
 
     enum STATUS
@@ -65,7 +67,9 @@ public class LeftClickRobot : MonoBehaviour
         SPD,
         INT,
         LUK,
-        DEF
+        DEF,
+        HP,
+        ENERGY
     }
 
     // Use this for initialization
@@ -167,7 +171,10 @@ public class LeftClickRobot : MonoBehaviour
             luk_point = robot_status.GetLuckPoint();
             def_point = robot_status.GetDefencePoint();
 
-            if(hp_point<=0||energy_point<=0)
+            uihp_point = (int)robot_status.GetHealthPoint();
+            uienergy_point = (int)robot_status.GetEnergyPoint();
+
+            if (hp_point<=0||energy_point<=0)
             {
                 textDead = "DEAD";
                 deadState = true;
@@ -205,6 +212,8 @@ public class LeftClickRobot : MonoBehaviour
             statusText[(int)STATUS.INT].text = "MAG:" + int_point.ToString();
             statusText[(int)STATUS.LUK].text = "LCK:" + luk_point.ToString();
             statusText[(int)STATUS.DEF].text = "DEF:" + def_point.ToString();
+            statusText[(int)STATUS.HP].text ="HELTH" +uihp_point.ToString() + "/100";
+            statusText[(int)STATUS.ENERGY].text ="ENERGY"+ uienergy_point.ToString() + "/100";
         }
 
     }
