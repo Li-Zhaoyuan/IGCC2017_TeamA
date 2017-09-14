@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ClickObject : MonoBehaviour {
+public class ClickObject : MonoBehaviour
+{
 
 	[System.NonSerialized]
 	public GameObject m_target = null;
@@ -47,6 +48,10 @@ public class ClickObject : MonoBehaviour {
 			{
 				if (collition2d.gameObject.tag == "Robot")
 				{
+					foreach (Selected_Effect effect in FindObjectsOfType<Selected_Effect>())
+					{
+						Destroy(effect.gameObject);
+					}
 					CreateEffect(collition2d.transform.gameObject);
 					m_target = collition2d.transform.gameObject;
 					m_selectSE.Play();
@@ -81,13 +86,10 @@ public class ClickObject : MonoBehaviour {
 
 	void CreateEffect(GameObject target)
 	{
-		if (m_target == null)
-		{
-			GameObject effect = null;
-			effect = Instantiate(m_selectEffect, Vector3.zero, Quaternion.Euler(0, 0, 0)) as GameObject;
-			effect.transform.parent = target.transform;
-			effect.transform.localPosition = new Vector3(0, 0, 0);
-		}
+		GameObject effect = null;
+		effect = Instantiate(m_selectEffect, Vector3.zero, Quaternion.Euler(0, 0, 0)) as GameObject;
+		effect.transform.parent = target.transform;
+		effect.transform.localPosition = new Vector3(0, 0, 0);
 	}
 
 	public void ResetTarget()
