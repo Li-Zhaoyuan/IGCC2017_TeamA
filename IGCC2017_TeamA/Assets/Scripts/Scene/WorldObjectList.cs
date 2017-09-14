@@ -94,6 +94,11 @@ public class WorldObjectList : MonoBehaviour {
             {
                 Destroy(view);
             }
+            GameObject[] clone = GameObject.FindGameObjectsWithTag("clone");
+            foreach (GameObject viewclone in clone)
+            {
+                Destroy(viewclone);
+            }
         }
 	}
 }

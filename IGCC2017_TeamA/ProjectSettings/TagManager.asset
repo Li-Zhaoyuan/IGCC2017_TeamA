@@ -12,6 +12,8 @@ TagManager:
   - World
   - Robot_MaxArea
   - LeftUI
+  - AudioManager
+  - clone
   layers:
   - Default
   - TransparentFX

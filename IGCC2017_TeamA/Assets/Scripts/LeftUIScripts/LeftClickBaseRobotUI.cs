@@ -79,6 +79,7 @@ public class LeftClickBaseRobotUI : MonoBehaviour {
                 }
                 _getObject = collition2d.transform.gameObject;
                 statusClone = Instantiate(_getObject, new Vector2(-40.0f, clonePotision.y), Quaternion.identity);
+                statusClone.gameObject.tag = "clone";
                 robot_status = _getObject.GetComponent<Robot_Status>();
 
                 if (!deadState)

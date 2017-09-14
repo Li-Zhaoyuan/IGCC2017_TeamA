@@ -135,6 +135,7 @@ public class LeftClickRobot : MonoBehaviour
 
                 //ロボットの性格を読み取る
                 statusClone = Instantiate(_getObject, new Vector2(-40.0f, clonePotision.y), Quaternion.identity);
+                statusClone.gameObject.tag = "clone";
                 robot_status = _getObject.GetComponent<Robot_Status>();
                 if (!deadState)
                 {
