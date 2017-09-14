@@ -15,8 +15,8 @@ public class TestRobotSummon : MonoBehaviour {
 				//robot.SetActive(true);
 				robot.transform.position = Vector3.zero;
 				var stats = robot.GetComponent<Robot_Status>();
-				stats.health_point = 100.0f;
-				stats.energy_point = 100.0f;
+				stats.health_point = stats.GetBaseHealthPoint();
+				stats.energy_point = stats.GetBaseEnergyPoint();
 			}
 		}
 	}

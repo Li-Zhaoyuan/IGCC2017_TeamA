@@ -25,7 +25,7 @@ public class LeftClickRobot : MonoBehaviour
     public LeftClickMonster monsterUIcs;
 
     public GameObject[] viewUI;
-    
+
 
     private GameObject this_obj;
 
@@ -146,7 +146,7 @@ public class LeftClickRobot : MonoBehaviour
                     viewNum = 6;
                 }
                 target = Instantiate(viewUI[viewNum], new Vector2(clonePotision.x, clonePotision.y), Quaternion.identity);
-                
+
             }
         }
         //scripts取得
@@ -204,8 +204,8 @@ public class LeftClickRobot : MonoBehaviour
             statusText[(int)STATUS.INT].text = "MAG:" + int_point.ToString();
             statusText[(int)STATUS.LUK].text = "LCK:" + luk_point.ToString();
             statusText[(int)STATUS.DEF].text = "DEF:" + def_point.ToString();
-            statusText[(int)STATUS.HP].text ="HELTH" +uihp_point.ToString() + "/100";
-            statusText[(int)STATUS.ENERGY].text ="ENERGY"+ uienergy_point.ToString() + "/100";
+            statusText[(int)STATUS.HP].text ="HELTH" +uihp_point.ToString() + "/"+robot_status.GetBaseHealthPoint();
+            statusText[(int)STATUS.ENERGY].text ="ENERGY"+ uienergy_point.ToString() + "/"+robot_status.GetBaseEnergyPoint();
         }
 
     }
