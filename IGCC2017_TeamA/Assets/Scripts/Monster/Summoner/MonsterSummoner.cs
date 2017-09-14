@@ -68,6 +68,7 @@ public class MonsterSummoner : MonoBehaviour {
 	{
 		m_cnt = Time.time - m_startTime;
 
+		Debug.Log(m_monsterList);
 		if (m_cnt > m_interval && m_monsterList.GetListLength() < m_monsterList.MaxMonster)
 		{
 			Summon();
