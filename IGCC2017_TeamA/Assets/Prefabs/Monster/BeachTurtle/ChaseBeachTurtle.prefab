@@ -399,7 +399,7 @@ MonoBehaviour:
     type: 2}
   m_hp: 300
   m_atk: 2
-  m_attackInterval: 3
+  m_attackInterval: 1
   m_spd: 1
   m_def: 1
   m_mag: 1

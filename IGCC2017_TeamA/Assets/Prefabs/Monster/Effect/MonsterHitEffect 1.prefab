@@ -9,23 +9,19 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1439503761610370}
+  m_RootGameObject: {fileID: 1374686979408696}
   m_IsPrefabParent: 1
---- !u!1 &1439503761610370
+--- !u!1 &1374686979408696
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4651453469767130}
-  - component: {fileID: 198091909119770574}
-  - component: {fileID: 199219803868640660}
-<<<<<<< HEAD
-  - component: {fileID: 114135198720907776}
-=======
-  - component: {fileID: 114437321552083584}
->>>>>>> 55d39cb392fc13b11366d91512d9c677d199d4c1
+  - component: {fileID: 4808637477466660}
+  - component: {fileID: 198295763587611770}
+  - component: {fileID: 199184741515082526}
+  - component: {fileID: 114822655363293892}
   m_Layer: 0
   m_Name: MonsterHitEffectBlue
   m_TagString: Untagged
@@ -33,12 +29,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4651453469767130
+--- !u!4 &4808637477466660
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1439503761610370}
+  m_GameObject: {fileID: 1374686979408696}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
@@ -46,27 +42,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
---- !u!114 &114135198720907776
-=======
---- !u!114 &114437321552083584
->>>>>>> 55d39cb392fc13b11366d91512d9c677d199d4c1
+--- !u!114 &114822655363293892
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1439503761610370}
+  m_GameObject: {fileID: 1374686979408696}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06ceb1b3df473cf4e8274739e41f3504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!198 &198091909119770574
+--- !u!198 &198295763587611770
 ParticleSystem:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1439503761610370}
+  m_GameObject: {fileID: 1374686979408696}
   serializedVersion: 5
   lengthInSec: 2
   simulationSpeed: 5
@@ -120,7 +112,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -610708237
+  randomSeed: -1931072090
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -210,7 +202,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 0.9117646, b: 1, a: 1}
+      maxColor: {r: 0.029411793, g: 0.9143598, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -3328,13 +3320,13 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
---- !u!199 &199219803868640660
+--- !u!199 &199184741515082526
 ParticleSystemRenderer:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1439503761610370}
+  m_GameObject: {fileID: 1374686979408696}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0

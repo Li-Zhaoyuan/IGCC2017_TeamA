@@ -380,13 +380,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86a7ed58909e8034e9cdc9d21e384b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_attackEffect: {fileID: 1439503761610370, guid: 9facaca449e99e24bb9113c037187aea,
+  m_attackEffect: {fileID: 1374686979408696, guid: 7a7bfecb7fcbfd54db7315e2c54413f7,
     type: 2}
   m_deadEffect: {fileID: 1379051174820794, guid: 78eb422cfee659349b891554d6826ca8,
     type: 2}
   m_hp: 500
   m_atk: 4
-  m_attackInterval: 3
+  m_attackInterval: 1
   m_spd: 1
   m_def: 2
   m_mag: 30
