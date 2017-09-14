@@ -118,6 +118,7 @@ public class LeftClickMonster : MonoBehaviour
                     Destroy(statusClone);
                     target = null;
                     _getObject = null;
+                    statusClone = null;
                 }
 
                 _getObject = collition2d.transform.gameObject;
@@ -169,9 +170,9 @@ public class LeftClickMonster : MonoBehaviour
             def_point = (int)monster_status.DEF;
             statusText[(int)STATUS.ATK].text = "ATK:" + atk_point.ToString();
             statusText[(int)STATUS.SPD].text = "SPD:" + spd_point.ToString();
-            statusText[(int)STATUS.INT].text = "INT:" + int_point.ToString();
+            statusText[(int)STATUS.INT].text = "MAG:" + int_point.ToString();
             statusText[(int)STATUS.DEF].text = "DEF:" + def_point.ToString();
-            statusText[(int)STATUS.HP].text = " HELTH  " + hp_point.ToString() + "/10000";
+            statusText[(int)STATUS.HP].text = " HELTH  " + hp_point.ToString() +"/"+ (int)monster_status.MAX_HP;
             //_state = true;
         }
     }

@@ -180,7 +180,7 @@ public class LeftClickRobot : MonoBehaviour
             luk_point = robot_status.GetLuckPoint();
             def_point = robot_status.GetDefencePoint();
 
-            uihp_point = (int)robot_status.GetHealthPoint();
+            uihp_point = (int)hp_point;
             uienergy_point = (int)robot_status.GetEnergyPoint();
 
             if ((hp_point<=0||energy_point<=0))
