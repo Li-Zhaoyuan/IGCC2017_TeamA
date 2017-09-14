@@ -791,7 +791,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ROBOT 'ROB' ROBOTTO
+  m_Text: ROBOT
 --- !u!222 &335773260
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -907,8 +907,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -304, y: -128}
-  m_SizeDelta: {x: 121.4, y: 44.9}
+  m_AnchoredPosition: {x: -302.32996, y: -131.85}
+  m_SizeDelta: {x: 145.15, y: 43.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &444788363
 MonoBehaviour:
@@ -943,7 +943,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "5 OF EACH REQUIRED\n   TO MAKE A ROBOT"
+  m_Text: "\u30ED\u30DC\u30C3\u30C8\u4F5C\u6210\u306B\u306F\u8CC7\u6750\u304C\n\u305D\u308C\u305E\u308C\uFF15\u3064\u5FC5\u8981\u3067\u3059"
 --- !u!222 &444788364
 CanvasRenderer:
   m_ObjectHideFlags: 0

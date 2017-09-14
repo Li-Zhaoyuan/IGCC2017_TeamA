@@ -25,7 +25,7 @@ public class LeftClickRobot : MonoBehaviour
     public LeftClickMonster monsterUIcs;
 
     public GameObject[] viewUI;
-    
+
 
     private GameObject this_obj;
 
@@ -85,7 +85,7 @@ public class LeftClickRobot : MonoBehaviour
         clonePotision.x = -20.0f;
         clonePotision.y = 0.0f;
 
-        textDead = "DEAD";
+        textDead = "戦闘不能";
         deadState = false;
 
     }
@@ -146,7 +146,7 @@ public class LeftClickRobot : MonoBehaviour
                     viewNum = 6;
                 }
                 target = Instantiate(viewUI[viewNum], new Vector2(clonePotision.x, clonePotision.y), Quaternion.identity);
-                
+
             }
         }
         //scripts取得
@@ -186,28 +186,58 @@ public class LeftClickRobot : MonoBehaviour
 
             if ((hp_point<=0||energy_point<=0))
             {
-                textDead = "DEAD";
+                textDead = "戦闘不能";
                 viewNum = 6;
                 deadState = true;
             }
             else
             {
-                textDead = personality_point.ToString();
+				textDead = ConvertJapanese(personality_point);//.ToString();
                 deadState = false;
             }
             Debug.Log(viewNum);
             //Text
-            statusText[(int)STATUS.PERSONALITY].text = ":" + textDead;
-            statusText[(int)STATUS.MOOD].text = ":" + mood_point;
+            statusText[(int)STATUS.PERSONALITY].text = "：　" + textDead;
+            statusText[(int)STATUS.MOOD].text = "：　" + ConvertJapanese(mood_point);
             statusText[(int)STATUS.ATK].text = "ATK:" + atk_point.ToString();
             statusText[(int)STATUS.SPD].text = "SPD:" + spd_point.ToString();
             statusText[(int)STATUS.INT].text = "MAG:" + int_point.ToString();
             statusText[(int)STATUS.LUK].text = "LCK:" + luk_point.ToString();
             statusText[(int)STATUS.DEF].text = "DEF:" + def_point.ToString();
-            statusText[(int)STATUS.HP].text ="HELTH" +uihp_point.ToString() + "/100";
-            statusText[(int)STATUS.ENERGY].text ="ENERGY"+ uienergy_point.ToString() + "/100";
+            statusText[(int)STATUS.HP].text ="HP" +uihp_point.ToString() + "/"+robot_status.GetBaseHealthPoint();
+            statusText[(int)STATUS.ENERGY].text ="ENERGY"+ uienergy_point.ToString() + "/" + robot_status.GetBaseEnergyPoint();
         }
 
     }
 
+	private string ConvertJapanese(PERSONALITY per)
+	{
+		string japanese = null;
+
+		switch (per)
+		{
+			case PERSONALITY.BRAVE:
+				japanese = "勇敢";
+				break;
+			case PERSONALITY.CURIOUS:
+				japanese = "好奇心旺盛";
+				break;
+			case PERSONALITY.SENSITIVE:
+				japanese = "神経質";
+				break;
+			case PERSONALITY.LAZY:
+				japanese = "怠け者";
+				break;
+			case PERSONALITY.IMPATIENT:
+				japanese = "せっかち";
+				break;
+			case PERSONALITY.CAREFUL:
+				japanese = "注意深い";
+				break;
+			default:
+				japanese = "戦闘不能";
+				break;
+		}
+		return japanese;
+	}
 }
