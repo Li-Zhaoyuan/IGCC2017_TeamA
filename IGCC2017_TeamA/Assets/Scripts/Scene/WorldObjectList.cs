@@ -89,6 +89,11 @@ public class WorldObjectList : MonoBehaviour {
 			{
 				Destroy(cube);
 			}
-		}
+            GameObject[] ui=GameObject.FindGameObjectsWithTag("LeftUI");
+            foreach (GameObject view in ui)
+            {
+                Destroy(view);
+            }
+        }
 	}
 }
