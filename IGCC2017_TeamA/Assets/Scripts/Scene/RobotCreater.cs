@@ -23,11 +23,23 @@ public class RobotCreater : MonoBehaviour {
 
 	public void CreateRobot()
 	{
-		bool isCreate = m_itemHolder.UseItem(m_type,m_useItemNum);
 
-		if (isCreate)
+		for (int i = 0; i < (int)ITEM_TYPE.TOTAL_RESOURCE; i++)
 		{
-			m_robotGenerator.MakeRandomRobot();
+			int num = m_itemHolder.GetItemRemain((ITEM_TYPE)i);
+
+			if (num < m_useItemNum)
+			{
+				return;
+			}
 		}
+
+		for (int i = 0; i < (int)ITEM_TYPE.TOTAL_RESOURCE; i++)
+		{
+			m_itemHolder.UseItem((ITEM_TYPE)i,m_useItemNum);
+		}
+
+		m_robotGenerator.MakeRandomRobot();
+
 	}
 }

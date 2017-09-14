@@ -32,7 +32,7 @@ public class UpgradeManager : MonoBehaviour {
 	{
 		var stats = m_target.GetComponent<Robot_Status>().base_attack_point;
 
-		bool isUpgrade = m_item.UseItem(m_type, (int)stats);
+		bool isUpgrade = CanUpgrade((int)stats);
 		if (isUpgrade)
 		{
 			m_target.GetComponent<Robot_Status>().AddBaseAttackPoint(1.0f);
@@ -49,7 +49,7 @@ public class UpgradeManager : MonoBehaviour {
 	{
 		var stats = m_target.GetComponent<Robot_Status>().base_defence_point;
 
-		bool isUpgrade = m_item.UseItem(m_type,(int)stats);
+		bool isUpgrade = CanUpgrade((int)stats);
 		if (isUpgrade)
 		{
 			m_target.GetComponent<Robot_Status>().AddBaseDefencePoint(1.0f);
@@ -67,7 +67,7 @@ public class UpgradeManager : MonoBehaviour {
 	{
 		var stats = m_target.GetComponent<Robot_Status>().base_speed_point;
 
-		bool isUpgrade = m_item.UseItem(m_type,(int)stats);
+		bool isUpgrade = CanUpgrade((int)stats);
 		if (isUpgrade)
 		{
 			m_target.GetComponent<Robot_Status>().AddBaseSpeedPoint(0.1f);
@@ -85,7 +85,7 @@ public class UpgradeManager : MonoBehaviour {
 	{
 		var stats = m_target.GetComponent<Robot_Status>().base_magic_point;
 
-		bool isUpgrade = m_item.UseItem(m_type, (int)stats);
+		bool isUpgrade = CanUpgrade((int)stats);
 		if (isUpgrade)
 		{
 			m_target.GetComponent<Robot_Status>().AddBaseMagicPoint(1.0f);
@@ -103,7 +103,7 @@ public class UpgradeManager : MonoBehaviour {
 	{
 		var stats = m_target.GetComponent<Robot_Status>().base_luck_point;
 
-		bool isUpgrade = m_item.UseItem(m_type,(int)stats);
+		bool isUpgrade = CanUpgrade((int)stats);
 		if (isUpgrade)
 		{
 			m_target.GetComponent<Robot_Status>().AddLuckPoint(1.0f);
@@ -121,7 +121,7 @@ public class UpgradeManager : MonoBehaviour {
 	{
 		var stats = m_target.GetComponent<Robot_Status>().base_health_point;
 
-		bool isUpgrade = m_item.UseItem(m_type,(int)(stats/10.0f));
+		bool isUpgrade = CanUpgrade((int)(stats / 10.0f));
 		if (isUpgrade)
 		{
 			m_target.GetComponent<Robot_Status>().AddBaseHealthPoint(10.0f);
@@ -139,7 +139,7 @@ public class UpgradeManager : MonoBehaviour {
 	{
 		var stats = m_target.GetComponent<Robot_Status>().base_energy_point;
 
-		bool isUpgrade = m_item.UseItem(m_type,(int)(stats / 10.0f));
+		bool isUpgrade = CanUpgrade((int)(stats / 10.0f));
 		if (isUpgrade)
 		{
 			m_target.GetComponent<Robot_Status>().AddBaseEnergyPoint(10.0f);
@@ -150,6 +150,25 @@ public class UpgradeManager : MonoBehaviour {
 		{
 			m_upgradeFailedSE.Play();
 		}
+	}
 
+	private bool CanUpgrade(int stats)
+	{
+		for (int i = 0; i < (int)ITEM_TYPE.TOTAL_RESOURCE; i++)
+		{
+			int num = m_item.GetItemRemain((ITEM_TYPE)i);
+
+			if (num < stats)
+			{
+				return false;
+			}
+		}
+
+		for (int i = 0; i < (int)ITEM_TYPE.TOTAL_RESOURCE; i++)
+		{
+			m_item.UseItem((ITEM_TYPE)i, stats);
+		}
+
+		return true;
 	}
 }

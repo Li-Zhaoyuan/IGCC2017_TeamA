@@ -21,7 +21,7 @@ public class ItemHolder : MonoBehaviour
 			{
 				if (i != (int)ITEM_TYPE.TOTAL_RESOURCE && i != (int)ITEM_TYPE.TOTAL_USABLE)
 				{
-					m_itemsCollected.Add((ITEM_TYPE)i, 0);
+					m_itemsCollected.Add((ITEM_TYPE)i, 10);
 				}
 			}
 
@@ -35,7 +35,7 @@ public class ItemHolder : MonoBehaviour
 
     public void SetItem(ITEM_TYPE type, int num)
     {
-        m_itemsCollected[type] = Mathf.Clamp(num, 0, m_maxItems); 
+        m_itemsCollected[type] = Mathf.Clamp(num, 0, m_maxItems);
     }
 
     public void AddItem(ITEM_TYPE type, int num)
