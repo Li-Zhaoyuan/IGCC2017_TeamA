@@ -9,7 +9,7 @@ public class Gather_State : Robot_BaseState
     // Use this for initialization
     public override void Start()
     {
-        gather_time = 1;
+        //gather_time = 1;
         base.Start();
     }
 
