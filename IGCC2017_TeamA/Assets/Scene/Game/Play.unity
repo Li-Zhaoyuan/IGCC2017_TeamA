@@ -2010,7 +2010,7 @@ Prefab:
     - target: {fileID: 61341984035048482, guid: 8118328b3f8ab444ca78d7cde6cb8cc8,
         type: 2}
       propertyPath: m_Size.y
-      value: 0.28
+      value: 0.0001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8118328b3f8ab444ca78d7cde6cb8cc8, type: 2}
