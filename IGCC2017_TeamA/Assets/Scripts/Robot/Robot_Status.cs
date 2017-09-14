@@ -84,13 +84,15 @@ public class Robot_Status : MonoBehaviour {
         chance_heal = 50f;
         chance_rescue = 50f;
     }
-	
+
 	// Update is called once per frame
 	void Update () {
         //TODO: mood to affect stats
         CheckCorrectIconForRobot();
+		MoodOnEffectingStats();
 
-    }
+
+	}
 
     public void CheckCorrectIconForRobot()
     {
@@ -166,7 +168,7 @@ public class Robot_Status : MonoBehaviour {
 
         mood = (PERSONALITY)Random.Range(0, (int)PERSONALITY.TOTAL);
         MoodOnEffectingStats();
-    } 
+    }
 
     public void MoodOnEffectingStats()
     {
@@ -268,7 +270,7 @@ public class Robot_Status : MonoBehaviour {
 
     public void SetHealthPoint(float value)
     {
-       
+
         health_point = value;
     }
 
@@ -364,7 +366,7 @@ public class Robot_Status : MonoBehaviour {
     }
 
     public float GetAttackPoint()
-    {                            
+    {
         return attack_point;
     }
 
@@ -374,7 +376,7 @@ public class Robot_Status : MonoBehaviour {
     }
 
     public float GetMagicPoint()
-    {                                     
+    {
         return magic_point;
     }
 
