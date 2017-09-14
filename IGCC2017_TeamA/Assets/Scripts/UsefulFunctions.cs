@@ -343,6 +343,23 @@ public static class UsefulFunctions  {
         return false;
     }
 
+    public static GameObject GetNearbyRobotMaxAreaWithBoxCollider(Vector3 position, Vector2 size)
+    {
+        RaycastHit2D[] collision = Physics2D.BoxCastAll(position, size, 0, Vector2.zero, 0);
+
+        foreach (RaycastHit2D temp in collision)
+        {
+            if (temp.collider != null)
+            {
+                if (temp.collider.gameObject.tag == "Robot_MaxArea")
+                {
+                    return temp.collider.gameObject;
+                }
+            }
+        }
+        return null;
+    }
+
 
     //for drawing rect
 

@@ -82,7 +82,8 @@ public class State_Manager : MonoBehaviour {
         //waypoints = FindObjectsOfType<TempScripts>();
         //mainWaypoint = Vector3.zero;
 
-        max_bounds = GameObject.FindGameObjectWithTag("Robot_MaxArea").GetComponent<BoxCollider2D>();
+        //max_bounds = GameObject.FindGameObjectWithTag("Robot_MaxArea").GetComponent<BoxCollider2D>();
+        max_bounds = UsefulFunctions.GetNearbyRobotMaxAreaWithBoxCollider(parent_object.transform.position, robot_local_sprite_size).GetComponent<BoxCollider2D>();
         //get the home base that is in the game scene
         home_base = GameObject.FindGameObjectWithTag("Base");
     }
@@ -94,7 +95,7 @@ public class State_Manager : MonoBehaviour {
         StateTransitions();
         if(max_bounds == null)
         {
-            max_bounds = GameObject.FindGameObjectWithTag("Robot_MaxArea").GetComponent<BoxCollider2D>();
+            max_bounds = UsefulFunctions.GetNearbyRobotMaxAreaWithBoxCollider(parent_object.transform.position, robot_local_sprite_size).GetComponent<BoxCollider2D>();
         }
         else
         {
