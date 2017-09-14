@@ -61,6 +61,8 @@ public class State_Manager : MonoBehaviour {
     public GameObject home_base = null;
     Vector3 home_base_pos;
 
+    BoxCollider2D max_bounds;
+
     // Use this for initialization
     void Start () {
         //SetCurrentState(roam_state);
@@ -80,7 +82,7 @@ public class State_Manager : MonoBehaviour {
         //waypoints = FindObjectsOfType<TempScripts>();
         //mainWaypoint = Vector3.zero;
 
-
+        max_bounds = GameObject.FindGameObjectWithTag("Robot_MaxArea").GetComponent<BoxCollider2D>();
         //get the home base that is in the game scene
         home_base = GameObject.FindGameObjectWithTag("Base");
     }
@@ -90,7 +92,20 @@ public class State_Manager : MonoBehaviour {
         current_state.gameObject.SetActive(true);// just to make sure the main state is active
         //current_state.Execute();
         StateTransitions();
+        if(max_bounds == null)
+        {
+            max_bounds = GameObject.FindGameObjectWithTag("Robot_MaxArea").GetComponent<BoxCollider2D>();
+        }
+        else
+        {
+            Vector3 current_pos = parent_object.transform.position;
+            Vector3 area_pos = max_bounds.transform.position;
 
+            current_pos.x = Mathf.Clamp(current_pos.x, area_pos.x - max_bounds.bounds.size.x / 2, area_pos.x + max_bounds.bounds.size.x / 2);
+            current_pos.y = Mathf.Clamp(current_pos.y, area_pos.y - max_bounds.bounds.size.y / 2, area_pos.y + max_bounds.bounds.size.y / 2);
+
+            parent_object.transform.position = current_pos;
+        }
     }
 
     public void ChangeSpriteOnMood(Sprite sprite)

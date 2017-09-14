@@ -10,6 +10,7 @@ TagManager:
   - Base
   - Monster
   - World
+  - Robot_MaxArea
   layers:
   - Default
   - TransparentFX
