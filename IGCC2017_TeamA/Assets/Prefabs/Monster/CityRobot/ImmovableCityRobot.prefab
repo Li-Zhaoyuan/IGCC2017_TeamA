@@ -386,7 +386,7 @@ MonoBehaviour:
     type: 2}
   m_deadEffect: {fileID: 1379051174820794, guid: 78eb422cfee659349b891554d6826ca8,
     type: 2}
-  m_hp: 700
+  m_hp: 40
   m_atk: 30
   m_attackInterval: 1.5
   m_spd: 0
