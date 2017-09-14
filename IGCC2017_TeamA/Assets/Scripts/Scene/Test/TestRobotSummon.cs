@@ -20,17 +20,4 @@ public class TestRobotSummon : MonoBehaviour {
 			}
 		}
 	}
-
-	void OnDestroy()
-	{
-		var list = RobotHolder.instance.robotList;
-
-		foreach (var robot in list)
-		{
-			if (robot != null)
-			{
-				//robot.SetActive(false);
-			}
-		}
-	}
 }
