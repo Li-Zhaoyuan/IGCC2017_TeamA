@@ -91,6 +91,6 @@ public class Timer : MonoBehaviour
         int minute = (int)time / 60;
         int second = (int)time % 60;
 
-        return (minute.ToString().PadLeft(2, '0') + ":" + second.ToString().PadLeft(2, '0'));
+        return (minute.ToString().PadLeft(2, '0') + " : " + second.ToString().PadLeft(2, '0'));
     }
 }
