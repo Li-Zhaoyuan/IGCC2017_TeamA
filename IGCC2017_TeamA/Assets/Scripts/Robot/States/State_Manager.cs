@@ -95,6 +95,9 @@ public class State_Manager : MonoBehaviour {
         StateTransitions();
         if(max_bounds == null)
         {
+            if(UsefulFunctions.GetNearbyRobotMaxAreaWithBoxCollider(
+                parent_object.transform.position,
+                robot_local_sprite_size) != null)
             max_bounds = UsefulFunctions.GetNearbyRobotMaxAreaWithBoxCollider(parent_object.transform.position, robot_local_sprite_size).GetComponent<BoxCollider2D>();
         }
         else
