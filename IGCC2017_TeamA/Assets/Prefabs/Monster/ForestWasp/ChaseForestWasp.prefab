@@ -374,10 +374,10 @@ MonoBehaviour:
   m_deadEffect: {fileID: 1379051174820794, guid: 78eb422cfee659349b891554d6826ca8,
     type: 2}
   m_hp: 10
-  m_atk: 3
+  m_atk: 1
   m_attackInterval: 0.3
   m_spd: 3
-  m_def: 10
+  m_def: 0
   m_mag: 0
   m_chargeArea: {fileID: 0}
 --- !u!114 &114386064176250648

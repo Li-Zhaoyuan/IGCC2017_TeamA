@@ -377,7 +377,7 @@ MonoBehaviour:
   m_atk: 2
   m_attackInterval: 0.3
   m_spd: 1
-  m_def: 2
+  m_def: 1
   m_mag: 30
   m_chargeArea: {fileID: 0}
 --- !u!114 &114390079117244928
