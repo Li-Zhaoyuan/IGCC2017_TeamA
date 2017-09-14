@@ -57,7 +57,7 @@ public class Rescue_State : Robot_BaseState
             }
             else
             {
-                state_holder_stateManager.GetAllyTarget().GetComponent<Robot_Status>().AddEnergyPoint((energy_recoverrate + (10 * robot_status.GetMagicPoint())) * UsefulFunctions.ConstantValueToReplaceDT());
+                state_holder_stateManager.GetAllyTarget().GetComponent<Robot_Status>().AddEnergyPoint(state_holder_stateManager.GetAllyTarget().GetComponent<Robot_Status>().GetBaseEnergyPoint());
                 SpawnParticles(revival_effect, Vector3.zero, state_holder_stateManager.GetAllyTarget());
 
             }
