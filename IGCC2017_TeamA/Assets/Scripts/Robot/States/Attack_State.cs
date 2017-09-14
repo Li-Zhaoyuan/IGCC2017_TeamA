@@ -32,6 +32,7 @@ public class Attack_State : Robot_BaseState
         }
         else if (UsefulFunctions.GetDistanceOfTwoPoints(main_robot.transform.position, state_holder_stateManager.enemy_target.transform.position) < state_holder_stateManager.robot_local_sprite_size.x)
         {
+            main_robot.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             if (timer > attack_interval)
             {
                 timer = 0f;

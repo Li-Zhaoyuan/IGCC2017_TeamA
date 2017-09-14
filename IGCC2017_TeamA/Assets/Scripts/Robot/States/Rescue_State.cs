@@ -41,6 +41,7 @@ public class Rescue_State : Robot_BaseState
             }
             else
             {
+                main_robot.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 timer += Time.deltaTime;
                 if (timer > needed_time_torevive)
                 {
