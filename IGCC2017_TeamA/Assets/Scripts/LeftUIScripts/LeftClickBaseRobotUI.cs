@@ -15,6 +15,7 @@ public class LeftClickBaseRobotUI : MonoBehaviour {
     public Robot_Status clone_status;
 
     public GameObject[] viewUI;
+    public GameObject viewArea;
 
     //PERSONALITY
     PERSONALITY personality_point;
@@ -59,6 +60,7 @@ public class LeftClickBaseRobotUI : MonoBehaviour {
         clonePotision.x = -20.0f;
         clonePotision.y = 0.0f;
         deadState = false;
+        viewArea = GameObject.Find("UIArea");
     }
 
     // Update is called once per frame
