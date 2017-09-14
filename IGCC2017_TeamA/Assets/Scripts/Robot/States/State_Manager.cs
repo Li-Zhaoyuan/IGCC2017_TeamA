@@ -93,7 +93,11 @@ public class State_Manager : MonoBehaviour {
         current_state.gameObject.SetActive(true);// just to make sure the main state is active
         //current_state.Execute();
         StateTransitions();
-        if(max_bounds == null)
+        if (home_base == null)
+        {
+            home_base = GameObject.FindGameObjectWithTag("Base");
+        }
+        if (max_bounds == null)
         {
             if(UsefulFunctions.GetNearbyRobotMaxAreaWithBoxCollider(
                 parent_object.transform.position,

@@ -802,8 +802,8 @@ MonoBehaviour:
   m_itemGenerator: {fileID: 363246462}
   m_probabilityOfItem: 10
   m_unit:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1254988099155242, guid: b9d0ae548f9dc52449441e0f3f37611a, type: 2}
+  - {fileID: 1254988099155242, guid: f7c51b78018db634bab9e5e93dd8fe3a, type: 2}
   - {fileID: 1829152782178148, guid: 663a4091105c2a84e8082e8d25c3b39c, type: 2}
   m_maxInterval: 6
   m_minInterval: 4
