@@ -25,9 +25,9 @@ public class LeftClickMap : MonoBehaviour
     private void Awake()
     {
         clonePotision.x = -20.0f;
-        clonePotision.y = 4.0f;
+        clonePotision.y = 0.0f;
         //初回起動はHome画面にしておく。
-        target = Instantiate(viewUI, new Vector2(-30, 0 ), Quaternion.identity);
+        target = Instantiate(viewUI, new Vector2(-20, 0 ), Quaternion.identity);
     }
     // Use this for initialization
     void Start()

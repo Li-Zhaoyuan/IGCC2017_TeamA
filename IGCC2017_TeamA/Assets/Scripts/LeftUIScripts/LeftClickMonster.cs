@@ -36,6 +36,9 @@ public class LeftClickMonster : MonoBehaviour
     int int_point;
     //DEF
     int def_point;
+    //hp
+    int hp_point;
+
     public GameObject[] viewUI;
     public Text[] statusText;
     private GameObject this_obj;
@@ -44,7 +47,8 @@ public class LeftClickMonster : MonoBehaviour
         ATK,
         SPD,
         INT,
-        DEF
+        DEF,
+        HP
     }
     enum MONSTER
     {
@@ -153,6 +157,7 @@ public class LeftClickMonster : MonoBehaviour
                 clone_status.SPD = 0.0f;
                 //hp energy test
                 clone_status.HP = monster_status.HP;
+                hp_point = (int)monster_status.HP;
             }
         }
         //ステータスリアルタイム更新
@@ -166,6 +171,7 @@ public class LeftClickMonster : MonoBehaviour
             statusText[(int)STATUS.SPD].text = "SPD:" + spd_point.ToString();
             statusText[(int)STATUS.INT].text = "INT:" + int_point.ToString();
             statusText[(int)STATUS.DEF].text = "DEF:" + def_point.ToString();
+            statusText[(int)STATUS.HP].text = " HELTH  " + hp_point.ToString() + "/10000";
             //_state = true;
         }
     }
